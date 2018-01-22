@@ -5,23 +5,20 @@
 </template>
 
 <script>
-import axios from 'axios';
+import projects from '~/static/data/projects.json'
 
 export default {
-  asyncData({ params, error }) {
-    return axios.get(`http://localhost:3000/data/projects.json`)
-    .then((res) => {
-      return {
-        project: res.data[params.slug]
-      }
-    })
-    .catch((e) => {
-      error({ statusCode: 404, message: 'Project not found' })
-    })
+
+  data() {
+    return {
+      project: projects[this.$route.params.slug]
+    }
   },
+
   mounted() {
 
   }
+
 }
 </script>
 

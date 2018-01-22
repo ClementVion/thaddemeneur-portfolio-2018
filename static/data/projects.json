@@ -1,10 +1,16 @@
 {
   "first" : {
+    "slug": "first",
     "name": "First project",
-    "slug": "first"
+    "images": {
+      "main": "/images/terminmeister.png"
+    }
   },
   "second" : {
+    "slug": "second",
     "name": "Second project",
-    "slug": "second"
+    "images": {
+      "main": "/images/fruits.png"
+    }
   }
 }

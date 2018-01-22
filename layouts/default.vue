@@ -1,18 +1,30 @@
 <template>
   <div class="default">
-    <globalCanvas />
+    <globalCanvas :projects="projects" />
     <nuxt />
   </div>
 </template>
 
 <script>
-  import globalCanvas from '~/components/globalCanvas.vue';
+import projects from '~/static/data/projects.json'
+import globalCanvas from '~/components/globalCanvas.vue';
 
-  export default {
-    components: {
-      'globalCanvas': globalCanvas,
-    },
+export default {
+
+  data() {
+    return {
+      projects: projects
+    }
+  },
+
+  components: {
+    'globalCanvas': globalCanvas,
+  },
+
+  mounted() {
+
   }
+}
 </script>
 
 <style>

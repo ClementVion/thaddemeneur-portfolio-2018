@@ -11,23 +11,24 @@
 </template>
 
 <script>
-import axios from 'axios';
+import projects from '~/static/data/projects.json'
 
 export default {
-  asyncData({ params, error }) {
-    return axios.get(`http://localhost:3000/data/projects.json`)
-    .then((res) => {
-      return {
-        projects: res.data,
-      }
-    })
-    .catch((e) => {
-      error({ statusCode: 404, message: 'Not found' })
-    })
+
+  data() {
+    return {
+      projects: projects,
+    }
   },
+
   mounted() {
-    console.log(this.projects);
+
   },
+
+  methods: {
+
+  }
+
 }
 </script>
 
