@@ -1,0 +1,10 @@
+{
+  "first" : {
+    "name": "First project",
+    "slug": "first"
+  },
+  "second" : {
+    "name": "Second project",
+    "slug": "second"
+  }
+}

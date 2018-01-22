@@ -1,6 +1,6 @@
 <template lang="html">
   <section class="container">
-    <h1>{{ data.name }}</h1>
+    <h1> {{ project.name }} </h1>
   </section>
 </template>
 
@@ -9,10 +9,10 @@ import axios from 'axios';
 
 export default {
   asyncData({ params, error }) {
-    return axios.get(`http://localhost:3000/data/projects/${params.slug}.json`)
+    return axios.get(`http://localhost:3000/data/projects.json`)
     .then((res) => {
       return {
-        data: res.data,
+        project: res.data[params.slug]
       }
     })
     .catch((e) => {
@@ -20,7 +20,7 @@ export default {
     })
   },
   mounted() {
-    console.log(this.data.slug);
+
   }
 }
 </script>
