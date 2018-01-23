@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import {TweenMax} from 'gsap';
+
 export default {
 
   props: ['projects'],
@@ -12,11 +14,14 @@ export default {
   data() {
     return {
       app: '',
+      appW: 0,
+      appH: 0,
       images: [],
       imagesUrl: [],
       bgContainer: '',
       maskContainer: '',
-      projectContainer: '',
+      projectsContainer: '',
+      rectContainer: '',
       noiseFilter: '',
       displacementSprite: '',
       displacementFilter: ''
@@ -31,9 +36,11 @@ export default {
 
     setup() {
       // this.initBackground();
+      this.initRect();
       this.initProjectsImages();
-
+      // this.goToProjectMode();
       this.animate();
+      this.listenResize();
     },
 
     initCanvas() {
@@ -43,6 +50,9 @@ export default {
       }
       PIXI.utils.sayHello(type)
 
+      this.appW = window.innerWidth;
+      this.appH = window.innerHeight;
+
       // Init app
       this.app = new PIXI.Application({
           antialias: true,
@@ -51,11 +61,10 @@ export default {
           resolution: 2
         }
       );
-      this.app.renderer.autoResize = true;
       this.app.renderer.view.style.position = "absolute";
       this.app.renderer.view.style.display = "block";
       this.app.renderer.autoResize = true;
-      this.app.renderer.resize(window.innerWidth, window.innerHeight);
+      this.app.renderer.resize(this.appW, this.appH);
       this.$refs.canvas.appendChild(this.app.view);
 
       this.loadImages();
@@ -81,9 +90,9 @@ export default {
       bg.beginFill(0x0a0a0a, 1);
       bg.moveTo(0,0);
       bg.lineTo(0,0);
-      bg.lineTo(this.app.view.width,0);
-      bg.lineTo(this.app.view.width,this.app.view.height);
-      bg.lineTo(0,this.app.view.height);
+      bg.lineTo(this.appW,0);
+      bg.lineTo(this.appW,this.appH);
+      bg.lineTo(0,this.appH);
       bg.endFill();
 
       this.bgContainer.addChild(bg);
@@ -97,32 +106,27 @@ export default {
 
     initProjectsImages() {
       this.maskContainer = new PIXI.Container();
-      this.projectContainer = new PIXI.Container();
+      this.projectsContainer = new PIXI.Container();
 
       for (let i = 0; i < this.imagesUrl.length; i += 1) {
         this.images[i] = new PIXI.Sprite(PIXI.loader.resources[this.imagesUrl[i]].texture);
-        this.images[i].scale.x = 0.5;
-        this.images[i].scale.y = 0.5;
         this.images[i].anchor.set(0.5);
-        this.images[i].position.x = window.innerWidth / 2;
-        this.images[i].position.y = window.innerHeight / 2;
         this.images[i].interactive = true;
-
-        this.projectContainer.addChild(this.images[i]);
+        this.projectsContainer.addChild(this.images[i]);
       }
 
-      this.displacementSprite = PIXI.Sprite.fromImage('http://i.imgur.com/2yYayZk.png');
+      this.displacementSprite = PIXI.Sprite.fromImage('/images/sprite.png');
       this.displacementSprite.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
       this.displacementSprite.scale.x = 0.5;
       this.displacementSprite.scale.y = 0.5;
-      this.projectContainer.addChild(this.displacementSprite);
+      this.projectsContainer.addChild(this.displacementSprite);
 
       this.displacementFilter = new PIXI.filters.DisplacementFilter(this.displacementSprite);
-      this.projectContainer.filters = [this.displacementFilter];
+      this.projectsContainer.filters = [this.displacementFilter];
       this.displacementFilter.scale.x = 5;
       this.displacementFilter.scale.y = 5;
 
-      // Init mask
+      // Init mask for images
       let maskX = (this.images[0].position.x - (this.images[0].width / 2));
       let maskY = (this.images[0].position.y - (this.images[0].height / 2));
       let padding = 25;
@@ -134,21 +138,63 @@ export default {
       mask.lineTo((maskX + this.images[0].width) - padding, maskY + padding);
       mask.lineTo((maskX + this.images[0].width) - padding, (maskY + this.images[0].height) - padding);
       mask.lineTo(maskX + padding, (maskY + this.images[0].height) - padding);
-      // mask.lineTo(0, 0);
       mask.endFill();
+
+      this.maskContainer.x = this.appW - (this.rectContainer.width / 2);
+      this.maskContainer.y = this.appH / 2;
+      this.maskContainer.scale.x = 0.5;
+      this.maskContainer.scale.y = 0.5;
 
       this.maskContainer.mask = mask;
       this.maskContainer.addChild(mask);
 
-      this.maskContainer.addChild(this.projectContainer);
+      this.maskContainer.addChild(this.projectsContainer);
       this.app.stage.addChild(this.maskContainer)
+    },
+
+    initRect() {
+      const rectWidth = (this.appW / 2.24);
+      let rect = new PIXI.Graphics();
+
+      rect.beginFill(0x000000, 1);
+      rect.moveTo(0, 0);
+      rect.lineTo(0, 0);
+      rect.lineTo(rectWidth, 0);
+      rect.lineTo(rectWidth, this.appH);
+      rect.lineTo(0, this.appH);
+      rect.endFill();
+
+      this.rectContainer = new PIXI.Container();
+      this.rectContainer.position.set(this.appW - (rectWidth / 2), (rect.height /2));
+      this.rectContainer.pivot.set((rectWidth / 2), (rect.height /2));
+
+      this.rectContainer.addChild(rect);
+      this.app.stage.addChild(this.rectContainer);
+    },
+
+    goToProjectMode() {
+      setTimeout(() => {
+        TweenMax.to(this.rectContainer.skew, 0.5, {x: 0.3, ease: Power3.easeInOut});
+        TweenMax.to(this.rectContainer.scale, 0.7, {x: 4, y: 2, ease: Power3.easeInOut});
+        TweenMax.to(this.rectContainer.skew, 0.5, {x: 0, delay: 0.2, ease: Power3.easeInOut});
+
+        TweenMax.to(this.maskContainer.skew, 0.7, {x: 0.2, ease: Power3.easeInOut});
+        TweenMax.to(this.maskContainer, 1, {x: window.innerWidth / 2, ease: Power3.easeInOut});
+        TweenMax.to(this.maskContainer.skew, 0.7, {x: 0, delay:0.3 , ease: Power3.easeInOut});
+      }, 1000);
+    },
+
+    listenResize() {
+      window.addEventListener('resize', () => {
+        this.appW = window.innerWidth;
+        this.appH = window.innerHeight;
+        this.app.renderer.resize(this.appW, this.appH);
+      });
     },
 
     animate() {
       requestAnimationFrame(this.animate);
-
       // this.noiseFilter.seed = (Math.random() * 1) * 0.25;
-
       this.displacementSprite.x += 1;
       this.displacementSprite.y += 1;
     }

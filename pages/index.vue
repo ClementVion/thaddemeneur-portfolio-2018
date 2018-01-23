@@ -1,11 +1,11 @@
 <template>
   <section class="Container">
     <ul>
-      <li v-for="project in projects" :key="project.slug">
+      <!-- <li v-for="project in projects" :key="project.slug">
         <nuxt-link :to="'/projects/'+project.slug">
           {{ project.name }}
         </nuxt-link>
-      </li>
+      </li> -->
     </ul>
   </section>
 </template>
