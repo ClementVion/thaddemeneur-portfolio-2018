@@ -6,6 +6,7 @@
 
 <script>
 import {TweenMax} from 'gsap';
+import eventBus from '~/components/bus/eventBus.js'
 
 export default {
 
@@ -22,6 +23,7 @@ export default {
       maskContainer: '',
       projectsContainer: '',
       rectContainer: '',
+      rect: '',
       noiseFilter: '',
       displacementSprite: '',
       displacementFilter: ''
@@ -38,9 +40,9 @@ export default {
       // this.initBackground();
       this.initRect();
       this.initProjectsImages();
-      // this.goToProjectMode();
       this.animate();
       this.listenResize();
+      this.listenGlobalEvents();
     },
 
     initCanvas() {
@@ -154,34 +156,43 @@ export default {
 
     initRect() {
       const rectWidth = (this.appW / 2.24);
-      let rect = new PIXI.Graphics();
+      this.rect = new PIXI.Graphics();
 
-      rect.beginFill(0x000000, 1);
-      rect.moveTo(0, 0);
-      rect.lineTo(0, 0);
-      rect.lineTo(rectWidth, 0);
-      rect.lineTo(rectWidth, this.appH);
-      rect.lineTo(0, this.appH);
-      rect.endFill();
+      this.rect.beginFill(0x000000, 1);
+      this.rect.moveTo(0, 0);
+      this.rect.lineTo(0, 0);
+      this.rect.lineTo(rectWidth, 0);
+      this.rect.lineTo(rectWidth, this.appH);
+      this.rect.lineTo(0, this.appH);
+      this.rect.endFill();
 
       this.rectContainer = new PIXI.Container();
-      this.rectContainer.position.set(this.appW - (rectWidth / 2), (rect.height /2));
-      this.rectContainer.pivot.set((rectWidth / 2), (rect.height /2));
+      this.rectContainer.position.set(this.appW - (rectWidth / 2), (this.rect.height /2));
+      this.rectContainer.pivot.set((rectWidth / 2), (this.rect.height /2));
 
-      this.rectContainer.addChild(rect);
+      this.rectContainer.addChild(this.rect);
       this.app.stage.addChild(this.rectContainer);
     },
 
-    goToProjectMode() {
-      setTimeout(() => {
-        TweenMax.to(this.rectContainer.skew, 0.5, {x: 0.3, ease: Power3.easeInOut});
-        TweenMax.to(this.rectContainer.scale, 0.7, {x: 4, y: 2, ease: Power3.easeInOut});
-        TweenMax.to(this.rectContainer.skew, 0.5, {x: 0, delay: 0.2, ease: Power3.easeInOut});
+    switchToHome() {
+      TweenMax.to(this.rectContainer.skew, 0.5, {x: 0.3, ease: Power3.easeInOut});
+      TweenMax.to(this.rectContainer.scale, 0.9, {x: 1, y: 1, ease: Power3.easeInOut});
+      TweenMax.to(this.rectContainer.skew, 0.5, {x: 0, delay: 0.25, ease: Power3.easeInOut});
 
-        TweenMax.to(this.maskContainer.skew, 0.7, {x: 0.2, ease: Power3.easeInOut});
-        TweenMax.to(this.maskContainer, 1, {x: window.innerWidth / 2, ease: Power3.easeInOut});
-        TweenMax.to(this.maskContainer.skew, 0.7, {x: 0, delay:0.3 , ease: Power3.easeInOut});
-      }, 1000);
+      TweenMax.to(this.maskContainer.skew, 0.7, {x: 0.2, ease: Power3.easeInOut});
+      TweenMax.to(this.maskContainer, 0.9, {x: (this.appW - (this.rect.width / 2)), ease: Power3.easeInOut});
+      TweenMax.to(this.maskContainer.skew, 0.7, {x: 0, delay:0.3 , ease: Power3.easeInOut});
+
+    },
+
+    switchToProject() {
+      TweenMax.to(this.rectContainer.skew, 0.5, {x: 0.3, ease: Power3.easeInOut});
+      TweenMax.to(this.rectContainer.scale, 0.7, {x: 4, y: 2, ease: Power3.easeInOut});
+      TweenMax.to(this.rectContainer.skew, 0.5, {x: 0, delay: 0.2, ease: Power3.easeInOut});
+
+      TweenMax.to(this.maskContainer.skew, 0.7, {x: 0.2, ease: Power3.easeInOut});
+      TweenMax.to(this.maskContainer, 1, {x: window.innerWidth / 2, ease: Power3.easeInOut});
+      TweenMax.to(this.maskContainer.skew, 0.7, {x: 0, delay:0.3 , ease: Power3.easeInOut});
     },
 
     listenResize() {
@@ -190,6 +201,16 @@ export default {
         this.appH = window.innerHeight;
         this.app.renderer.resize(this.appW, this.appH);
       });
+    },
+
+    listenGlobalEvents() {
+      eventBus.$on('switchToHome', ($event) => {
+        this.switchToHome();
+      })
+
+      eventBus.$on('switchToProject', ($event) => {
+        this.switchToProject();
+      })
     },
 
     animate() {

@@ -1,28 +1,30 @@
 <template>
   <section class="Container">
     <ul>
-      <!-- <li v-for="project in projects" :key="project.slug">
+      <li v-for="project in projects" :key="project.slug">
         <nuxt-link :to="'/projects/'+project.slug">
           {{ project.name }}
         </nuxt-link>
-      </li> -->
+      </li>
     </ul>
   </section>
 </template>
 
 <script>
 import projects from '~/static/data/projects.json'
+import eventBus from '~/components/bus/eventBus.js'
 
 export default {
 
   data() {
     return {
       projects: projects,
+      eventBus: eventBus
     }
   },
 
   mounted() {
-
+    eventBus.$emit('switchToHome');
   },
 
   methods: {
