@@ -1,6 +1,7 @@
 <template lang="html">
-  <section class="container">
+  <section class="Container">
     <h1> {{ project.name }} </h1>
+    <nuxt-link to="/"> Home </nuxt-link>
   </section>
 </template>
 
@@ -24,4 +25,9 @@ export default {
 </script>
 
 <style lang="css">
+.Container {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+}
 </style>

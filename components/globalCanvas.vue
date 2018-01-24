@@ -26,7 +26,8 @@ export default {
       rect: '',
       noiseFilter: '',
       displacementSprite: '',
-      displacementFilter: ''
+      displacementFilter: '',
+      displacementSpeed: 1
     }
   },
 
@@ -40,9 +41,10 @@ export default {
       // this.initBackground();
       this.initRect();
       this.initProjectsImages();
-      this.animate();
+
       this.listenResize();
       this.listenGlobalEvents();
+      this.animate();
     },
 
     initCanvas() {
@@ -114,8 +116,9 @@ export default {
         this.images[i] = new PIXI.Sprite(PIXI.loader.resources[this.imagesUrl[i]].texture);
         this.images[i].anchor.set(0.5);
         this.images[i].interactive = true;
-        this.projectsContainer.addChild(this.images[i]);
       }
+
+      this.projectsContainer.addChildAt(this.images[0], 0);
 
       this.displacementSprite = PIXI.Sprite.fromImage('/images/sprite.png');
       this.displacementSprite.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
@@ -195,6 +198,27 @@ export default {
       TweenMax.to(this.maskContainer.skew, 0.7, {x: 0, delay:0.3 , ease: Power3.easeInOut});
     },
 
+    changeProject(currentImageIndex, nextImageIndex) {
+      const currentImage = this.images[currentImageIndex];
+      const nextImage = this.images[nextImageIndex];
+      this.projectsContainer.removeChild(currentImage);
+      this.projectsContainer.removeChild(nextImage);
+      this.projectsContainer.addChildAt(currentImage, 0);
+      this.projectsContainer.addChildAt(nextImage, 0);
+
+      TweenMax.to(this, 1.5, {displacementSpeed: 10, ease: Cubic.easeInOut});
+      TweenMax.to(this.displacementFilter.scale, 1, {x: 30,y: 30, ease: Cubic.easeInOut});
+
+      TweenMax.to(this.projectsContainer.scale, 1, {x: 1.05,y: 1.05, ease: Cubic.easeInOut});
+
+      TweenMax.to(this.images[currentImageIndex], 2, {alpha: 0, delay: 0.5, ease: Cubic.easeInOut});
+
+      TweenMax.to(this.projectsContainer.scale, 1.5, {x: 1,y: 1, delay: 1.25, ease: Cubic.easeInOut});
+
+      TweenMax.to(this.displacementFilter.scale, 3, {x: 5,y: 5, delay: 1, ease: Cubic.easeInOut});
+      TweenMax.to(this, 3, {displacementSpeed: 1, delay: 1, ease: Cubic.easeInOut});
+    },
+
     listenResize() {
       window.addEventListener('resize', () => {
         this.appW = window.innerWidth;
@@ -211,13 +235,17 @@ export default {
       eventBus.$on('switchToProject', ($event) => {
         this.switchToProject();
       })
+
+      eventBus.$on('changeProject', ($event) => {
+        this.changeProject($event.currentImageIndex, $event.nextImageIndex);
+      })
     },
 
     animate() {
       requestAnimationFrame(this.animate);
       // this.noiseFilter.seed = (Math.random() * 1) * 0.25;
-      this.displacementSprite.x += 1;
-      this.displacementSprite.y += 1;
+      this.displacementSprite.x += this.displacementSpeed;
+      this.displacementSprite.y += this.displacementSpeed;
     }
 
   }

@@ -19,12 +19,21 @@ export default {
   data() {
     return {
       projects: projects,
-      eventBus: eventBus
+      eventBus: eventBus,
+      currentProjectIndex: 0,
     }
   },
 
   mounted() {
     eventBus.$emit('switchToHome');
+    window.addEventListener('click', () => {
+      const nextProjectIndex = this.currentProjectIndex + 1;
+      eventBus.$emit('changeProject', {
+        'currentImageIndex': this.currentProjectIndex,
+        'nextImageIndex': nextProjectIndex,
+      });
+      this.currentProjectIndex = nextProjectIndex;
+    })
   },
 
   methods: {
