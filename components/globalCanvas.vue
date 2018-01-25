@@ -5,6 +5,9 @@
 </template>
 
 <script>
+import {TweenMax} from 'gsap';
+import eventBus from '~/components/bus/eventBus.js'
+
 export default {
 
   props: ['projects'],
@@ -12,14 +15,19 @@ export default {
   data() {
     return {
       app: '',
+      appW: 0,
+      appH: 0,
       images: [],
       imagesUrl: [],
       bgContainer: '',
       maskContainer: '',
-      projectContainer: '',
+      projectsContainer: '',
+      rectContainer: '',
+      rect: '',
       noiseFilter: '',
       displacementSprite: '',
-      displacementFilter: ''
+      displacementFilter: '',
+      displacementSpeed: 1
     }
   },
 
@@ -31,8 +39,11 @@ export default {
 
     setup() {
       // this.initBackground();
+      this.initRect();
       this.initProjectsImages();
 
+      this.listenResize();
+      this.listenGlobalEvents();
       this.animate();
     },
 
@@ -43,6 +54,9 @@ export default {
       }
       PIXI.utils.sayHello(type)
 
+      this.appW = window.innerWidth;
+      this.appH = window.innerHeight;
+
       // Init app
       this.app = new PIXI.Application({
           antialias: true,
@@ -51,11 +65,10 @@ export default {
           resolution: 2
         }
       );
-      this.app.renderer.autoResize = true;
       this.app.renderer.view.style.position = "absolute";
       this.app.renderer.view.style.display = "block";
       this.app.renderer.autoResize = true;
-      this.app.renderer.resize(window.innerWidth, window.innerHeight);
+      this.app.renderer.resize(this.appW, this.appH);
       this.$refs.canvas.appendChild(this.app.view);
 
       this.loadImages();
@@ -81,9 +94,9 @@ export default {
       bg.beginFill(0x0a0a0a, 1);
       bg.moveTo(0,0);
       bg.lineTo(0,0);
-      bg.lineTo(this.app.view.width,0);
-      bg.lineTo(this.app.view.width,this.app.view.height);
-      bg.lineTo(0,this.app.view.height);
+      bg.lineTo(this.appW,0);
+      bg.lineTo(this.appW,this.appH);
+      bg.lineTo(0,this.appH);
       bg.endFill();
 
       this.bgContainer.addChild(bg);
@@ -97,32 +110,28 @@ export default {
 
     initProjectsImages() {
       this.maskContainer = new PIXI.Container();
-      this.projectContainer = new PIXI.Container();
+      this.projectsContainer = new PIXI.Container();
 
       for (let i = 0; i < this.imagesUrl.length; i += 1) {
         this.images[i] = new PIXI.Sprite(PIXI.loader.resources[this.imagesUrl[i]].texture);
-        this.images[i].scale.x = 0.5;
-        this.images[i].scale.y = 0.5;
         this.images[i].anchor.set(0.5);
-        this.images[i].position.x = window.innerWidth / 2;
-        this.images[i].position.y = window.innerHeight / 2;
         this.images[i].interactive = true;
-
-        this.projectContainer.addChild(this.images[i]);
       }
 
-      this.displacementSprite = PIXI.Sprite.fromImage('http://i.imgur.com/2yYayZk.png');
+      this.projectsContainer.addChild(this.images[0]);
+
+      this.displacementSprite = PIXI.Sprite.fromImage('/images/sprite.png');
       this.displacementSprite.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
       this.displacementSprite.scale.x = 0.5;
       this.displacementSprite.scale.y = 0.5;
-      this.projectContainer.addChild(this.displacementSprite);
+      this.projectsContainer.addChild(this.displacementSprite);
 
       this.displacementFilter = new PIXI.filters.DisplacementFilter(this.displacementSprite);
-      this.projectContainer.filters = [this.displacementFilter];
+      this.projectsContainer.filters = [this.displacementFilter];
       this.displacementFilter.scale.x = 5;
       this.displacementFilter.scale.y = 5;
 
-      // Init mask
+      // Init mask for images
       let maskX = (this.images[0].position.x - (this.images[0].width / 2));
       let maskY = (this.images[0].position.y - (this.images[0].height / 2));
       let padding = 25;
@@ -134,23 +143,107 @@ export default {
       mask.lineTo((maskX + this.images[0].width) - padding, maskY + padding);
       mask.lineTo((maskX + this.images[0].width) - padding, (maskY + this.images[0].height) - padding);
       mask.lineTo(maskX + padding, (maskY + this.images[0].height) - padding);
-      // mask.lineTo(0, 0);
       mask.endFill();
+
+      this.maskContainer.x = this.appW - (this.rectContainer.width / 2);
+      this.maskContainer.y = this.appH / 2;
+      this.maskContainer.scale.x = 0.5;
+      this.maskContainer.scale.y = 0.5;
 
       this.maskContainer.mask = mask;
       this.maskContainer.addChild(mask);
 
-      this.maskContainer.addChild(this.projectContainer);
+      this.maskContainer.addChild(this.projectsContainer);
       this.app.stage.addChild(this.maskContainer)
+    },
+
+    initRect() {
+      const rectWidth = (this.appW / 2.24);
+      this.rect = new PIXI.Graphics();
+
+      this.rect.beginFill(0x000000, 1);
+      this.rect.moveTo(0, 0);
+      this.rect.lineTo(0, 0);
+      this.rect.lineTo(rectWidth, 0);
+      this.rect.lineTo(rectWidth, this.appH);
+      this.rect.lineTo(0, this.appH);
+      this.rect.endFill();
+
+      this.rectContainer = new PIXI.Container();
+      this.rectContainer.position.set(this.appW - (rectWidth / 2), (this.rect.height /2));
+      this.rectContainer.pivot.set((rectWidth / 2), (this.rect.height /2));
+
+      this.rectContainer.addChild(this.rect);
+      this.app.stage.addChild(this.rectContainer);
+    },
+
+    switchToHome() {
+      TweenMax.to(this.rectContainer.skew, 0.5, {x: 0.3, ease: Power3.easeInOut});
+      TweenMax.to(this.rectContainer.scale, 0.9, {x: 1, y: 1, ease: Power3.easeInOut});
+      TweenMax.to(this.rectContainer.skew, 0.5, {x: 0, delay: 0.25, ease: Power3.easeInOut});
+
+      TweenMax.to(this.maskContainer.skew, 0.7, {x: 0.2, ease: Power3.easeInOut});
+      TweenMax.to(this.maskContainer, 0.9, {x: (this.appW - (this.rect.width / 2)), ease: Power3.easeInOut});
+      TweenMax.to(this.maskContainer.skew, 0.7, {x: 0, delay:0.3 , ease: Power3.easeInOut});
+
+    },
+
+    switchToProject() {
+      TweenMax.to(this.rectContainer.skew, 0.5, {x: 0.3, ease: Power3.easeInOut});
+      TweenMax.to(this.rectContainer.scale, 0.7, {x: 4, y: 2, ease: Power3.easeInOut});
+      TweenMax.to(this.rectContainer.skew, 0.5, {x: 0, delay: 0.2, ease: Power3.easeInOut});
+
+      TweenMax.to(this.maskContainer.skew, 0.7, {x: 0.2, ease: Power3.easeInOut});
+      TweenMax.to(this.maskContainer, 1, {x: window.innerWidth / 2, ease: Power3.easeInOut});
+      TweenMax.to(this.maskContainer.skew, 0.7, {x: 0, delay:0.3 , ease: Power3.easeInOut});
+    },
+
+    changeProject(currentImageIndex, nextImageIndex) {
+      this.images[currentImageIndex].alpha = 1;
+      this.images[nextImageIndex].alpha = 1;
+      this.projectsContainer.removeChild(this.images[currentImageIndex], this.images[nextImageIndex]);
+      this.projectsContainer.addChild(this.images[nextImageIndex], this.images[currentImageIndex]);
+
+      TweenMax.to(this, 1.5, {displacementSpeed: 10, ease: Cubic.easeInOut});
+      TweenMax.to(this.displacementFilter.scale, 1, {x: 30,y: 30, ease: Cubic.easeInOut});
+
+      TweenMax.to(this.projectsContainer.scale, 1, {x: 1.05,y: 1.05, ease: Cubic.easeInOut});
+
+      TweenMax.to(this.images[currentImageIndex], 2, {alpha: 0, delay: 0.5, ease: Cubic.easeInOut});
+
+      TweenMax.to(this.projectsContainer.scale, 1.5, {x: 1,y: 1, delay: 1.25, ease: Cubic.easeInOut});
+
+      TweenMax.to(this.displacementFilter.scale, 3, {x: 5,y: 5, delay: 1, ease: Cubic.easeInOut});
+      TweenMax.to(this, 3, {displacementSpeed: 1, delay: 1, ease: Cubic.easeInOut});
+    },
+
+    listenResize() {
+      window.addEventListener('resize', () => {
+        this.appW = window.innerWidth;
+        this.appH = window.innerHeight;
+        this.app.renderer.resize(this.appW, this.appH);
+      });
+    },
+
+    listenGlobalEvents() {
+      eventBus.$on('switchToHome', ($event) => {
+        this.switchToHome();
+      })
+
+      eventBus.$on('switchToProject', ($event) => {
+        this.switchToProject();
+      })
+
+      eventBus.$on('changeProject', ($event) => {
+        this.changeProject($event.currentImageIndex, $event.nextImageIndex);
+      })
     },
 
     animate() {
       requestAnimationFrame(this.animate);
-
       // this.noiseFilter.seed = (Math.random() * 1) * 0.25;
-
-      this.displacementSprite.x += 1;
-      this.displacementSprite.y += 1;
+      this.displacementSprite.x += this.displacementSpeed;
+      this.displacementSprite.y += this.displacementSpeed;
     }
 
   }

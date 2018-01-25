@@ -12,5 +12,12 @@
     "images": {
       "main": "/images/fruits.png"
     }
+  },
+  "third" : {
+    "slug": "third",
+    "name": "Third project",
+    "images": {
+      "main": "/images/chair.png"
+    }
   }
 }
