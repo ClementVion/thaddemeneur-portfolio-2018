@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'Neue Hans Kendrick';
+  src: url('~/assets/fonts/NeueHansKendrick-Regular.woff2') format('woff2'),
+      url('~/assets/fonts/NeueHansKendrick-Regular.woff') format('woff'),
+      url('~/assets/fonts/NeueHansKendrick-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Neue Hans Kendrick';
+  src: url('~/assets/fonts/NeueHansKendrick-SemiBold.woff2') format('woff2'),
+      url('~/assets/fonts/NeueHansKendrick-SemiBold.woff') format('woff'),
+      url('~/assets/fonts/NeueHansKendrick-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}

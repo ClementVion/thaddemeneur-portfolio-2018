@@ -7,7 +7,7 @@
 
 <script>
 import projects from '~/static/data/projects.json'
-import eventBus from '~/components/bus/eventBus.js'
+import EventBus from '~/components/bus/EventBus.js'
 
 export default {
 
@@ -18,7 +18,7 @@ export default {
   },
 
   mounted() {
-    eventBus.$emit('switchToProject');
+    EventBus.$emit('switchToProject');
   }
 
 }

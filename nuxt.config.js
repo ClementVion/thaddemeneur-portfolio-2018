@@ -19,7 +19,7 @@ module.exports = {
   /*
   ** Customize the progress bar color
   */
-  loading: { color: '#3B8070' },
+  loading: false,
   /*
   ** Build configuration
   */
@@ -40,5 +40,9 @@ module.exports = {
   },
   env: {
     baseURL: (process.env.NODE_ENV === 'production' ? 'http//thaddemeneur.com' : 'http://localhost:3000')
-  }
+  },
+  css: [
+    // SCSS file in the project
+    '@/assets/scss/main.scss'
+  ]
 }

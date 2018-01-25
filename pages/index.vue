@@ -1,32 +1,40 @@
 <template>
-  <section class="Container">
-    <ul>
-      <li v-for="project in projects" :key="project.slug">
-        <nuxt-link :to="'/projects/'+project.slug">
-          {{ project.name }}
-        </nuxt-link>
-      </li>
-    </ul>
-  </section>
+  <div class="Home">
+    <section class="u-container">
+      <ProjectsInfos />
+      <!-- <ul>
+        <li v-for="project in projects" :key="project.slug">
+          <nuxt-link :to="'/projects/'+project.slug">
+            {{ project.name }}
+          </nuxt-link>
+        </li>
+      </ul> -->
+    </section>
+  </div>
 </template>
 
 <script>
 import projects from '~/static/data/projects.json'
-import eventBus from '~/components/bus/eventBus.js'
+import EventBus from '~/components/bus/EventBus.js'
+import ProjectsInfos from '~/components/ProjectInfos.vue'
 
 export default {
+
+  components: {
+    ProjectsInfos,
+  },
 
   data() {
     return {
       projects: projects,
-      eventBus: eventBus,
+      eventBus: EventBus,
       currentProjectIndex: 0,
       scrolling: false
     }
   },
 
   mounted() {
-    eventBus.$emit('switchToHome');
+    EventBus.$emit('switchToHome');
     this.initEvents();
   },
 
@@ -53,7 +61,7 @@ export default {
         }
 
         if (nextProjectIndex != undefined) {
-          eventBus.$emit('changeProject', {
+          EventBus.$emit('changeProject', {
             'currentImageIndex': this.currentProjectIndex,
             'nextImageIndex': nextProjectIndex,
           });
@@ -72,20 +80,8 @@ export default {
 }
 </script>
 
-<style>
-html {
-    overflow: hidden;
-    height: 100%;
-}
-
-body {
-    height: 100%;
-    overflow: auto;
-}
-
-.Container {
-  position: relative;
-  z-index: 10;
-  min-height: 100vh;
-}
+<style lang="scss">
+  .Home {
+    background: #F5F5F5;
+  }
 </style>

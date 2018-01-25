@@ -6,7 +6,7 @@
 
 <script>
 import {TweenMax} from 'gsap';
-import eventBus from '~/components/bus/eventBus.js'
+import EventBus from '~/components/bus/EventBus.js'
 
 export default {
 
@@ -60,9 +60,8 @@ export default {
       // Init app
       this.app = new PIXI.Application({
           antialias: true,
-          transparent: false,
-          backgroundColor: 0xF8F8F8,
-          resolution: 2
+          transparent: true,
+          resolution: 1
         }
       );
       this.app.renderer.view.style.position = "absolute";
@@ -127,9 +126,10 @@ export default {
       this.projectsContainer.addChild(this.displacementSprite);
 
       this.displacementFilter = new PIXI.filters.DisplacementFilter(this.displacementSprite);
+      this.projectsContainer.filterArea = new PIXI.Rectangle(this.appW / 2, 0, this.appW / 2, this.appH);
       this.projectsContainer.filters = [this.displacementFilter];
-      this.displacementFilter.scale.x = 5;
-      this.displacementFilter.scale.y = 5;
+      this.displacementFilter.scale.x = 10;
+      this.displacementFilter.scale.y = 10;
 
       // Init mask for images
       let maskX = (this.images[0].position.x - (this.images[0].width / 2));
@@ -226,15 +226,15 @@ export default {
     },
 
     listenGlobalEvents() {
-      eventBus.$on('switchToHome', ($event) => {
+      EventBus.$on('switchToHome', ($event) => {
         this.switchToHome();
       })
 
-      eventBus.$on('switchToProject', ($event) => {
+      EventBus.$on('switchToProject', ($event) => {
         this.switchToProject();
       })
 
-      eventBus.$on('changeProject', ($event) => {
+      EventBus.$on('changeProject', ($event) => {
         this.changeProject($event.currentImageIndex, $event.nextImageIndex);
       })
     },
