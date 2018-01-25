@@ -118,7 +118,7 @@ export default {
         this.images[i].interactive = true;
       }
 
-      this.projectsContainer.addChildAt(this.images[0], 0);
+      this.projectsContainer.addChild(this.images[0]);
 
       this.displacementSprite = PIXI.Sprite.fromImage('/images/sprite.png');
       this.displacementSprite.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
@@ -199,12 +199,10 @@ export default {
     },
 
     changeProject(currentImageIndex, nextImageIndex) {
-      const currentImage = this.images[currentImageIndex];
-      const nextImage = this.images[nextImageIndex];
-      this.projectsContainer.removeChild(currentImage);
-      this.projectsContainer.removeChild(nextImage);
-      this.projectsContainer.addChildAt(currentImage, 0);
-      this.projectsContainer.addChildAt(nextImage, 0);
+      this.images[currentImageIndex].alpha = 1;
+      this.images[nextImageIndex].alpha = 1;
+      this.projectsContainer.removeChild(this.images[currentImageIndex], this.images[nextImageIndex]);
+      this.projectsContainer.addChild(this.images[nextImageIndex], this.images[currentImageIndex]);
 
       TweenMax.to(this, 1.5, {displacementSpeed: 10, ease: Cubic.easeInOut});
       TweenMax.to(this.displacementFilter.scale, 1, {x: 30,y: 30, ease: Cubic.easeInOut});
