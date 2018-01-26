@@ -1,23 +1,29 @@
 {
   "first" : {
     "slug": "first",
-    "name": "First project",
+    "number": "First Story",
+    "title": "My internship at Minglabs",
+    "desc": "and the way we helped craftsmen be more efficient at work",
     "images": {
       "main": "/images/terminmeister.png"
     }
   },
   "second" : {
     "slug": "second",
-    "name": "Second project",
+    "number": "Second Story",
+    "title": "Tesla x Go Pro",
+    "desc": "salut thaddé tu n'as pas écrit le contenu de ce paragraphe, des bisous.",
     "images": {
-      "main": "/images/fruits.png"
+      "main": "/images/chair.png"
     }
   },
   "third" : {
     "slug": "third",
-    "name": "Third project",
+    "number": "Third Story",
+    "title": "Weekmeal, School Project",
+    "desc": "finally finding a good idea of what to cook for dinner tonight",
     "images": {
-      "main": "/images/chair.png"
+      "main": "/images/fruits.png"
     }
   }
 }

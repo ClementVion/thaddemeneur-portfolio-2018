@@ -3,11 +3,11 @@
 
     <div class="ProjectInfos__container">
 
-      <p class="ProjectInfos__Number"> First Story </p>
+      <p class="ProjectInfos__Number js-toSplit" :data-text="projectNumber"> </p>
 
-      <h2 class="ProjectInfos__Title"> My internship at Ming Labs </h2>
+      <h2 class="ProjectInfos__Title js-toSplit" :data-text="projectTitle"> </h2>
 
-      <p class="ProjectInfos__Desc"> and the way we helped craftsmen be more efficient at work </p>
+      <p class="ProjectInfos__Desc js-toSplit" :data-text="projectDesc"> </p>
 
       <div class="ProjectInfos__Button">
         <Button text="View case study" />
@@ -19,13 +19,65 @@
 </template>
 
 <script>
-
 import Button from '~/components/utils/Button';
+import TextSplitting from '~/mixins/TextSplitting'
+import EventBus from '~/components/bus/EventBus.js'
 
 export default {
 
+  props: ['projects'],
+
+  data() {
+    return {
+      projectsArray: [],
+      projectNumber: 'First Story',
+      projectTitle: 'My internship at Ming Labs',
+      projectDesc: 'and the way we helped craftsmen be more efficient at work'
+    }
+  },
+
   components: {
     Button,
+  },
+
+  mixins: [TextSplitting],
+
+  mounted() {
+    this.convertProjectsToArray();
+    this.listenGlobalEvents();
+  },
+
+  methods: {
+
+    convertProjectsToArray() {
+      for (let key in this.projects) {
+        if (!this.projects.hasOwnProperty(key)) continue;
+        let project = this.projects[key];
+        this.projectsArray.push(project);
+      }
+    },
+
+    listenGlobalEvents() {
+      EventBus.$on('changeProject', ($event) => {
+        this.changeText($event.nextProjectIndex);
+      })
+    },
+
+    changeText(nextProjectIndex) {
+      this.toggleLettersRandomly('fade-out');
+      setTimeout(() => {
+        this.projectNumber = this.projectsArray[nextProjectIndex].number;
+        this.projectTitle = this.projectsArray[nextProjectIndex].title;
+        this.projectDesc = this.projectsArray[nextProjectIndex].desc;
+        this.$nextTick(() => {
+          this.splitByLetters();
+        });
+      }, 1000);
+      setTimeout(() => {
+        this.toggleLettersRandomly('fade-in');
+      }, 1500);
+    }
+
   }
 
 }
@@ -67,6 +119,7 @@ export default {
 
   &:before {
     content: '-';
+    margin-right: 10px;
   }
 }
 

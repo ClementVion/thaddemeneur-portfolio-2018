@@ -198,7 +198,7 @@ export default {
       TweenMax.to(this.maskContainer.skew, 0.7, {x: 0, delay:0.3 , ease: Power3.easeInOut});
     },
 
-    changeProject(currentImageIndex, nextImageIndex) {
+    changeImage(currentImageIndex, nextImageIndex) {
       this.images[currentImageIndex].alpha = 1;
       this.images[nextImageIndex].alpha = 1;
       this.projectsContainer.removeChild(this.images[currentImageIndex], this.images[nextImageIndex]);
@@ -235,7 +235,7 @@ export default {
       })
 
       EventBus.$on('changeProject', ($event) => {
-        this.changeProject($event.currentImageIndex, $event.nextImageIndex);
+        this.changeImage($event.currentProjectIndex, $event.nextProjectIndex);
       })
     },
 

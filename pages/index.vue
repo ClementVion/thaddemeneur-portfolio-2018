@@ -1,7 +1,7 @@
 <template>
   <div class="Home">
     <section class="u-container">
-      <ProjectsInfos />
+      <ProjectsInfos :projects="projects" />
       <!-- <ul>
         <li v-for="project in projects" :key="project.slug">
           <nuxt-link :to="'/projects/'+project.slug">
@@ -62,8 +62,8 @@ export default {
 
         if (nextProjectIndex != undefined) {
           EventBus.$emit('changeProject', {
-            'currentImageIndex': this.currentProjectIndex,
-            'nextImageIndex': nextProjectIndex,
+            'currentProjectIndex': this.currentProjectIndex,
+            'nextProjectIndex': nextProjectIndex,
           });
         }
 
