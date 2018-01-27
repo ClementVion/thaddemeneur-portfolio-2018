@@ -1,6 +1,6 @@
 <template>
   <section class="Home">
-    <ProjectsInfos :projects="projects" />
+    <ProjectsInfos :projects="projects" :dir="dir" />
     <ProjectsFooter :projects="projects" />
     <!-- <ul>
       <li v-for="project in projects" :key="project.slug">
@@ -30,7 +30,8 @@ export default {
       projects: projects,
       eventBus: EventBus,
       currentProjectIndex: 0,
-      scrolling: false
+      scrolling: false,
+      dir: ''
     }
   },
 
@@ -53,13 +54,18 @@ export default {
         let nextProjectIndex = undefined;
         if (e.deltaY > 0 && this.currentProjectIndex < (projectsLength - 1)) {
           nextProjectIndex = this.currentProjectIndex + 1;
+          this.dir = 'up';
         } else if (e.deltaY < 0 && this.currentProjectIndex > 0) {
           nextProjectIndex = this.currentProjectIndex - 1;
+          this.dir = 'down';
         } else if (this.currentProjectIndex >= (projectsLength - 1)) {
           nextProjectIndex = 0;
+          this.dir = 'up';
         } else if (this.currentProjectIndex <= 0) {
           nextProjectIndex = projectsLength - 1;
+          this.dir = 'down';
         }
+
 
         if (nextProjectIndex != undefined) {
           EventBus.$emit('changeProject', {
@@ -72,7 +78,7 @@ export default {
 
         setTimeout(() => {
           this.scrolling = false;
-        }, 2000)
+        }, 3000)
       }
     }
 

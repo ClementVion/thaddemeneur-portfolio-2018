@@ -23,7 +23,12 @@ export default {
         this.containers[i].innerText = '';
 
         for (let j = 0; j < letters.length; j += 1) {
-          this.containers[i].innerHTML = `${this.containers[i].innerHTML}<span class="u-letter">${letters[j]}</span>`;
+
+          if (letters[j] === ' ') {
+            this.containers[i].innerHTML = `${this.containers[i].innerHTML}<span class="u-letter space">${letters[j]}</span>`;
+          } else {
+            this.containers[i].innerHTML = `${this.containers[i].innerHTML}<span class="u-letter">${letters[j]}</span>`;
+          }
         }
       }
     },

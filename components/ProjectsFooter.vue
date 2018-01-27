@@ -63,7 +63,6 @@
       },
 
       updateIndexAndProgressBar(nextProjectIndex) {
-        console.log(nextProjectIndex);
         this.currentProjectIndex = (nextProjectIndex + 1);
         this.progress = (100 / this.maxProjectIndex) * this.currentProjectIndex;
         this.$refs.progressBarSlide.style.transform = 'translateX(' + (100 - this.progress) * (-1) + '%)';

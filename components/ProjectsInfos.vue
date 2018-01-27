@@ -1,7 +1,7 @@
 <template>
   <section class="ProjectsInfos u-container">
 
-    <div class="ProjectsInfos__container">
+    <div class="ProjectsInfos__container" :class="dir">
 
       <p class="ProjectsInfos__Number js-toSplit" :data-text="projectNumber"> </p>
 
@@ -25,7 +25,7 @@ import EventBus from '~/components/bus/EventBus.js'
 
 export default {
 
-  props: ['projects'],
+  props: ['projects', 'dir'],
 
   data() {
     return {
@@ -99,12 +99,50 @@ export default {
 .ProjectsInfos__container {
   max-width: 633px;
   margin-top: 30px;
+
+  .js-toSplit .u-letter {
+    display: inline-block;
+  }
+
+  &.up .js-toSplit .u-letter {
+    opacity: 0;
+    transition: ease 0.2s;
+    transform: translateY(15px);
+
+    &.fade-out {
+      transform: translateY(-15px);
+    }
+
+    &.fade-in {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  &.down .js-toSplit .u-letter {
+    opacity: 0;
+    transition: ease 0.2s;
+    transform: translateY(-15px);
+
+    &.fade-out {
+      transform: translateY(15px);
+    }
+
+    &.fade-in {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
 }
 
 .ProjectsInfos__Number {
   font-size: 1.6rem;
   font-weight: 600;
   margin-bottom: 27px;
+
+  .u-letter.space {
+    width: 4px;
+  }
 }
 
 .ProjectsInfos__Title {
@@ -112,6 +150,10 @@ export default {
   font-weight: 600;
   margin-bottom: 20px;
   line-height: 6rem;
+
+  .u-letter.space {
+    width: 16px;
+  }
 }
 
 .ProjectsInfos__Desc {
@@ -131,6 +173,10 @@ export default {
   &.fade-out:before {
     opacity: 0;
     transition: opacity ease 0.3s;
+  }
+
+  .u-letter.space {
+    width: 7px;
   }
 }
 
