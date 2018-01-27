@@ -24,7 +24,8 @@ export default {
       projectsContainer: '',
       rectContainer: '',
       rect: '',
-      noiseFilter: '',
+      noiseFilterBg: '',
+      noiseFilterRect: '',
       displacementSprite: '',
       displacementFilter: '',
       displacementSpeed: 1
@@ -38,7 +39,7 @@ export default {
   methods: {
 
     setup() {
-      // this.initBackground();
+      this.initBackground();
       this.initRect();
       this.initProjectsImages();
 
@@ -90,7 +91,7 @@ export default {
       this.bgContainer = new PIXI.Container();
 
       let bg = new PIXI.Graphics();
-      bg.beginFill(0x0a0a0a, 1);
+      bg.beginFill(0xF5F5F5, 1);
       bg.moveTo(0,0);
       bg.lineTo(0,0);
       bg.lineTo(this.appW,0);
@@ -100,9 +101,9 @@ export default {
 
       this.bgContainer.addChild(bg);
 
-      this.noiseFilter = new PIXI.filters.NoiseFilter();
-      this.noiseFilter.noise = 0.35;
-      this.bgContainer.filters = [this.noiseFilter];
+      this.noiseFilterBg = new PIXI.filters.NoiseFilter();
+      this.noiseFilterBg.noise = 0.10;
+      this.bgContainer.filters = [this.noiseFilterBg];
 
       this.app.stage.addChild(this.bgContainer);
     },
@@ -173,6 +174,10 @@ export default {
       this.rectContainer.position.set(this.appW - (rectWidth / 2), (this.rect.height /2));
       this.rectContainer.pivot.set((rectWidth / 2), (this.rect.height /2));
 
+      this.noiseFilterRect = new PIXI.filters.NoiseFilter();
+      this.noiseFilterRect.noise = 0.4;
+      this.rect.filters = [this.noiseFilterRect];
+
       this.rectContainer.addChild(this.rect);
       this.app.stage.addChild(this.rectContainer);
     },
@@ -241,7 +246,8 @@ export default {
 
     animate() {
       requestAnimationFrame(this.animate);
-      // this.noiseFilter.seed = (Math.random() * 1) * 0.25;
+      this.noiseFilterBg.seed = (Math.random() * 1) * 0.05;
+      this.noiseFilterRect.seed = (Math.random() * 1) * 0.05;
       this.displacementSprite.x += this.displacementSpeed;
       this.displacementSprite.y += this.displacementSpeed;
     }

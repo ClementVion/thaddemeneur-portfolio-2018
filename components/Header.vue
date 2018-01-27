@@ -24,6 +24,7 @@ export default {
   position: fixed;
   width: 100%;
   top: 55px;
+  z-index: 10;
 }
 
 .Header__Container {

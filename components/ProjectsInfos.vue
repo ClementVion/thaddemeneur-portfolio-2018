@@ -102,11 +102,11 @@ export default {
 
   .js-toSplit .u-letter {
     display: inline-block;
+    transition: ease 0.2s;
   }
 
   &.up .js-toSplit .u-letter {
     opacity: 0;
-    transition: ease 0.2s;
     transform: translateY(15px);
 
     &.fade-out {
@@ -121,7 +121,6 @@ export default {
 
   &.down .js-toSplit .u-letter {
     opacity: 0;
-    transition: ease 0.2s;
     transform: translateY(-15px);
 
     &.fade-out {
