@@ -115,7 +115,6 @@ export default {
       for (let i = 0; i < this.imagesUrl.length; i += 1) {
         this.images[i] = new PIXI.Sprite(PIXI.loader.resources[this.imagesUrl[i]].texture);
         this.images[i].anchor.set(0.5);
-        this.images[i].interactive = true;
       }
 
       this.projectsContainer.addChild(this.images[0]);
@@ -150,6 +149,21 @@ export default {
       this.maskContainer.y = this.appH / 2;
       this.maskContainer.scale.x = 0.45;
       this.maskContainer.scale.y = 0.45;
+      this.maskContainer.interactive = true;
+      this.maskContainer.buttonMode = true;
+      this.maskContainer.defaultCursor = 'pointer';
+
+      this.maskContainer.on('mouseover', () => {
+        TweenMax.to(this, 0.5, {displacementSpeed: 5, ease: Cubic.ease});
+      })
+
+      this.maskContainer.on('mouseout', () => {
+        TweenMax.to(this, 1.5, {displacementSpeed: 1, ease: Cubic.ease});
+      })
+
+      this.maskContainer.on('click', () => {
+        EventBus.$emit('clickedOnImage');
+      })
 
       this.maskContainer.mask = mask;
       this.maskContainer.addChild(mask);

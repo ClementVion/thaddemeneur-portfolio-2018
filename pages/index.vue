@@ -28,6 +28,7 @@ export default {
   data() {
     return {
       projects: projects,
+      projectsArray: [],
       eventBus: EventBus,
       currentProjectIndex: 0,
       scrolling: false,
@@ -35,8 +36,10 @@ export default {
   },
 
   mounted() {
+    this.convertProjectsToArray();
     EventBus.$emit('switchToHome');
     this.initEvents();
+    this.listenGlobalEvents();
   },
 
   methods: {
@@ -75,7 +78,25 @@ export default {
           this.scrolling = false;
         }, 3000)
       }
-    }
+    },
+
+    listenGlobalEvents() {
+      EventBus.$on('clickedOnImage', ($event) => {
+        this.routeToProject()
+      });
+    },
+
+    routeToProject() {
+      this.$router.push('/projects/' + this.projectsArray[this.currentProjectIndex].slug);
+    },
+
+    convertProjectsToArray() {
+      for (let key in this.projects) {
+        if (!this.projects.hasOwnProperty(key)) continue;
+        let project = this.projects[key];
+        this.projectsArray.push(project);
+      }
+    },
 
   }
 

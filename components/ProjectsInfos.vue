@@ -100,7 +100,7 @@ export default {
     transition-timing-function: ease;
     transition-delay: 0;
     transition-duration: 0.3s;
-    transform: rotate(-3deg) translate(3px, -3px);
+    transform: rotate(-3deg) translate(15px, -15px);
     opacity: 0;
   }
 
@@ -141,7 +141,7 @@ export default {
 }
 
 .ProjectsInfos__Number {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 27px;
 }
@@ -154,10 +154,10 @@ export default {
 }
 
 .ProjectsInfos__Desc {
-  font-size: 2.5rem;
+  font-size: 2.1rem;
   color: $grey;
   max-width: 542px;
-  line-height: 3.5rem;
+  line-height: 3rem;
   margin-bottom: 74px;
 
   &:before {
