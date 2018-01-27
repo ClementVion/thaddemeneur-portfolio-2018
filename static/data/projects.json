@@ -25,5 +25,23 @@
     "images": {
       "main": "/images/fruits.png"
     }
+  },
+  "fourth" : {
+    "slug": "fourth",
+    "number": "Fourth Story",
+    "title": "My internship at OhMyGeorge",
+    "desc": "turning trading into an accessible and fun mobile game.",
+    "images": {
+      "main": "/images/ohmygeorge.png"
+    }
+  },
+  "fifth" : {
+    "slug": "fifth",
+    "number": "Fifth Story",
+    "title": "Pickorr, Freelance Project",
+    "desc": "designing the future of news curation for medecine staff and students.",
+    "images": {
+      "main": "/images/pickorr.png"
+    }
   }
 }

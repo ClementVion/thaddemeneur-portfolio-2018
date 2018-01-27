@@ -147,8 +147,8 @@ export default {
 
       this.maskContainer.x = this.appW - (this.rectContainer.width / 2);
       this.maskContainer.y = this.appH / 2;
-      this.maskContainer.scale.x = 0.5;
-      this.maskContainer.scale.y = 0.5;
+      this.maskContainer.scale.x = 0.45;
+      this.maskContainer.scale.y = 0.45;
 
       this.maskContainer.mask = mask;
       this.maskContainer.addChild(mask);

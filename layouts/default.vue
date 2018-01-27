@@ -1,12 +1,14 @@
 <template>
-  <div class="default">
+  <div class="Default">
+    <Header />
     <GlobalCanvas :projects="projects" />
     <nuxt />
   </div>
 </template>
 
 <script>
-import projects from '~/static/data/projects.json'
+import projects from '~/static/data/projects.json';
+import Header from '~/components/Header.vue';
 import GlobalCanvas from '~/components/GlobalCanvas.vue';
 
 export default {
@@ -18,6 +20,7 @@ export default {
   },
 
   components: {
+    'Header': Header,
     'GlobalCanvas': GlobalCanvas,
   },
 

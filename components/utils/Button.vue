@@ -34,6 +34,8 @@ export default {
   font-size: 1.5rem;
   position: relative;
   font-weight: 600;
+  width: calc(100% + 25px);
+  margin-right: -12.5px;
 
   &:before {
     content: '';

@@ -1,27 +1,28 @@
 <template>
-  <div class="Home">
-    <section class="u-container">
-      <ProjectsInfos :projects="projects" />
-      <!-- <ul>
-        <li v-for="project in projects" :key="project.slug">
-          <nuxt-link :to="'/projects/'+project.slug">
-            {{ project.name }}
-          </nuxt-link>
-        </li>
-      </ul> -->
-    </section>
-  </div>
+  <section class="Home">
+    <ProjectsInfos :projects="projects" />
+    <ProjectsFooter :projects="projects" />
+    <!-- <ul>
+      <li v-for="project in projects" :key="project.slug">
+        <nuxt-link :to="'/projects/'+project.slug">
+          {{ project.name }}
+        </nuxt-link>
+      </li>
+    </ul> -->
+  </section>
 </template>
 
 <script>
 import projects from '~/static/data/projects.json'
 import EventBus from '~/components/bus/EventBus.js'
-import ProjectsInfos from '~/components/ProjectInfos.vue'
+import ProjectsInfos from '~/components/ProjectsInfos.vue'
+import ProjectsFooter from '~/components/ProjectsFooter.vue'
 
 export default {
 
   components: {
     ProjectsInfos,
+    ProjectsFooter,
   },
 
   data() {
@@ -83,5 +84,8 @@ export default {
 <style lang="scss">
   .Home {
     background: #F5F5F5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
 </style>

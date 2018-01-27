@@ -1,15 +1,15 @@
 <template>
-  <section class="ProjectInfos u-container">
+  <section class="ProjectsInfos u-container">
 
-    <div class="ProjectInfos__container">
+    <div class="ProjectsInfos__container">
 
-      <p class="ProjectInfos__Number js-toSplit" :data-text="projectNumber"> </p>
+      <p class="ProjectsInfos__Number js-toSplit" :data-text="projectNumber"> </p>
 
-      <h2 class="ProjectInfos__Title js-toSplit" :data-text="projectTitle"> </h2>
+      <h2 class="ProjectsInfos__Title js-toSplit" :data-text="projectTitle"> </h2>
 
-      <p class="ProjectInfos__Desc js-toSplit" :data-text="projectDesc"> </p>
+      <p class="ProjectsInfos__Desc js-toSplit" ref="desc" :data-text="projectDesc"> </p>
 
-      <div class="ProjectInfos__Button">
+      <div class="ProjectsInfos__Button" ref="button">
         <Button text="View case study" />
       </div>
 
@@ -64,6 +64,8 @@ export default {
     },
 
     changeText(nextProjectIndex) {
+      this.$refs.button.classList.add('fade-out');
+      this.$refs.desc.classList.add('fade-out');
       this.toggleLettersRandomly('fade-out');
       setTimeout(() => {
         this.projectNumber = this.projectsArray[nextProjectIndex].number;
@@ -75,6 +77,8 @@ export default {
       }, 1000);
       setTimeout(() => {
         this.toggleLettersRandomly('fade-in');
+        this.$refs.button.classList.remove('fade-out');
+        this.$refs.desc.classList.remove('fade-out');
       }, 1500);
     }
 
@@ -87,30 +91,30 @@ export default {
 <style lang="scss">
 @import '../assets/scss/variables.scss';
 
-.ProjectInfos {
+.ProjectsInfos {
   display: flex;
   align-items: center;
 }
 
-.ProjectInfos__container {
+.ProjectsInfos__container {
   max-width: 633px;
-  margin-top: -21px;
+  margin-top: 30px;
 }
 
-.ProjectInfos__Number {
+.ProjectsInfos__Number {
   font-size: 1.6rem;
   font-weight: 600;
   margin-bottom: 27px;
 }
 
-.ProjectInfos__Title {
+.ProjectsInfos__Title {
   font-size: 4.5rem;
   font-weight: 600;
   margin-bottom: 20px;
   line-height: 6rem;
 }
 
-.ProjectInfos__Desc {
+.ProjectsInfos__Desc {
   font-size: 2.5rem;
   color: $grey;
   max-width: 542px;
@@ -120,6 +124,23 @@ export default {
   &:before {
     content: '-';
     margin-right: 10px;
+    opacity: 1;
+    transition: opacity ease 0.6s 0.3s;
+  }
+
+  &.fade-out:before {
+    opacity: 0;
+    transition: opacity ease 0.3s;
+  }
+}
+
+.ProjectsInfos__Button {
+  opacity: 1;
+  transition: 0.8s 0.5s ease;
+
+  &.fade-out {
+    opacity: 0;
+    transition: 0.6s ease;
   }
 }
 
