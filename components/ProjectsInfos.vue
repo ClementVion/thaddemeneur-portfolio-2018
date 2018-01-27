@@ -100,7 +100,7 @@ export default {
     transition-timing-function: ease;
     transition-delay: 0;
     transition-duration: 0.3s;
-    transform: rotate(-3deg) translate(15px, -15px);
+    transform: rotate(-1deg) translate(0px, -20px);
     opacity: 0;
   }
 

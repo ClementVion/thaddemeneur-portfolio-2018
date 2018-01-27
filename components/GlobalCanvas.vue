@@ -17,6 +17,7 @@ export default {
       app: '',
       appW: 0,
       appH: 0,
+      currentImageIndex: 0,
       images: [],
       imagesUrl: [],
       bgContainer: '',
@@ -58,7 +59,6 @@ export default {
       this.appW = window.innerWidth;
       this.appH = window.innerHeight;
 
-      // Init app
       this.app = new PIXI.Application({
           antialias: true,
           transparent: true,
@@ -117,7 +117,7 @@ export default {
         this.images[i].anchor.set(0.5);
       }
 
-      this.projectsContainer.addChild(this.images[0]);
+      this.projectsContainer.addChild(this.images[this.currentImageIndex]);
 
       this.displacementSprite = PIXI.Sprite.fromImage('/images/sprite.png');
       this.displacementSprite.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
@@ -218,6 +218,7 @@ export default {
     },
 
     changeImage(currentImageIndex, nextImageIndex) {
+      this.currentImageIndex = nextImageIndex;
       this.images[currentImageIndex].alpha = 1;
       this.images[nextImageIndex].alpha = 1;
       this.projectsContainer.removeChild(this.images[currentImageIndex], this.images[nextImageIndex]);
@@ -241,6 +242,12 @@ export default {
         this.appW = window.innerWidth;
         this.appH = window.innerHeight;
         this.app.renderer.resize(this.appW, this.appH);
+        this.app.stage.removeChild(this.bgContainer);
+        this.app.stage.removeChild(this.rectContainer);
+        this.app.stage.removeChild(this.maskContainer);
+        this.initBackground();
+        this.initRect();
+        this.initProjectsImages();
       });
     },
 
