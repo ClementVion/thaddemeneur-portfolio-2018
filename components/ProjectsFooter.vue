@@ -1,24 +1,22 @@
 <template>
-  <section class="ProjectsFooter">
-    <div class="u-container">
-      <div class="ProjectsFooter__Container">
+  <section class="ProjectsFooter u-home-container">
+    <div class="ProjectsFooter__Container">
 
-        <div class="ProjectsFooter__Progress">
-          <div class="ProjectsFooter__ProgressSteps">
-            <p class="CurrentStep"> {{ currentProjectIndex }} </p>
-            <span> - </span>
-            <p class="MaxStep"> {{ maxProjectIndex }} </p>
-          </div>
-          <div class="ProjectsFooter__ProgressBar">
-            <div class="ProjectsFooter__ProgressBarSlide" ref="progressBarSlide"></div>
-          </div>
+      <div class="ProjectsFooter__Progress">
+        <div class="ProjectsFooter__ProgressSteps">
+          <p class="CurrentStep"> {{ currentProjectIndex }} </p>
+          <span> - </span>
+          <p class="MaxStep"> {{ maxProjectIndex }} </p>
         </div>
-
-        <div class="ProjectsFooter__Cta">
-          <p> Scroll down </p>
+        <div class="ProjectsFooter__ProgressBar">
+          <div class="ProjectsFooter__ProgressBarSlide" ref="progressBarSlide"></div>
         </div>
-
       </div>
+
+      <div class="ProjectsFooter__Cta">
+        <p> Scroll down </p>
+      </div>
+
     </div>
   </section>
 </template>
@@ -80,11 +78,12 @@
   .ProjectsFooter {
     font-size: 1.6rem;
     font-weight: 600;
-    margin-bottom: 65px;
+    position: fixed;
+    bottom: 65px;
   }
 
   .ProjectsFooter__Container {
-    width: 50%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
   }

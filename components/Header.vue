@@ -1,10 +1,8 @@
 <template>
-  <section class="Header">
-    <div class="u-container">
-      <div class="Header__Container">
-        <h1 class="Header__Title"> Thaddé Méneur </h1>
-        <p class="Header__About"> About </p>
-      </div>
+  <section class="Header u-home-container">
+    <div class="Header__Container">
+      <h1 class="Header__Title"> Thaddé Méneur </h1>
+      <p class="Header__About"> About </p>
     </div>
   </section>
 </template>
@@ -22,7 +20,6 @@ export default {
 
 .Header {
   position: fixed;
-  width: 100%;
   top: 55px;
   z-index: 10;
 }
@@ -32,7 +29,7 @@ export default {
   justify-content: space-between;
   font-size: 1.5rem;
   font-weight: 600;
-  width: 50%;
+  width: 100%;
 }
 
 .Header__Title, .Header__About {

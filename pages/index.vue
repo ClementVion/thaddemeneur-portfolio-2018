@@ -1,6 +1,6 @@
 <template>
   <section class="Home">
-    <ProjectsInfos :projects="projects" :dir="dir" />
+    <ProjectsInfos :projects="projects" />
     <ProjectsFooter :projects="projects" />
     <!-- <ul>
       <li v-for="project in projects" :key="project.slug">
@@ -31,7 +31,6 @@ export default {
       eventBus: EventBus,
       currentProjectIndex: 0,
       scrolling: false,
-      dir: ''
     }
   },
 
@@ -54,16 +53,12 @@ export default {
         let nextProjectIndex = undefined;
         if (e.deltaY > 0 && this.currentProjectIndex < (projectsLength - 1)) {
           nextProjectIndex = this.currentProjectIndex + 1;
-          this.dir = 'up';
         } else if (e.deltaY < 0 && this.currentProjectIndex > 0) {
           nextProjectIndex = this.currentProjectIndex - 1;
-          this.dir = 'down';
         } else if (this.currentProjectIndex >= (projectsLength - 1)) {
           nextProjectIndex = 0;
-          this.dir = 'up';
         } else if (this.currentProjectIndex <= 0) {
           nextProjectIndex = projectsLength - 1;
-          this.dir = 'down';
         }
 
 
@@ -93,5 +88,6 @@ export default {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
   }
 </style>

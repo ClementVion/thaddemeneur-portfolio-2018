@@ -1,13 +1,13 @@
 <template>
-  <section class="ProjectsInfos u-container">
+  <section class="ProjectsInfos u-home-container">
 
-    <div class="ProjectsInfos__container" :class="dir">
+    <div class="ProjectsInfos__Container" ref="container">
 
-      <p class="ProjectsInfos__Number js-toSplit" :data-text="projectNumber"> </p>
+      <p class="ProjectsInfos__Number"> {{ projectNumber }} </p>
 
-      <h2 class="ProjectsInfos__Title js-toSplit" :data-text="projectTitle"> </h2>
+      <h2 class="ProjectsInfos__Title"> {{ projectTitle }} </h2>
 
-      <p class="ProjectsInfos__Desc js-toSplit" ref="desc" :data-text="projectDesc"> </p>
+      <p class="ProjectsInfos__Desc">  {{ projectDesc }} </p>
 
       <div class="ProjectsInfos__Button" ref="button">
         <Button text="View case study" />
@@ -20,19 +20,18 @@
 
 <script>
 import Button from '~/components/utils/Button';
-import TextSplitting from '~/mixins/TextSplitting'
 import EventBus from '~/components/bus/EventBus.js'
 
 export default {
 
-  props: ['projects', 'dir'],
+  props: ['projects'],
 
   data() {
     return {
       projectsArray: [],
-      projectNumber: 'First Story',
-      projectTitle: 'My internship at Ming Labs',
-      projectDesc: 'and the way we helped craftsmen be more efficient at work'
+      projectNumber: '',
+      projectTitle: '',
+      projectDesc: ''
     }
   },
 
@@ -40,11 +39,13 @@ export default {
     Button,
   },
 
-  mixins: [TextSplitting],
-
   mounted() {
     this.convertProjectsToArray();
     this.listenGlobalEvents();
+    this.changeText(0);
+    this.projectNumber = this.projectsArray[0].number;
+    this.projectTitle = this.projectsArray[0].title;
+    this.projectDesc = this.projectsArray[0].desc;
   },
 
   methods: {
@@ -64,22 +65,19 @@ export default {
     },
 
     changeText(nextProjectIndex) {
+      this.$refs.container.classList.remove('fade-in');
       this.$refs.button.classList.add('fade-out');
-      this.$refs.desc.classList.add('fade-out');
-      this.toggleLettersRandomly('fade-out');
+
       setTimeout(() => {
         this.projectNumber = this.projectsArray[nextProjectIndex].number;
         this.projectTitle = this.projectsArray[nextProjectIndex].title;
         this.projectDesc = this.projectsArray[nextProjectIndex].desc;
+
         this.$nextTick(() => {
-          this.splitByLetters();
-        });
-      }, 1000);
-      setTimeout(() => {
-        this.toggleLettersRandomly('fade-in');
+          this.$refs.container.classList.add('fade-in');
+        })
         this.$refs.button.classList.remove('fade-out');
-        this.$refs.desc.classList.remove('fade-out');
-      }, 1500);
+      }, 1000)
     }
 
   }
@@ -92,45 +90,53 @@ export default {
 @import '../assets/scss/variables.scss';
 
 .ProjectsInfos {
-  display: flex;
-  align-items: center;
+  z-index: 10;
 }
 
-.ProjectsInfos__container {
-  max-width: 633px;
-  margin-top: 30px;
+.ProjectsInfos__Container {
 
-  .js-toSplit .u-letter {
-    display: inline-block;
-    transition: ease 0.2s;
+  .ProjectsInfos__Number, .ProjectsInfos__Title, .ProjectsInfos__Desc {
+    transform-origin: left;
+    transition-timing-function: ease;
+    transition-delay: 0;
+    transition-duration: 0.3s;
+    transform: rotate(-3deg) translate(3px, -3px);
+    opacity: 0;
   }
 
-  &.up .js-toSplit .u-letter {
-    opacity: 0;
-    transform: translateY(15px);
-
-    &.fade-out {
-      transform: translateY(-15px);
-    }
-
-    &.fade-in {
-      transform: translateY(0);
-      opacity: 1;
-    }
+  .ProjectsInfos__Number {
+    transition-duration: 0.3s;
   }
 
-  &.down .js-toSplit .u-letter {
-    opacity: 0;
-    transform: translateY(-15px);
+  .ProjectsInfos__Title {
+    transition-duration: 0.5s;
+    transition-delay: 0.05s;
+  }
 
-    &.fade-out {
-      transform: translateY(15px);
-    }
+  .ProjectsInfos__Desc {
+    transition-duration: 0.5s;
+    transition-delay: 0.1s;
+  }
 
-    &.fade-in {
-      transform: translateY(0);
-      opacity: 1;
-    }
+  &.fade-in .ProjectsInfos__Number,
+  &.fade-in .ProjectsInfos__Title,
+  &.fade-in .ProjectsInfos__Desc {
+    transform: rotate(0deg) translate(0, 0);
+    opacity: 1;
+  }
+
+  &.fade-in .ProjectsInfos__Number {
+    transition-duration: 0.5s;
+  }
+
+  &.fade-in .ProjectsInfos__Title {
+    transition-duration: 0.75s;
+    transition-delay: 0.15s;
+  }
+
+  &.fade-in .ProjectsInfos__Desc {
+    transition-duration: 0.75s;
+    transition-delay: 0.2s;
   }
 }
 
@@ -138,10 +144,6 @@ export default {
   font-size: 1.6rem;
   font-weight: 600;
   margin-bottom: 27px;
-
-  .u-letter.space {
-    width: 4px;
-  }
 }
 
 .ProjectsInfos__Title {
@@ -149,10 +151,6 @@ export default {
   font-weight: 600;
   margin-bottom: 20px;
   line-height: 6rem;
-
-  .u-letter.space {
-    width: 16px;
-  }
 }
 
 .ProjectsInfos__Desc {
@@ -168,24 +166,15 @@ export default {
     opacity: 1;
     transition: opacity ease 0.6s 0.3s;
   }
-
-  &.fade-out:before {
-    opacity: 0;
-    transition: opacity ease 0.3s;
-  }
-
-  .u-letter.space {
-    width: 7px;
-  }
 }
 
 .ProjectsInfos__Button {
   opacity: 1;
-  transition: 0.8s 0.5s ease;
+  transition: 0.6s 0.3s ease;
 
   &.fade-out {
     opacity: 0;
-    transition: 0.6s ease;
+    transition: 0.3s ease;
   }
 }
 

@@ -102,7 +102,7 @@ export default {
       this.bgContainer.addChild(bg);
 
       this.noiseFilterBg = new PIXI.filters.NoiseFilter();
-      this.noiseFilterBg.noise = 0.10;
+      this.noiseFilterBg.noise = 0.05;
       this.bgContainer.filters = [this.noiseFilterBg];
 
       this.app.stage.addChild(this.bgContainer);
@@ -175,7 +175,7 @@ export default {
       this.rectContainer.pivot.set((rectWidth / 2), (this.rect.height /2));
 
       this.noiseFilterRect = new PIXI.filters.NoiseFilter();
-      this.noiseFilterRect.noise = 0.4;
+      this.noiseFilterRect.noise = 0.2;
       this.rect.filters = [this.noiseFilterRect];
 
       this.rectContainer.addChild(this.rect);
