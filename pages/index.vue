@@ -1,9 +1,7 @@
 <template>
   <section class="Home">
-    <keep-alive>
-      <ProjectsInfos :projects="projects" />
-      <ProjectsFooter :projects="projects" />
-    </keep-alive>
+    <ProjectsInfos :projects="projects" />
+    <ProjectsFooter :projects="projects" />
   </section>
 </template>
 
@@ -47,6 +45,10 @@ export default {
 
     initEvents() {
       document.addEventListener('wheel', this.wheelEvent);
+    },
+
+    removeEvents() {
+      document.removeEventListener('wheel', this.wheelEvent);
     },
 
     wheelEvent(e) {
@@ -99,6 +101,10 @@ export default {
       }
     },
 
+  },
+
+  beforeDestroy() {
+      this.removeEvents();
   }
 
 }

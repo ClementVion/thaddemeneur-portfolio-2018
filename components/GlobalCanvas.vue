@@ -131,7 +131,6 @@ export default {
       this.displacementFilter.scale.x = 10;
       this.displacementFilter.scale.y = 10;
 
-      // Init mask for images
       let maskX = (this.images[0].position.x - (this.images[0].width / 2));
       let maskY = (this.images[0].position.y - (this.images[0].height / 2));
       let padding = 25;
@@ -263,7 +262,7 @@ export default {
       EventBus.$on('switchToProject', ($event) => {
         this.switchToProject();
       })
-
+      
       EventBus.$on('changeProject', ($event) => {
         this.changeImage($event.currentProjectIndex, $event.nextProjectIndex);
       })

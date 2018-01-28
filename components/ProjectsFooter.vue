@@ -40,7 +40,7 @@
     mounted() {
       this.convertProjectsToArray();
       this.maxProjectIndex = this.projectsArray.length;
-      this.updateIndexAndProgressBar(this.currentProjectIndex);
+      this.updateIndexAndProgressBar(this.$store.state.currentProjectIndex);
       this.listenGlobalEvents();
     },
 
@@ -61,9 +61,11 @@
       },
 
       updateIndexAndProgressBar(nextProjectIndex) {
-        this.currentProjectIndex = (nextProjectIndex + 1);
-        this.progress = (100 / this.maxProjectIndex) * this.currentProjectIndex;
-        this.$refs.progressBarSlide.style.transform = 'translateX(' + (100 - this.progress) * (-1) + '%)';
+        if (this.$refs.progressBarSlide !== undefined) { // Solve strange bug
+          this.currentProjectIndex = (nextProjectIndex + 1);
+          this.progress = (100 / this.maxProjectIndex) * this.currentProjectIndex;
+          this.$refs.progressBarSlide.style.transform = 'translateX(' + (100 - this.progress) * (-1) + '%)';
+        }
       }
 
     },

@@ -1,8 +1,8 @@
 <template>
   <section class="Header u-home-container" ref="container">
     <div class="Header__Container">
-      <h1 class="Header__Title"> Thaddé Méneur </h1>
-      <p class="Header__About"> About </p>
+      <nuxt-link class="Header__Title" to="/"> Thaddé Méneur </nuxt-link>
+      <nuxt-link class="Header__About" to="/about">About</nuxt-link>
     </div>
   </section>
 </template>
@@ -19,6 +19,11 @@ export default {
   methods: {
 
     listenGlobalEvents() {
+      EventBus.$on('switchToAllProjects', ($event) => {
+        this.$refs.container.classList.remove('home');
+        this.$refs.container.classList.add('project');
+      });
+
       EventBus.$on('switchToProject', ($event) => {
         this.$refs.container.classList.remove('home');
         this.$refs.container.classList.add('project');
@@ -43,10 +48,12 @@ export default {
   position: fixed;
   top: 55px;
   z-index: 10;
-  transition: 0.3s 0.3s ease;
 
   &.project {
-    color: #FFF;
+
+    .Header__Title {
+      color: #FFF;
+    }
 
     .Header__About {
       transition: ease 0.3s;
@@ -65,6 +72,12 @@ export default {
 
 .Header__Title, .Header__About {
   cursor: pointer;
+  text-decoration: none;
+}
+
+.Header__Title {
+  transition: 0.3s 0.3s ease;
+  color: $black;
 }
 
 .Header__About {
