@@ -1,15 +1,15 @@
 {
-  "first" : {
-    "slug": "first",
+  "minglabs" : {
+    "slug": "minglabs",
     "number": "First Story",
-    "title": "My internship at Minglabs",
+    "title": "My internship at Minglabs 👨🏽",
     "desc": "and the way we helped craftsmen be more efficient at work",
     "images": {
       "main": "/images/terminmeister.png"
     }
   },
-  "second" : {
-    "slug": "second",
+  "teslaxgopro" : {
+    "slug": "teslaxgopro",
     "number": "Second Story",
     "title": "Tesla x Go Pro",
     "desc": "salut thaddé tu n'as pas écrit le contenu de ce paragraphe, des bisous.",
@@ -17,8 +17,8 @@
       "main": "/images/chair.png"
     }
   },
-  "third" : {
-    "slug": "third",
+  "weekmeal" : {
+    "slug": "weekmeal",
     "number": "Third Story",
     "title": "Weekmeal, School Project",
     "desc": "finally finding a good idea of what to cook for dinner tonight",
@@ -26,8 +26,8 @@
       "main": "/images/fruits.png"
     }
   },
-  "fourth" : {
-    "slug": "fourth",
+  "ohmygeorge" : {
+    "slug": "ohmygeorge",
     "number": "Fourth Story",
     "title": "My internship at OhMyGeorge",
     "desc": "turning trading into an accessible and fun mobile game.",
@@ -35,8 +35,8 @@
       "main": "/images/ohmygeorge.png"
     }
   },
-  "fifth" : {
-    "slug": "fifth",
+  "pickorr" : {
+    "slug": "pickorr",
     "number": "Fifth Story",
     "title": "Pickorr, Freelance Project",
     "desc": "designing the future of news curation for medecine staff and students.",

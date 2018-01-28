@@ -204,6 +204,10 @@ export default {
       TweenMax.to(this.maskContainer.skew, 0.7, {x: 0.2, ease: Power3.easeInOut});
       TweenMax.to(this.maskContainer, 0.9, {x: (this.appW - (this.rect.width / 2)), ease: Power3.easeInOut});
       TweenMax.to(this.maskContainer.skew, 0.7, {x: 0, delay:0.3 , ease: Power3.easeInOut});
+
+      setTimeout(() => {
+        this.projectsContainer.filterArea = new PIXI.Rectangle(this.appW / 2, 0, this.appW / 2, this.appH);
+      }, 1000);
     },
 
     switchToProject() {

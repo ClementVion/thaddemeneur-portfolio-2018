@@ -8,8 +8,10 @@
 
 <script>
 import projects from '~/static/data/projects.json';
+// import Worker from '~/mixins/Worker.js';
 import Header from '~/components/Header.vue';
 import GlobalCanvas from '~/components/GlobalCanvas.vue';
+import store from '~/store/index.js';
 
 export default {
 
@@ -19,13 +21,17 @@ export default {
     }
   },
 
+  store,
+
   components: {
     'Header': Header,
     'GlobalCanvas': GlobalCanvas,
   },
 
-  mounted() {
+  // mixins: [Worker],
 
+  mounted() {
+    
   }
 }
 </script>

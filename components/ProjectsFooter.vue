@@ -123,7 +123,7 @@
   }
 
   .page-enter-active .ProjectsFooter {
-    transition: ease 0.3s 1s;
+    transition: ease 0.3s 0.5s;
   }
 
   .page-leave-active .ProjectsFooter {

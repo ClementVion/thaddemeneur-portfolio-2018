@@ -15,7 +15,7 @@ export default {
 
   transition: {
     name: 'page',
-    duration: 500,
+    duration: 750,
   },
 
   components: {
@@ -71,6 +71,9 @@ export default {
         }
 
         this.currentProjectIndex = nextProjectIndex;
+        this.$store.commit('change', nextProjectIndex);
+
+        console.log(this.$store.state.currentProjectIndex);
 
         setTimeout(() => {
           this.scrolling = false;

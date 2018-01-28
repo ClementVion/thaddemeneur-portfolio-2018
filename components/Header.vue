@@ -20,7 +20,6 @@ export default {
 
     listenGlobalEvents() {
       EventBus.$on('switchToProject', ($event) => {
-        console.log('switch to project');
         this.$refs.container.classList.remove('home');
         this.$refs.container.classList.add('project');
       });

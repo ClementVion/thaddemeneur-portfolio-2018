@@ -20,7 +20,7 @@
 
 <script>
 import Button from '~/components/utils/Button';
-import EventBus from '~/components/bus/EventBus.js'
+import EventBus from '~/components/bus/EventBus.js';
 
 export default {
 
@@ -31,7 +31,7 @@ export default {
       projectsArray: [],
       projectNumber: '',
       projectTitle: '',
-      projectDesc: ''
+      projectDesc: '',
     }
   },
 
@@ -42,7 +42,7 @@ export default {
   mounted() {
     this.convertProjectsToArray();
     this.listenGlobalEvents();
-    this.changeText(0);
+    this.changeText(this.$store.state.currentProjectIndex);
     this.projectNumber = this.projectsArray[0].number;
     this.projectTitle = this.projectsArray[0].title;
     this.projectDesc = this.projectsArray[0].desc;
