@@ -65,22 +65,24 @@ export default {
     },
 
     changeText(nextProjectIndex) {
-      this.$refs.container.classList.remove('fade-in');
-      this.$refs.button.classList.add('fade-out');
+      if (this.$refs.container !== undefined && this.$refs.button !== undefined) { // Solve strange bug
+        this.$refs.container.classList.remove('fade-in');
+        this.$refs.button.classList.add('fade-out');
 
-      setTimeout(() => {
-        this.projectNumber = this.projectsArray[nextProjectIndex].number;
-        this.projectTitle = this.projectsArray[nextProjectIndex].title;
-        this.projectDesc = this.projectsArray[nextProjectIndex].desc;
+        setTimeout(() => {
+          this.projectNumber = this.projectsArray[nextProjectIndex].number;
+          this.projectTitle = this.projectsArray[nextProjectIndex].title;
+          this.projectDesc = this.projectsArray[nextProjectIndex].desc;
 
-        this.$nextTick(() => {
-          this.$refs.container.classList.add('fade-in');
-        })
-        this.$refs.button.classList.remove('fade-out');
-      }, 1000)
+          this.$nextTick(() => {
+            this.$refs.container.classList.add('fade-in');
+          })
+          this.$refs.button.classList.remove('fade-out');
+        }, 1000)
+      }
     }
 
-  }
+  },
 
 }
 

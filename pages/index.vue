@@ -1,7 +1,9 @@
 <template>
   <section class="Home">
-    <ProjectsInfos :projects="projects" />
-    <ProjectsFooter :projects="projects" />
+    <keep-alive>
+      <ProjectsInfos :projects="projects" />
+      <ProjectsFooter :projects="projects" />
+    </keep-alive>
   </section>
 </template>
 
@@ -34,6 +36,7 @@ export default {
   },
 
   mounted() {
+    this.currentProjectIndex = this.$store.state.currentProjectIndex;
     this.convertProjectsToArray();
     EventBus.$emit('switchToHome');
     this.initEvents();
@@ -62,7 +65,6 @@ export default {
           nextProjectIndex = projectsLength - 1;
         }
 
-
         if (nextProjectIndex != undefined) {
           EventBus.$emit('changeProject', {
             'currentProjectIndex': this.currentProjectIndex,
@@ -72,8 +74,6 @@ export default {
 
         this.currentProjectIndex = nextProjectIndex;
         this.$store.commit('change', nextProjectIndex);
-
-        console.log(this.$store.state.currentProjectIndex);
 
         setTimeout(() => {
           this.scrolling = false;
