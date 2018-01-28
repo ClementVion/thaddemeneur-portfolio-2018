@@ -122,4 +122,17 @@
     color: $grey;
   }
 
+  .page-enter-active .ProjectsFooter {
+    transition: ease 0.3s 1s;
+  }
+
+  .page-leave-active .ProjectsFooter {
+    transition: ease 0.3s;
+  }
+
+  .page-enter .ProjectsFooter,
+  .page-leave-active .ProjectsFooter {
+    opacity: 0;
+  }
+
 </style>

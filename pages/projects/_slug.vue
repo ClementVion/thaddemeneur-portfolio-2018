@@ -1,5 +1,5 @@
 <template lang="html">
-  <section class="Container">
+  <section class="Project">
     <h1> {{ project.name }} </h1>
     <nuxt-link to="/"> Home </nuxt-link>
   </section>
@@ -11,6 +11,11 @@ import EventBus from '~/components/bus/EventBus.js'
 
 export default {
 
+  transition: {
+    name: 'page',
+    duration: 500,
+  },
+
   data() {
     return {
       project: projects[this.$route.params.slug]
@@ -18,7 +23,9 @@ export default {
   },
 
   mounted() {
-    EventBus.$emit('switchToProject');
+    setTimeout(() => {
+      EventBus.$emit('switchToProject');
+    }, 100)
   }
 
 }

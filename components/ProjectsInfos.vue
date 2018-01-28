@@ -178,4 +178,17 @@ export default {
   }
 }
 
+.page-leave-active .ProjectsInfos__Container .ProjectsInfos__Number,
+.page-leave-active .ProjectsInfos__Container .ProjectsInfos__Title,
+.page-leave-active .ProjectsInfos__Container .ProjectsInfos__Desc {
+  transition-duration: 0.3s;
+  transform: rotate(-1deg) translate(0px, -20px);
+  opacity: 0;
+}
+
+.page-leave-active .ProjectsInfos__Button {
+  opacity: 0;
+  transition: 0.3s ease;
+}
+
 </style>

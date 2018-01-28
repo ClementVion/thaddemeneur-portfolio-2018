@@ -2,13 +2,6 @@
   <section class="Home">
     <ProjectsInfos :projects="projects" />
     <ProjectsFooter :projects="projects" />
-    <!-- <ul>
-      <li v-for="project in projects" :key="project.slug">
-        <nuxt-link :to="'/projects/'+project.slug">
-          {{ project.name }}
-        </nuxt-link>
-      </li>
-    </ul> -->
   </section>
 </template>
 
@@ -19,6 +12,11 @@ import ProjectsInfos from '~/components/ProjectsInfos.vue'
 import ProjectsFooter from '~/components/ProjectsFooter.vue'
 
 export default {
+
+  transition: {
+    name: 'page',
+    duration: 500,
+  },
 
   components: {
     ProjectsInfos,
