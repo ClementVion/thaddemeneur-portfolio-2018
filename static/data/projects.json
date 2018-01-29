@@ -24,6 +24,20 @@
     "desc": "finally finding a good idea of what to cook for dinner tonight",
     "images": {
       "main": "/images/fruits.png"
+    },
+    "content": {
+      "layouts": [
+        {
+          "id": 0,
+          "type": "text",
+          "title": "About the project 🍗",
+          "subtitle": "Intro",
+          "paragraphs": [
+            "Weekmeal is a project that came to live at HETIC, as we had only one week to conceive, create and develop an Android and iOs app on the theme we wanted.",
+            "We chose to create an app that would help one find ideas of things to cook for a week. The user could choose the number of meals he wanted ideas for and the app would learn to know its user and offer a variety of meals that would suit his taste."
+          ]
+        }
+      ]
     }
   },
   "ohmygeorge" : {

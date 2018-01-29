@@ -40,13 +40,13 @@ export default {
   methods: {
 
     setup() {
-      this.initBackground();
+      // this.initBackground();
       this.initRect();
       this.initProjectsImages();
 
       this.listenResize();
       this.listenGlobalEvents();
-      this.animate();
+      // this.animate();
     },
 
     initCanvas() {
@@ -262,7 +262,7 @@ export default {
       EventBus.$on('switchToProject', ($event) => {
         this.switchToProject();
       })
-      
+
       EventBus.$on('changeProject', ($event) => {
         this.changeImage($event.currentProjectIndex, $event.nextProjectIndex);
       })
@@ -283,6 +283,7 @@ export default {
 <style lang="css">
   .Canvas {
     position: relative;
+    top: 0;
     z-index: 0;
   }
 </style>
