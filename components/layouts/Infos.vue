@@ -20,10 +20,6 @@ export default {
 
   props: ['layout'],
 
-  mounted() {
-    console.log(this.layout);
-  },
-
 }
 
 </script>
@@ -45,7 +41,7 @@ export default {
   }
 
   .Infos__Left {
-    max-width: 20%;
+    max-width: 30%;
   }
 
   .Infos__Title {
@@ -61,7 +57,6 @@ export default {
     font-weight: 600;
     text-transform: uppercase;
     margin-top: 40px;
-    // display: inline-block;
 
     &:after {
       position: absolute;
@@ -75,7 +70,7 @@ export default {
   }
 
   .Infos__Right {
-    max-width: 60%;
+    max-width: 55%;
   }
 
   .Infos__Paragraph {

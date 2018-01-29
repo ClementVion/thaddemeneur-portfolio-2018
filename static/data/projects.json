@@ -36,6 +36,25 @@
             "Weekmeal is a project that came to live at HETIC, as we had only one week to conceive, create and develop an Android and iOs app on the theme we wanted.",
             "We chose to create an app that would help one find ideas of things to cook for a week. The user could choose the number of meals he wanted ideas for and the app would learn to know its user and offer a variety of meals that would suit his taste."
           ]
+        },
+        {
+          "id": 1,
+          "type": "phoneScreens",
+          "images": [
+            "/images/projects/weekmeal/phone-1.png",
+            "/images/projects/weekmeal/phone-2.png",
+            "/images/projects/weekmeal/phone-3.png"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "title": "Features and AI 💡",
+          "subtitle": "Product",
+          "paragraphs": [
+            "We were asked by our teacher to use AI to somehow add value to our idea. Therefore, we added individualization to our product through the way the recipes are shown to the user.",
+            "Throughout the weeks and months during which the user’s using the app, we create a profile that is his only, and show only the recipes that we’re pretty sure he will like."
+          ]
         }
       ]
     }

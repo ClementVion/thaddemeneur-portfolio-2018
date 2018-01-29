@@ -1,12 +1,13 @@
 <template lang="html">
   <section class="Project">
 
-    <div class="Project__content">
+    <div v-if="project.content" class="Project__content">
       <div class="Project__layouts">
 
         <div class="Project__layout" v-for="layout in project.content.layouts" :key="layout.id">
 
           <Infos v-if="layout.type === 'text'" :layout="layout" />
+          <PhoneScreens v-if="layout.type === 'phoneScreens'" :layout="layout" />
 
         </div>
 
@@ -19,6 +20,7 @@
 import projects from '~/static/data/projects.json'
 import EventBus from '~/components/bus/EventBus.js'
 import Infos from '~/components/layouts/Infos.vue'
+import PhoneScreens from '~/components/layouts/PhoneScreens.vue'
 
 export default {
 
@@ -29,6 +31,7 @@ export default {
 
   components: {
     Infos,
+    PhoneScreens
   },
 
   data() {
