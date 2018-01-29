@@ -15,7 +15,8 @@
   "dependencies": {
     "axios": "^0.17.1",
     "gsap": "^1.20.3",
-    "nuxt": "^1.0.0"
+    "nuxt": "^1.0.0",
+    "smooth-scrollbar": "^8.2.5"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",

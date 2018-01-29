@@ -6,7 +6,10 @@
         class="Cover__Image"
         :src="layout.image"
         alt="Project Screen"
-        :key="image">
+        key="image"
+        data-parallax="true"
+        data-direction="up"
+        data-speed="0.16">
 
     </div>
   </section>

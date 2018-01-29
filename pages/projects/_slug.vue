@@ -19,6 +19,7 @@
 
 <script>
 import projects from '~/static/data/projects.json'
+import Scroll from '~/mixins/scroll.js';
 import EventBus from '~/components/bus/EventBus.js'
 import Infos from '~/components/layouts/Infos.vue'
 import PhoneScreens from '~/components/layouts/PhoneScreens.vue'
@@ -36,6 +37,8 @@ export default {
     PhoneScreens,
     Cover
   },
+
+  mixins: [Scroll],
 
   data() {
     return {

@@ -5,10 +5,10 @@
 
         <img
           class="PhoneScreens__Image"
-          v-for="image in layout.images"
-          :src="image"
+          v-for="(img, index) in layout.images"
+          :src="img"
           alt="Project Screen"
-          :key="image">
+          :key="index">
 
       </div>
     </div>
