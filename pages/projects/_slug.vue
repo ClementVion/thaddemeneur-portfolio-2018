@@ -8,6 +8,7 @@
 
           <Infos v-if="layout.type === 'text'" :layout="layout" />
           <PhoneScreens v-if="layout.type === 'phoneScreens'" :layout="layout" />
+          <Cover v-if="layout.type === 'cover'" :layout="layout" />
 
         </div>
 
@@ -21,6 +22,7 @@ import projects from '~/static/data/projects.json'
 import EventBus from '~/components/bus/EventBus.js'
 import Infos from '~/components/layouts/Infos.vue'
 import PhoneScreens from '~/components/layouts/PhoneScreens.vue'
+import Cover from '~/components/layouts/Cover.vue'
 
 export default {
 
@@ -31,7 +33,8 @@ export default {
 
   components: {
     Infos,
-    PhoneScreens
+    PhoneScreens,
+    Cover
   },
 
   data() {
@@ -41,6 +44,7 @@ export default {
   },
 
   mounted() {
+    this.$store.commit('change', projects[this.$route.params.slug].id);
     setTimeout(() => {
       EventBus.$emit('switchToProject');
     }, 500)

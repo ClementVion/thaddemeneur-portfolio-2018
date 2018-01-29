@@ -1,5 +1,6 @@
 {
   "minglabs" : {
+    "id": 0,
     "slug": "minglabs",
     "number": "First Story",
     "title": "My internship at Minglabs",
@@ -9,6 +10,7 @@
     }
   },
   "teslaxgopro" : {
+    "id": 1,
     "slug": "teslaxgopro",
     "number": "Second Story",
     "title": "Tesla x Go Pro",
@@ -18,6 +20,7 @@
     }
   },
   "weekmeal" : {
+    "id": 2,
     "slug": "weekmeal",
     "number": "Third Story",
     "title": "Weekmeal, School Project",
@@ -55,11 +58,37 @@
             "We were asked by our teacher to use AI to somehow add value to our idea. Therefore, we added individualization to our product through the way the recipes are shown to the user.",
             "Throughout the weeks and months during which the user’s using the app, we create a profile that is his only, and show only the recipes that we’re pretty sure he will like."
           ]
+        },
+        {
+          "id": 4,
+          "type": "text",
+          "title": "Adding value to the app 🌟",
+          "subtitle": "Service Design",
+          "paragraphs": [
+            "The main issue when you’re designing an idea that is quite common is to find a good business value. Among those was AI, but also the idea to rather than only design the app, try to design the service behind that.",
+            "So we decided to go beyond giving only recipes according to your taste. The app also gives you the estimated budget for the ingredients (calculated with the prices of the place you live in), the closest store and the map to go there. We managed to design the full scope of the situation our users ar in."
+          ]
+        },
+        {
+          "id": 5,
+          "type": "cover",
+          "image": "/images/projects/weekmeal/cover.jpg"
+        },
+        {
+          "id": 6,
+          "type": "text",
+          "title": "Design, outside of the box 📦",
+          "subtitle": "Learnings",
+          "paragraphs": [
+            "It’s quite fun to design an app that a lot of people already had the idea of. We learned that only designing what you first think of doesn’t lead anywhere. You need to learn from the users, think outside of the box and redesign the whole service to create something interesting.",
+            "Only dealing with finding a recipe idea isn’t interesting. The goal of the app was to design everything, from the moment you’re asking yourself what you want for dinner and the moment you’ve finished eating."
+          ]
         }
       ]
     }
   },
   "ohmygeorge" : {
+    "id": 3,
     "slug": "ohmygeorge",
     "number": "Fourth Story",
     "title": "My internship at OhMyGeorge",
@@ -69,6 +98,7 @@
     }
   },
   "pickorr" : {
+    "id": 4,
     "slug": "pickorr",
     "number": "Fifth Story",
     "title": "Pickorr, Freelance Project",

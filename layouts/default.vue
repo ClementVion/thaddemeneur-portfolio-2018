@@ -31,7 +31,7 @@ export default {
   // mixins: [Worker],
 
   mounted() {
-    
+
   }
 }
 </script>
