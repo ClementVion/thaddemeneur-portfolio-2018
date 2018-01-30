@@ -34,7 +34,7 @@ export default {
   },
 
   mounted() {
-    // this.initCanvas();
+    this.initCanvas();
   },
 
   methods: {
