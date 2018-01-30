@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="127px" height="87px" viewBox="0 0 127 87" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>05-shadow</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-8.0%" y="-12.4%" width="115.9%" height="124.8%" filterUnits="objectBoundingBox" id="filter-1">
+            <feGaussianBlur stdDeviation="3" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+    </defs>
+    <g id="Desktop-HD-Copy-17" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-988.000000, -1917.000000)">
+        <g id="Group-6-Copy" transform="translate(788.000000, 1608.000000)" fill="#060606">
+            <g id="Page-1">
+                <g id="Shadows" transform="translate(0.000000, 179.314303)">
+                    <path d="M215.925968,206.497041 L212.805,204.875638 C205.065,200.385601 205.065,189.160509 212.805,184.670472 L290.679387,138.590221 C294.29971,136.469926 298.669065,136.469926 302.289387,138.590221 L315.52229,145.82417 C321.514548,149.316421 321.514548,157.922325 315.52229,161.414576 L239.145968,206.497041 C232.030161,210.612908 223.166613,210.612908 215.925968,206.497041" id="05-shadow" filter="url(#filter-1)"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

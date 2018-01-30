@@ -12,13 +12,13 @@
       "layouts": [
         {
           "id": 0,
+          "type": "custom",
+          "name": "islands"
+        },
+        {
+          "id": 1,
           "type": "slider",
           "slides": [
-            "/images/projects/minglabs/slide-1.jpg",
-            "/images/projects/minglabs/slide-1.jpg",
-            "/images/projects/minglabs/slide-1.jpg",
-            "/images/projects/minglabs/slide-1.jpg",
-            "/images/projects/minglabs/slide-1.jpg",
             "/images/projects/minglabs/slide-1.jpg",
             "/images/projects/minglabs/slide-1.jpg",
             "/images/projects/minglabs/slide-1.jpg",
