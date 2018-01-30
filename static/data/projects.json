@@ -7,6 +7,20 @@
     "desc": "and the way we helped craftsmen be more efficient at work",
     "images": {
       "main": "/images/terminmeister.png"
+    },
+    "content": {
+      "layouts": [
+        {
+          "id": 0,
+          "type": "slider",
+          "slides": [
+            "/images/projects/minglabs/slide-1.jpg",
+            "/images/projects/minglabs/slide-1.jpg",
+            "/images/projects/minglabs/slide-1.jpg",
+            "/images/projects/minglabs/slide-1.jpg"
+          ]
+        }
+      ]
     }
   },
   "teslaxgopro" : {

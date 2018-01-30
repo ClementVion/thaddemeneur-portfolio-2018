@@ -9,6 +9,7 @@
           <Infos v-if="layout.type === 'text'" :layout="layout" />
           <PhoneScreens v-if="layout.type === 'phoneScreens'" :layout="layout" />
           <Cover v-if="layout.type === 'cover'" :layout="layout" />
+          <Slider v-if="layout.type === 'slider'" :layout="layout" />
 
         </div>
 
@@ -24,6 +25,7 @@ import EventBus from '~/components/bus/EventBus.js'
 import Infos from '~/components/layouts/Infos.vue'
 import PhoneScreens from '~/components/layouts/PhoneScreens.vue'
 import Cover from '~/components/layouts/Cover.vue'
+import Slider from '~/components/layouts/Slider.vue'
 
 export default {
 
@@ -35,7 +37,8 @@ export default {
   components: {
     Infos,
     PhoneScreens,
-    Cover
+    Cover,
+    Slider
   },
 
   mixins: [Scroll],
