@@ -17,6 +17,11 @@
             "/images/projects/minglabs/slide-1.jpg",
             "/images/projects/minglabs/slide-1.jpg",
             "/images/projects/minglabs/slide-1.jpg",
+            "/images/projects/minglabs/slide-1.jpg",
+            "/images/projects/minglabs/slide-1.jpg",
+            "/images/projects/minglabs/slide-1.jpg",
+            "/images/projects/minglabs/slide-1.jpg",
+            "/images/projects/minglabs/slide-1.jpg",
             "/images/projects/minglabs/slide-1.jpg"
           ]
         }
@@ -71,6 +76,27 @@
           "paragraphs": [
             "We were asked by our teacher to use AI to somehow add value to our idea. Therefore, we added individualization to our product through the way the recipes are shown to the user.",
             "Throughout the weeks and months during which the user’s using the app, we create a profile that is his only, and show only the recipes that we’re pretty sure he will like."
+          ]
+        },
+        {
+          "id": 3,
+          "type": "sliderParallax",
+          "slides": [
+            {
+              "image": "/images/projects/weekmeal/slider-1.png",
+              "title": "Step one",
+              "desc": "Giving the detail of your eventual diet and desires"
+            },
+            {
+              "image": "/images/projects/weekmeal/slider-1.png",
+              "title": "Step one",
+              "desc": "Giving the detail of your eventual diet and desires"
+            },
+            {
+              "image": "/images/projects/weekmeal/slider-1.png",
+              "title": "Step one",
+              "desc": "Giving the detail of your eventual diet and desires"
+            }
           ]
         },
         {
