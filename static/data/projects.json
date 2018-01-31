@@ -12,11 +12,31 @@
       "layouts": [
         {
           "id": 0,
+          "type": "text",
+          "title": "About the internship 🛠",
+          "subtitle": "Intro",
+          "paragraphs": [
+            "A few weeks after I released my first portfolio in 2017, I was contacted by Ming Labs, a creative digital agency that was interested in having me as a design intern.",
+            "One month later, I landed in Berlin to begin my 4 month internship. I worked on a lot of projects and learned about service design, business design, how to run workshops and more. All of the things I learned there truly changed the way I see our industry."
+          ]
+        },
+        {
+          "id": 1,
           "type": "custom",
           "name": "islands"
         },
         {
-          "id": 1,
+          "id": 2,
+          "type": "text",
+          "title": "German Aerospace Ct. 🚀",
+          "subtitle": "Client",
+          "paragraphs": [
+            "I worked on several projects at Ming Labs. One of which was a landing website for an app that was created internally for the German Aerospace Center (DLR).",
+            "The app’s goal was to facilitate craftsmen in movement by giving them an easy way to plan their appointments through GPS technologies and traffic information."
+          ]
+        },
+        {
+          "id": 3,
           "type": "slider",
           "slides": [
             "/images/projects/minglabs/slide-1.jpg",
@@ -26,7 +46,47 @@
           ]
         },
         {
-          "id": 2,
+          "id": 4,
+          "type": "text",
+          "title": "Iterate and explore 🤔",
+          "subtitle": "Intro",
+          "paragraphs": [
+            "What you’re seing is one of the many iterations that we made for the landing page. Clement, who was the developer on this project (and also the guy who’s coding this line 🍺), worked  with me on implementing ideas, findind solutions to gather as much inspiration as possible.",
+            "We were asked by our lead designer, Erica Salvetti, to explore as much as possible and take time to explore our most crazy ideas and this one, who was based on storytelling, was the one we explored the most."
+          ]
+        },
+        {
+          "id": 5,
+          "type": "cover",
+          "image": "/images/projects/minglabs/cover.jpg"
+        },
+        {
+          "id": 6,
+          "type": "text",
+          "title": "Illustration and storytelling 📝",
+          "subtitle": "Method",
+          "paragraphs": [
+            "How can we explain a product that is complicated to a target who’s not necessarily fond of digital services ? Our main answer to that was storytelling through illustration. It was a way to enhance the visual aspect of the product while explaining it in a instinctive way. ",
+            "Exploring something that was supposed to be a classic landing page and turning it into something new was appealing and exciting. \n We loved it. ⚡️"
+          ]
+        },
+        {
+          "id": 7,
+          "type": "picture",
+          "image": "/images/projects/minglabs/picture.jpg"
+        },
+        {
+          "id": 8,
+          "type": "text",
+          "title": "Marketing and business goals 🎯",
+          "subtitle": "Ending",
+          "paragraphs": [
+            "This version that I wanted to show was not the final version. After a lot of exploration, we decided to go back to our first path, which was something more business and marketing oriented, more than storytelling. Even though it lacked storytelling visually, the wording and general vibe was more self-explaining. ",
+            "The exploration eventually lead us to rething our very first marketing-version and the client was happy with that. We gave a talk to the team about our process and the way we, as 1 designer and 1 dev worked together in the creative process and they loved it. Happy ending. 🎉"
+          ]
+        },
+        {
+          "id": 9,
           "type": "thanks",
           "title": "special thanks ✌️",
           "people": [
@@ -89,6 +149,16 @@
           "paragraphs": [
             "I loved the idea of designing for a screen I’m not used to design for. Besides, Go Pro and Tesla are companies with strong branding that actually somehow matched. It didn’t feel like I was designing a fake interface, I truly cared about how futuristic that actually looked like. ",
             "I would not even be suprised if we could actually soon launch a drone from a car we’re not even driving, and do nothing but see this drone follow the car and shoot a film."
+          ]
+        },
+        {
+          "id": 3,
+          "type": "fourScreens",
+          "images": [
+            "/images/projects/tesla/dashboard-1.png",
+            "/images/projects/tesla/dashboard-2.png",
+            "/images/projects/tesla/dashboard-3.png",
+            "/images/projects/tesla/dashboard-4.png"
           ]
         },
         {

@@ -8,10 +8,12 @@
 
           <Infos v-if="layout.type === 'text'" :layout="layout" />
           <TripleScreens v-if="layout.type === 'tripleScreens'" :layout="layout" />
+          <FourScreens v-if="layout.type === 'fourScreens'" :layout="layout" />
           <Cover v-if="layout.type === 'cover'" :layout="layout" />
           <Slider v-if="layout.type === 'slider'" :layout="layout" />
           <SliderParallax v-if="layout.type === 'sliderParallax'" :layout="layout" />
           <Thanks v-if="layout.type === 'thanks'" :layout="layout" />
+          <Picture v-if="layout.type === 'picture'" :layout="layout" />
           <Islands v-if="layout.type === 'custom' && layout.name === 'islands'" :layout="layout" />
 
         </div>
@@ -27,10 +29,12 @@ import Scroll from '~/mixins/Scroll.js';
 import EventBus from '~/components/bus/EventBus.js'
 import Infos from '~/components/layouts/Infos.vue'
 import TripleScreens from '~/components/layouts/TripleScreens.vue'
+import FourScreens from '~/components/layouts/FourScreens.vue'
 import Cover from '~/components/layouts/Cover.vue'
 import Slider from '~/components/layouts/Slider.vue'
 import SliderParallax from '~/components/layouts/SliderParallax.vue'
 import Thanks from '~/components/layouts/Thanks.vue'
+import Picture from '~/components/layouts/Picture.vue'
 import Islands from '~/components/layouts/customs/Islands.vue'
 
 export default {
@@ -43,10 +47,12 @@ export default {
   components: {
     Infos,
     TripleScreens,
+    FourScreens,
     Cover,
     Slider,
     SliderParallax,
     Thanks,
+    Picture,
     Islands
   },
 

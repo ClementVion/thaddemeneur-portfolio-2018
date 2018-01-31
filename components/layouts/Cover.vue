@@ -35,7 +35,7 @@ export default {
 
 .Cover__Image {
   max-width: 100%;
-  margin-top: 100px;
+  margin-top: 200px;
 }
 
 </style>
