@@ -41,7 +41,7 @@ export default {
   }
 
   .Infos__Left {
-    max-width: 30%;
+    max-width: 31%;
   }
 
   .Infos__Title {

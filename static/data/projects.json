@@ -67,7 +67,7 @@
           "subtitle": "Method",
           "paragraphs": [
             "How can we explain a product that is complicated to a target who’s not necessarily fond of digital services ? Our main answer to that was storytelling through illustration. It was a way to enhance the visual aspect of the product while explaining it in a instinctive way. ",
-            "Exploring something that was supposed to be a classic landing page and turning it into something new was appealing and exciting. \n We loved it. ⚡️"
+            "Exploring something that was supposed to be a classic landing page and turning it into something new was appealing and exciting. We loved it. ⚡️"
           ]
         },
         {
@@ -321,6 +321,80 @@
     "desc": "turning trading into an accessible and fun mobile game.",
     "images": {
       "main": "/images/ohmygeorge.png"
+    },
+    "content": {
+      "layouts": [
+        {
+          "id": 0,
+          "type": "text",
+          "title": "Play, be brave, trade 📈",
+          "subtitle": "Intro",
+          "paragraphs": [
+            "When I was a second year student, I got hired as a junior designer at Oh My George, a start-up aiming at creating the first trading mobile game. The goal of the app was to make trading accessible to anyone to understand the feelings traders could have when doing their job.",
+            "It was a cool experience because I had lots of responsabilities as the only designer of the start-up, and was able to travel to Bangkok for a month to work with the rest of the team."
+          ]
+        },
+        {
+          "id": 1,
+          "type": "tripleScreens",
+          "images": [
+            "/images/projects/weekmeal/phone-1.png",
+            "/images/projects/weekmeal/phone-2.png",
+            "/images/projects/weekmeal/phone-3.png"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "title": "Emotional design 🙉",
+          "subtitle": "Product",
+          "paragraphs": [
+            "Trading is all about emotions. One of my first task was to somehow help trigger those emotions through the design of the game.",
+            "When you play the game, you have access to real and live data of the trading market. When you bet and it goes up, you win, and if the market goes down you lose. The game is all about knowing when to start betting and when to stop. Emotions were triggered through color. When you’re losing, the whole screen goes red, wherehas when you’re winning it goes green."
+          ]
+        },
+        {
+          "id": 3,
+          "type": "sliderParallax",
+          "slides": [
+            {
+              "image": "/images/projects/ohmygeorge/slider-1.png",
+              "title": "Step one",
+              "desc": "Place your bet on whether or not the EUR/USD market will rise or fall. Choose how much you want to bet."
+            },
+            {
+              "image": "/images/projects/ohmygeorge/slider-2.png",
+              "title": "Step one",
+              "desc": "Giving the detail of your eventual diet and desires"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "type": "text",
+          "title": "Challenge your friends 🏆",
+          "subtitle": "Competition",
+          "paragraphs": [
+            "Trading is also about competition. So I also a designed a platform for traders and friends to challenge each other on their bets. You could search for random games as well, and then bet on a chosen market.",
+            "The social part of the game was also an added business value, as it allowed people to talk more about the game and play in situations in which other people could hear of OhMyGeorge and download the app."
+          ]
+        },
+        {
+          "id": 5,
+          "type": "cover",
+          "image": "/images/projects/ohmygeorge/cover.jpg"
+        },
+        {
+          "id": 6,
+          "type": "text",
+          "title": "Working in a startup 🏓",
+          "subtitle": "Learnings",
+          "paragraphs": [
+            "This internship was my first occasion to work for a start-up, and it truly is quite different from working for an agency. The opportunity to work on the same product for a few months is good and refreshing and I liked it, as I could focus on UX elements and try my best to do the right thing without being rushed.",
+            "It’s obvious both have their pros and cons and I believe a student needs to live both before choosing a field rather than the other."
+          ]
+        }
+      ]
     }
   },
   "pickorr" : {
