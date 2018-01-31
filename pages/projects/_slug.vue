@@ -11,6 +11,7 @@
           <Cover v-if="layout.type === 'cover'" :layout="layout" />
           <Slider v-if="layout.type === 'slider'" :layout="layout" />
           <SliderParallax v-if="layout.type === 'sliderParallax'" :layout="layout" />
+          <Thanks v-if="layout.type === 'thanks'" :layout="layout" />
           <Islands v-if="layout.type === 'custom' && layout.name === 'islands'" :layout="layout" />
 
         </div>
@@ -29,6 +30,7 @@ import PhoneScreens from '~/components/layouts/PhoneScreens.vue'
 import Cover from '~/components/layouts/Cover.vue'
 import Slider from '~/components/layouts/Slider.vue'
 import SliderParallax from '~/components/layouts/SliderParallax.vue'
+import Thanks from '~/components/layouts/Thanks.vue'
 import Islands from '~/components/layouts/customs/Islands.vue'
 
 export default {
@@ -44,6 +46,7 @@ export default {
     Cover,
     Slider,
     SliderParallax,
+    Thanks,
     Islands
   },
 

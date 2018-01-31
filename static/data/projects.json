@@ -123,6 +123,29 @@
             "It’s quite fun to design an app that a lot of people already had the idea of. We learned that only designing what you first think of doesn’t lead anywhere. You need to learn from the users, think outside of the box and redesign the whole service to create something interesting.",
             "Only dealing with finding a recipe idea isn’t interesting. The goal of the app was to design everything, from the moment you’re asking yourself what you want for dinner and the moment you’ve finished eating."
           ]
+        },
+        {
+          "id": 7,
+          "type": "thanks",
+          "title": "special thanks ✌️",
+          "people": [
+            {
+              "name": "Ivan Provenzale",
+              "role": "Creative Director"
+            },
+            {
+              "name": "Erica Salvetti",
+              "role": "Lead Designer"
+            },
+            {
+              "name": "Luca Migliore",
+              "role": "Design Support"
+            },
+            {
+              "name": "Clément Vion",
+              "role": "Creative Developer"
+            }
+          ]
         }
       ]
     }
