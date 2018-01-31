@@ -28,15 +28,14 @@ export default {
 <style lang="scss">
 
 .PhoneScreens {
-  min-height: 800px;
+  height: 800px;
   display: flex;
   align-items: center;
 }
 
 .PhoneScreens__Container {
-  height: 100%;
   max-width: 1264px;
-  min-height: 630px;
+  height: 630px;
   width: 90%;
   margin: auto;
   background: #191919;
@@ -46,14 +45,20 @@ export default {
 }
 
 .PhoneScreens__Content {
-  width: 75%;
+  width: 95%;
+  height: 95%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .PhoneScreens__Image {
-  max-width: 255px;
+  max-height: 90%;
+  margin-right: 50px;
+
+  &:last-child {
+    margin-right: 0;
+  }
 }
 
 </style>

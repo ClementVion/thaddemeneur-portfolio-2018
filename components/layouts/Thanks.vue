@@ -49,7 +49,8 @@ export default {
 }
 
 .Thanks__Content {
-  margin-left: 15%;
+  margin: auto;
+  width: 70%;
 }
 
 .Thanks__Title {
@@ -58,7 +59,11 @@ export default {
   margin-bottom: 30px;
 }
 
-.Thanks__People {}
+.Thanks__People {
+  display: flex;
+  flex-flow: wrap column;
+  max-height: 110px;
+}
 
 .Thanks__Person {
   font-size: 1.8rem;

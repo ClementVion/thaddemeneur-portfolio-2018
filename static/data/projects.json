@@ -24,6 +24,29 @@
             "/images/projects/minglabs/slide-1.jpg",
             "/images/projects/minglabs/slide-1.jpg"
           ]
+        },
+        {
+          "id": 2,
+          "type": "thanks",
+          "title": "special thanks ✌️",
+          "people": [
+            {
+              "name": "Ivan Provenzale",
+              "role": "Creative Director"
+            },
+            {
+              "name": "Erica Salvetti",
+              "role": "Lead Designer"
+            },
+            {
+              "name": "Luca Migliore",
+              "role": "Design Support"
+            },
+            {
+              "name": "Clément Vion",
+              "role": "Creative Developer"
+            }
+          ]
         }
       ]
     }
@@ -36,6 +59,99 @@
     "desc": "salut thaddé tu n'as pas écrit le contenu de ce paragraphe, des bisous.",
     "images": {
       "main": "/images/chair.png"
+    },
+    "content": {
+      "layouts": [
+        {
+          "id": 0,
+          "type": "text",
+          "title": "Self-flying drone 📸",
+          "subtitle": "Intro",
+          "paragraphs": [
+            "Our mission was to redesign, as a team of 10, the overall Tesla interface, including the app, the Cluster, the Watch app and the dashboard. The tricky part was that we had to find a brand and imagine a partnership between that brand and Tesla.",
+            "We chose Go Pro. And the fun part of that project is that we could find and design a feature that would make sense with the according brand. So we imagined a way to launch a drone and start recording, while the car’s driving itself."
+          ]
+        },
+        {
+          "id": 1,
+          "type": "tripleScreens",
+          "images": [
+            "/images/projects/tesla/screen-2.jpg",
+            "/images/projects/tesla/screen-2.jpg",
+            "/images/projects/tesla/screen-2.jpg"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "title": "Building the future 🔭",
+          "subtitle": "Philosophy",
+          "paragraphs": [
+            "I loved the idea of designing for a screen I’m not used to design for. Besides, Go Pro and Tesla are companies with strong branding that actually somehow matched. It didn’t feel like I was designing a fake interface, I truly cared about how futuristic that actually looked like. ",
+            "I would not even be suprised if we could actually soon launch a drone from a car we’re not even driving, and do nothing but see this drone follow the car and shoot a film."
+          ]
+        },
+        {
+          "id": 4,
+          "type": "text",
+          "title": "Sitting in the front seat 🚘",
+          "subtitle": "Learnings",
+          "paragraphs": [
+            "Designing for a context such as this one is quite interesting since there are a lot of things you can’t really do for security matters. You need to come back to the core of design and think deeply about each feature you’re building, and put yourself in the front seat.",
+            "For instance, we added scrolling on the main screen, and we then learned it was somehow forbidden to do that in Europe. 🤷‍♀️"
+          ]
+        },
+        {
+          "id": 5,
+          "type": "cover",
+          "image": "/images/projects/tesla/cover.jpg"
+        },
+        {
+          "id": 6,
+          "type": "text",
+          "title": "Consistency’s the key 🔑",
+          "subtitle": "Learnings",
+          "paragraphs": [
+            "If there’s one thing we learned from this exercice is how hard being consistent between platforms can be. Designing an Watch App, a Phone app, a car dashboard and cluster was a challenge consistency wise. Especially when you’re working with a big team on the same design.",
+            "So we build a UI kit everybody in the team could refer to, and used Abstract as a tool for design management. It all worked out perfect."
+          ]
+        },
+        {
+          "id": 8,
+          "type": "thanks",
+          "title": "special thanks ✌️",
+          "people": [
+            {
+              "name": "Margaux Tellier",
+              "role": "Lead Motion"
+            },
+            {
+              "name": "Lucie Zevaco",
+              "role": "Lead Designer"
+            },
+            {
+              "name": "Clément Vion",
+              "role": "UI/UX, Creative Dev"
+            },
+            {
+              "name": "Arnaud Villani",
+              "role": "UI/UX"
+            },
+            {
+              "name": "Claire Zunda",
+              "role": "UI/UX"
+            },
+            {
+              "name": "Adrien Menegaux",
+              "role": "UI/UX"
+            },
+            {
+              "name": "Victor Gossioux",
+              "role": "UI/UX"
+            }
+          ]
+        }
+      ]
     }
   },
   "weekmeal" : {
@@ -61,7 +177,7 @@
         },
         {
           "id": 1,
-          "type": "phoneScreens",
+          "type": "tripleScreens",
           "images": [
             "/images/projects/weekmeal/phone-1.png",
             "/images/projects/weekmeal/phone-2.png",
@@ -122,29 +238,6 @@
           "paragraphs": [
             "It’s quite fun to design an app that a lot of people already had the idea of. We learned that only designing what you first think of doesn’t lead anywhere. You need to learn from the users, think outside of the box and redesign the whole service to create something interesting.",
             "Only dealing with finding a recipe idea isn’t interesting. The goal of the app was to design everything, from the moment you’re asking yourself what you want for dinner and the moment you’ve finished eating."
-          ]
-        },
-        {
-          "id": 7,
-          "type": "thanks",
-          "title": "special thanks ✌️",
-          "people": [
-            {
-              "name": "Ivan Provenzale",
-              "role": "Creative Director"
-            },
-            {
-              "name": "Erica Salvetti",
-              "role": "Lead Designer"
-            },
-            {
-              "name": "Luca Migliore",
-              "role": "Design Support"
-            },
-            {
-              "name": "Clément Vion",
-              "role": "Creative Developer"
-            }
           ]
         }
       ]
