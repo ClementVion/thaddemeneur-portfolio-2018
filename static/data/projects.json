@@ -40,9 +40,9 @@
           "type": "slider",
           "slides": [
             "/images/projects/minglabs/slide-1.jpg",
-            "/images/projects/minglabs/slide-1.jpg",
-            "/images/projects/minglabs/slide-1.jpg",
-            "/images/projects/minglabs/slide-1.jpg"
+            "/images/projects/minglabs/slide-2.jpg",
+            "/images/projects/minglabs/slide-3.jpg",
+            "/images/projects/minglabs/slide-4.jpg"
           ]
         },
         {
@@ -271,17 +271,27 @@
             {
               "image": "/images/projects/weekmeal/slider-1.png",
               "title": "Step one",
-              "desc": "Giving the detail of your eventual diet and desires"
+              "desc": "Giving the detail of your eventual diet and desires "
             },
             {
-              "image": "/images/projects/weekmeal/slider-1.png",
-              "title": "Step one",
-              "desc": "Giving the detail of your eventual diet and desires"
+              "image": "/images/projects/weekmeal/slider-2.png",
+              "title": "Step two",
+              "desc": "Choosing among the list, the recipes you want to try and the ones you’re not interested in."
             },
             {
-              "image": "/images/projects/weekmeal/slider-1.png",
-              "title": "Step one",
-              "desc": "Giving the detail of your eventual diet and desires"
+              "image": "/images/projects/weekmeal/slider-3.png",
+              "title": "Step three",
+              "desc": "Access the list of your weekly meals sorted by dates."
+            },
+            {
+              "image": "/images/projects/weekmeal/slider-4.png",
+              "title": "Step four",
+              "desc": "Access the page of a given recipe, with all the ingredients you need to buy."
+            },
+            {
+              "image": "/images/projects/weekmeal/slider-5.png",
+              "title": "Step five",
+              "desc": "Get access to your total shopping list with all recipe’s ingredients mixed and the possibility to find the closest store."
             }
           ]
         },
@@ -338,9 +348,9 @@
           "id": 1,
           "type": "tripleScreens",
           "images": [
-            "/images/projects/weekmeal/phone-1.png",
-            "/images/projects/weekmeal/phone-2.png",
-            "/images/projects/weekmeal/phone-3.png"
+            "/images/projects/ohmygeorge/screen-1.png",
+            "/images/projects/ohmygeorge/screen-2.png",
+            "/images/projects/ohmygeorge/screen-3.png"
           ]
         },
         {
@@ -364,8 +374,13 @@
             },
             {
               "image": "/images/projects/ohmygeorge/slider-2.png",
-              "title": "Step one",
-              "desc": "Giving the detail of your eventual diet and desires"
+              "title": "Step two",
+              "desc": "Looks like you put a bet that it will rise, and it’s true ! You’re winning $9 !"
+            },
+            {
+              "image": "/images/projects/ohmygeorge/slider-3.png",
+              "title": "Step three",
+              "desc": "You closed the bet ! Great choice, you just earned nearly 50$. Be careful not to lose it in the next game."
             }
           ]
         },
@@ -405,6 +420,73 @@
     "desc": "designing the future of news curation for medecine staff and students.",
     "images": {
       "main": "/images/pickorr.png"
+    },
+    "content": {
+      "layouts": [
+        {
+          "id": 0,
+          "type": "text",
+          "title": "The rise of curation 📰",
+          "subtitle": "Intro",
+          "paragraphs": [
+            "During my third year I was contacted through Behance by Alexis Raison, an entrepeneur from Paris wanting to create a medecine curation media for doctors and students. ",
+            "I accepted the challenge and started thinking and designing on this new form of media that has been rising lately."
+          ]
+        },
+        {
+          "id": 1,
+          "type": "slider",
+          "slides": [
+            "/images/projects/pickorr/slider-1.jpg",
+            "/images/projects/pickorr/slider-2.jpg",
+            "/images/projects/pickorr/slider-3.jpg"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "title": "About design thinking 💊",
+          "subtitle": "Method",
+          "paragraphs": [
+            "Using design thinking on this project was crucial. My client, Alexis, had a precise idea in his head of what he wanted but didn’t have the design approach needed to create his product. ",
+            "So we worked close together and met each other a lot to think together about what he had in mind, iterate on that and I gave him the tools to design his own ideas with me."
+          ]
+        },
+        {
+          "id": 3,
+          "type": "tripleScreens",
+          "images": [
+            "/images/projects/pickorr/phone-1.png",
+            "/images/projects/pickorr/phone-2.png",
+            "/images/projects/pickorr/phone-3.png"
+          ]
+        },
+        {
+          "id": 4,
+          "type": "text",
+          "title": "Customer journeys 🗺️",
+          "subtitle": "Method",
+          "paragraphs": [
+            "Curating content is useful for people who have neither time nor envy to go through long reads. For people working in the medecine industry, it truly makes sense to curate since : first, they have uncommon working hours, and second, new discoveries are made all the time.",
+            "Thus, Alexis and I had to come up with a lot of customer journeys to create the product accordingly, and put ourselves in the shoes of the honorable people working in medecine."
+          ]
+        },
+        {
+          "id": 5,
+          "type": "cover",
+          "image": "/images/projects/pickorr/cover.jpg"
+        },
+        {
+          "id": 6,
+          "type": "text",
+          "title": "Working as a freelance 👨‍💻",
+          "subtitle": "Learnings",
+          "paragraphs": [
+            "Pickorr was not my first experience as a freelance digital designer. But it was a perfect exemple of why I love freelancing. Not only is it interesting and refreshing, it enables you to meet new people and work on new exiting stuff. Alexis was a great client and human being and showed great empathy towards me as a young student and freelance designer.",
+            "It’d be also a pleasure to work with you too, so don’t hesitate to drop me a line if you have project in mind."
+          ]
+        }
+      ]
     }
   }
 }
