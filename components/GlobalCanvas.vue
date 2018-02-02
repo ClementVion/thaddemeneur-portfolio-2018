@@ -29,7 +29,12 @@ export default {
       noiseFilterRect: '',
       displacementSprite: '',
       displacementFilter: '',
-      displacementSpeed: 1
+      displacementSpeed: 1,
+      maskContainerBgHome: '',
+      maskContainerBgProject: '',
+      padding: 25,
+      maskX: 0,
+      maskY: 0
     }
   },
 
@@ -131,17 +136,16 @@ export default {
       this.displacementFilter.scale.x = 10;
       this.displacementFilter.scale.y = 10;
 
-      let maskX = (this.images[0].position.x - (this.images[0].width / 2));
-      let maskY = (this.images[0].position.y - (this.images[0].height / 2));
-      let padding = 25;
+      this.maskX = (this.images[0].position.x - (this.images[0].width / 2));
+      this.maskY = (this.images[0].position.y - (this.images[0].height / 2));
 
       let mask = new PIXI.Graphics();
       mask.beginFill(0x8bc5ff, 0.4);
-      mask.moveTo(maskX + padding, maskY + padding);
-      mask.lineTo(maskX + padding, maskY + padding);
-      mask.lineTo((maskX + this.images[0].width) - padding, maskY + padding);
-      mask.lineTo((maskX + this.images[0].width) - padding, (maskY + this.images[0].height) - padding);
-      mask.lineTo(maskX + padding, (maskY + this.images[0].height) - padding);
+      mask.moveTo(this.maskX + this.padding, this.maskY + this.padding);
+      mask.lineTo(this.maskX + this.padding, this.maskY + this.padding);
+      mask.lineTo((this.maskX + this.images[0].width) - this.padding, this.maskY + this.padding);
+      mask.lineTo((this.maskX + this.images[0].width) - this.padding, (this.maskY + this.images[0].height) - this.padding);
+      mask.lineTo(this.maskX + this.padding, (this.maskY + this.images[0].height) - this.padding);
       mask.endFill();
 
       this.maskContainer.x = this.appW - (this.rectContainer.width / 2);
@@ -152,6 +156,29 @@ export default {
       this.maskContainer.buttonMode = true;
       this.maskContainer.defaultCursor = 'pointer';
 
+      // Backgrounds
+      this.maskContainerBgHome = new PIXI.Graphics();
+      this.maskContainerBgHome.beginFill("0xF5F5F5", 1);
+      this.maskContainerBgHome.moveTo(this.maskX + this.padding, this.maskY + this.padding);
+      this.maskContainerBgHome.lineTo(this.maskX + this.padding, this.maskY + this.padding);
+      this.maskContainerBgHome.lineTo((this.maskX + this.images[0].width) - this.padding, this.maskY + this.padding);
+      this.maskContainerBgHome.lineTo((this.maskX + this.images[0].width) - this.padding, (this.maskY + this.images[0].height) - this.padding);
+      this.maskContainerBgHome.lineTo(this.maskX + this.padding, (this.maskY + this.images[0].height) - this.padding);
+      this.maskContainerBgHome.endFill();
+      this.maskContainer.addChild(this.maskContainerBgHome);
+
+      const bgProjectX = this.maskX - this.images[0].width;
+      this.maskContainerBgProject = new PIXI.Graphics();
+      this.maskContainerBgProject.beginFill("0x5F87D6", 1);
+      this.maskContainerBgProject.moveTo(bgProjectX + this.padding, this.maskY + this.padding);
+      this.maskContainerBgProject.lineTo(bgProjectX + this.padding, this.maskY + this.padding);
+      this.maskContainerBgProject.lineTo((bgProjectX + this.images[0].width) - this.padding, this.maskY + this.padding);
+      this.maskContainerBgProject.lineTo((bgProjectX + this.images[0].width) - this.padding, (this.maskY + this.images[0].height) - this.padding);
+      this.maskContainerBgProject.lineTo(bgProjectX + this.padding, (this.maskY + this.images[0].height) - this.padding);
+      this.maskContainerBgProject.endFill();
+      this.maskContainer.addChild(this.maskContainerBgProject);
+
+      // Events
       this.maskContainer.on('mouseover', () => {
         TweenMax.to(this, 0.5, {displacementSpeed: 5, ease: Cubic.ease});
       })
@@ -196,6 +223,7 @@ export default {
     },
 
     switchToHome() {
+      this.changeBgToHome();
       TweenMax.to(this.rectContainer.skew, 0.5, {x: 0.3, ease: Power3.easeInOut});
       TweenMax.to(this.rectContainer.scale, 0.9, {x: 1, y: 1, ease: Power3.easeInOut});
       TweenMax.to(this.rectContainer.skew, 0.5, {x: 0, delay: 0.25, ease: Power3.easeInOut});
@@ -210,6 +238,7 @@ export default {
     },
 
     switchToProject() {
+      this.changeBgToProject();
       this.projectsContainer.removeChild(this.images[this.currentImageIndex]);
       this.currentImageIndex = this.$store.state.currentProjectIndex;
       this.projectsContainer.addChild(this.images[this.currentImageIndex]);
@@ -222,6 +251,24 @@ export default {
       TweenMax.to(this.maskContainer.skew, 0.7, {x: 0.2, ease: Power3.easeInOut});
       TweenMax.to(this.maskContainer, 1, {x: window.innerWidth / 2, ease: Power3.easeInOut});
       TweenMax.to(this.maskContainer.skew, 0.7, {x: 0, delay:0.3 , ease: Power3.easeInOut});
+    },
+
+    changeBgToHome() {
+      const newProjectBgX = this.maskContainerBgProject.x - this.maskContainerBgProject.x;
+      TweenMax.to(this.maskContainerBgProject.skew, 0.6, {x: 0.2, delay: 0.2, ease: Power3.easeInOut});
+      TweenMax.to(this.maskContainerBgProject, 0.6, {x: newProjectBgX, delay: 0.2, ease: Power3.easeInOut});
+      TweenMax.to(this.maskContainerBgProject.skew, 0.6, {x: 0, delay: 0.5, ease: Power3.easeInOut});
+      setTimeout(() => {
+        this.maskContainerBgProject.scale.set(1);
+      }, 1500);
+    },
+
+    changeBgToProject() {
+      const newProjectBgX = this.maskContainerBgProject.x + this.images[0].width + 350;
+      this.maskContainerBgProject.scale.set(1.5);
+      TweenMax.to(this.maskContainerBgProject.skew, 0.6, {x: 0.2, delay: 0.2, ease: Power3.easeInOut});
+      TweenMax.to(this.maskContainerBgProject, 0.6, {x: newProjectBgX, delay: 0.2,ease: Power3.easeInOut});
+      TweenMax.to(this.maskContainerBgProject.skew, 0.6, {x: 0, delay: 0.5, ease: Power3.easeInOut});
     },
 
     changeImage(currentImageIndex, nextImageIndex) {

@@ -1,7 +1,11 @@
 <template lang="html">
   <section class="Project">
 
-    <div v-if="project.content" class="Project__content">
+    <div class="Project__Hero">
+      <!-- <h2 class="Project__Title" ref="title"> {{ project.title }} </h2> -->
+    </div>
+
+    <div v-if="project.content" class="Project__Content">
       <div class="Project__layouts">
 
         <div class="Project__layout" v-for="layout in project.content.layouts" :key="layout.id">
@@ -41,7 +45,7 @@ export default {
 
   transition: {
     name: 'page',
-    duration: 500,
+    duration: 100,
   },
 
   components: {
@@ -60,7 +64,7 @@ export default {
 
   data() {
     return {
-      project: projects[this.$route.params.slug]
+      project: projects[this.$route.params.slug],
     }
   },
 
@@ -68,7 +72,20 @@ export default {
     this.$store.commit('change', projects[this.$route.params.slug].id);
     setTimeout(() => {
       EventBus.$emit('switchToProject');
-    }, 500)
+    }, 100)
+    // this.runParallax();
+  },
+
+  methods: {
+
+    // runParallax() {
+    //   requestAnimationFrame(this.runParallax);
+    //
+    //   const elm = this.$refs.title;
+    //   let distance = Math.abs(this.scrollbar.scrollTop) * 0.3;
+    //   elm.style.transform = 'translate3d(0,' + (-distance) + 'px,0)';
+    // },
+
   }
 
 }
@@ -77,10 +94,30 @@ export default {
 <style lang="scss">
 
 .Project {
+  overflow: hidden;
+}
+
+.Project__Hero {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Project__Title {
+  font-size: 8.4rem;
+  font-weight: 600;
+  z-index: 10;
+  color: #FFF;
+  text-align: center;
+  /* margin-left: calc(50% - 232px); */
+  white-space: nowrap;
+}
+
+.Project__Content {
   position: relative;
   width: 100vw;
   min-height: 100vh;
-  top: 100vh;
   background: #000;
   color: #FFF;
 }

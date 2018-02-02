@@ -5,6 +5,7 @@
     "number": "First Story",
     "title": "My internship at Minglabs",
     "desc": "and the way we helped craftsmen be more efficient at work",
+    "color": "5F87D6",
     "images": {
       "main": "/images/terminmeister.png"
     },

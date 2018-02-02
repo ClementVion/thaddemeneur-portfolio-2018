@@ -107,16 +107,16 @@ export default {
   }
 
   .ProjectsInfos__Number {
-    transition-duration: 0.3s;
+    transition-duration: 0.1s;
   }
 
   .ProjectsInfos__Title {
-    transition-duration: 0.5s;
+    transition-duration: 0.3s;
     transition-delay: 0.05s;
   }
 
   .ProjectsInfos__Desc {
-    transition-duration: 0.5s;
+    transition-duration: 0.3s;
     transition-delay: 0.1s;
   }
 
