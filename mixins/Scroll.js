@@ -12,15 +12,16 @@ export default {
     this.scrollbar = Scrollbar.init(document.querySelector('.ScrollContainer'), {
       damping: 0.15
     });
-    this.runParallax();
+    this.runScrollParallax();
   },
 
   methods: {
 
-    runParallax() {
-      requestAnimationFrame(this.runParallax);
+    runScrollParallax() {
+      requestAnimationFrame(this.runScrollParallax);
 
       const parallaxElms = document.querySelectorAll('[data-parallax="true"]');
+      console.log(parallaxElms)
       for (let elm of parallaxElms) {
         let sym = '';
         let distance = Math.abs(this.scrollbar.scrollTop) * parseFloat(elm.getAttribute('data-speed'));
