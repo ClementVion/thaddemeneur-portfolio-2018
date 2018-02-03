@@ -58,6 +58,13 @@ import Islands from '~/components/layouts/customs/Islands.vue'
 
 export default {
 
+  beforeRouteEnter (to, from, next) {
+    setTimeout(() => {
+      EventBus.$emit('switchToProject');
+    }, 300);
+    next();
+  },
+
   transition: {
     name: 'page',
     duration: 500,
@@ -85,9 +92,9 @@ export default {
 
   mounted() {
     this.$store.commit('change', projects[this.$route.params.slug].id);
-    setTimeout(() => {
-      EventBus.$emit('switchToProject');
-    }, 100)
+    // setTimeout(() => {
+    //   EventBus.$emit('switchToProject');
+    // }, 100)
     this.runParallax();
   },
 
@@ -156,9 +163,6 @@ export default {
   width: 100%;
   position: relative;
   margin-bottom: 84px;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
 }
 
 .Project__Title {
@@ -194,7 +198,7 @@ export default {
   transform: translateY(50%);
 }
 
-$delay: 30;
+$delay: 15;
 @for $i from 1 to 100 {
   .letter:nth-child(#{$i}) {
     transition-delay: ($i + $delay) * 0.02s;

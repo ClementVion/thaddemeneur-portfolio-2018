@@ -5,7 +5,7 @@
     "number": "First Story",
     "title": "My internship at Minglabs",
     "desc": "and the way we helped craftsmen be more efficient at work",
-    "color": "5F87D6",
+    "color": "0x5F87D6",
     "images": {
       "main": "/images/terminmeister.png"
     },
@@ -118,6 +118,7 @@
     "number": "Second Story",
     "title": "Tesla x Go Pro",
     "desc": "salut thaddé tu n'as pas écrit le contenu de ce paragraphe, des bisous.",
+    "color": "0xD65F5F",
     "images": {
       "main": "/images/chair.png"
     },
@@ -231,6 +232,7 @@
     "number": "Third Story",
     "title": "Weekmeal, School Project",
     "desc": "finally finding a good idea of what to cook for dinner tonight",
+    "color": "0xD68E5F",
     "images": {
       "main": "/images/fruits.png"
     },
@@ -330,6 +332,7 @@
     "number": "Fourth Story",
     "title": "My internship at OhMyGeorge",
     "desc": "turning trading into an accessible and fun mobile game.",
+    "color": "0x953292",
     "images": {
       "main": "/images/ohmygeorge.png"
     },
@@ -361,7 +364,7 @@
           "subtitle": "Product",
           "paragraphs": [
             "Trading is all about emotions. One of my first task was to somehow help trigger those emotions through the design of the game.",
-            "When you play the game, you have access to real and live data of the trading market. When you bet and it goes up, you win, and if the market goes down you lose. The game is all about knowing when to start betting and when to stop. Emotions were triggered through color. When you’re losing, the whole screen goes red, wherehas when you’re winning it goes green."
+            "When you play the game, you have access to real and live data of the trading market. When you bet and it goes up, you win, and if the market goes down you lose. The game is all about knowing when to start betting and when to stop. Emotions were triggered through color. Wh0xen you’re losing, the whole screen goes red, wherehas when you’re winning it goes green."
           ]
         },
         {
@@ -419,6 +422,7 @@
     "number": "Fifth Story",
     "title": "Pickorr, Freelance Project",
     "desc": "designing the future of news curation for medecine staff and students.",
+    "color": "0x5AA474",
     "images": {
       "main": "/images/pickorr.png"
     },

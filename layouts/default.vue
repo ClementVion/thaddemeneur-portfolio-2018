@@ -30,14 +30,8 @@ export default {
     'GlobalCanvas': GlobalCanvas,
   },
 
-  mounted() {
-    // this.$router.beforeEach((to, from, next) => {
-    //   if (to.name === 'projects-slug') {
-    //     EventBus.$emit('switchToProject');
-    //   }
-    //   next();
-    // })
-  }
+  mounted() {}
+  
 }
 </script>
 

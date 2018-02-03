@@ -13,6 +13,13 @@ import ProjectsFooter from '~/components/ProjectsFooter.vue'
 
 export default {
 
+  beforeRouteEnter (to, from, next) {
+    setTimeout(() => {
+      EventBus.$emit('switchToHome');
+    }, 300);
+    next();
+  },
+
   transition: {
     name: 'page',
     duration: 500,
@@ -36,7 +43,7 @@ export default {
   mounted() {
     this.currentProjectIndex = this.$store.state.currentProjectIndex;
     this.convertProjectsToArray();
-    EventBus.$emit('switchToHome');
+    // EventBus.$emit('switchToHome');
     this.initEvents();
     this.listenGlobalEvents();
   },

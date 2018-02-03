@@ -1,7 +1,7 @@
 <template>
 
   <div class="Canvas" ref="canvas"></div>
-  
+
 </template>
 
 <script>
@@ -14,10 +14,11 @@ export default {
 
   data() {
     return {
+      projectsArray: [],
       app: '',
       appW: 0,
       appH: 0,
-      currentImageIndex: 0,
+      currentProjectIndex: 0,
       images: [],
       imagesUrl: [],
       bgContainer: '',
@@ -30,8 +31,8 @@ export default {
       displacementSprite: '',
       displacementFilter: '',
       displacementSpeed: 1,
-      maskContainerBgHome: '',
-      maskContainerBgProject: '',
+      maskBgHome: '',
+      maskBgProject: '',
       padding: 25,
       maskX: 0,
       maskY: 0
@@ -39,6 +40,7 @@ export default {
   },
 
   mounted() {
+    this.convertProjectsToArray();
     this.initCanvas();
   },
 
@@ -122,7 +124,7 @@ export default {
         this.images[i].anchor.set(0.5);
       }
 
-      this.projectsContainer.addChild(this.images[this.currentImageIndex]);
+      this.projectsContainer.addChild(this.images[this.currentProjectIndex]);
 
       this.displacementSprite = PIXI.Sprite.fromImage('/images/sprite.png');
       this.displacementSprite.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
@@ -148,7 +150,16 @@ export default {
       mask.lineTo(this.maskX + this.padding, (this.maskY + this.images[0].height) - this.padding);
       mask.endFill();
 
-      this.maskContainer.x = this.appW - (this.rectContainer.width / 2);
+      if (this.$route.name === 'index') {
+        this.maskContainer.x = this.appW - (this.rectContainer.width / 2);
+      } else if (this.$route.name === 'projects-slug') {
+        this.maskContainer.x = window.innerWidth / 2;
+
+        this.projectsContainer.removeChild(this.images[this.currentProjectIndex]);
+        this.currentProjectIndex = this.$store.state.currentProjectIndex;
+        this.projectsContainer.addChild(this.images[this.currentProjectIndex]);
+      }
+
       this.maskContainer.y = this.appH / 2;
       this.maskContainer.scale.x = 0.45;
       this.maskContainer.scale.y = 0.45;
@@ -156,27 +167,18 @@ export default {
       this.maskContainer.buttonMode = true;
       this.maskContainer.defaultCursor = 'pointer';
 
-      // Backgrounds
-      this.maskContainerBgHome = new PIXI.Graphics();
-      this.maskContainerBgHome.beginFill("0xF5F5F5", 1);
-      this.maskContainerBgHome.moveTo(this.maskX + this.padding, this.maskY + this.padding);
-      this.maskContainerBgHome.lineTo(this.maskX + this.padding, this.maskY + this.padding);
-      this.maskContainerBgHome.lineTo((this.maskX + this.images[0].width) - this.padding, this.maskY + this.padding);
-      this.maskContainerBgHome.lineTo((this.maskX + this.images[0].width) - this.padding, (this.maskY + this.images[0].height) - this.padding);
-      this.maskContainerBgHome.lineTo(this.maskX + this.padding, (this.maskY + this.images[0].height) - this.padding);
-      this.maskContainerBgHome.endFill();
-      this.maskContainer.addChild(this.maskContainerBgHome);
+      // Background
+      this.maskBgHome = new PIXI.Graphics();
+      this.maskBgHome.beginFill("0xF5F5F5", 1);
+      this.maskBgHome.moveTo(this.maskX + this.padding, this.maskY + this.padding);
+      this.maskBgHome.lineTo(this.maskX + this.padding, this.maskY + this.padding);
+      this.maskBgHome.lineTo((this.maskX + this.images[0].width) - this.padding, this.maskY + this.padding);
+      this.maskBgHome.lineTo((this.maskX + this.images[0].width) - this.padding, (this.maskY + this.images[0].height) - this.padding);
+      this.maskBgHome.lineTo(this.maskX + this.padding, (this.maskY + this.images[0].height) - this.padding);
+      this.maskBgHome.endFill();
+      this.maskContainer.addChild(this.maskBgHome);
 
-      const bgProjectX = this.maskX - this.images[0].width;
-      this.maskContainerBgProject = new PIXI.Graphics();
-      this.maskContainerBgProject.beginFill("0x5F87D6", 1);
-      this.maskContainerBgProject.moveTo(bgProjectX + this.padding, this.maskY + this.padding);
-      this.maskContainerBgProject.lineTo(bgProjectX + this.padding, this.maskY + this.padding);
-      this.maskContainerBgProject.lineTo((bgProjectX + this.images[0].width) - this.padding, this.maskY + this.padding);
-      this.maskContainerBgProject.lineTo((bgProjectX + this.images[0].width) - this.padding, (this.maskY + this.images[0].height) - this.padding);
-      this.maskContainerBgProject.lineTo(bgProjectX + this.padding, (this.maskY + this.images[0].height) - this.padding);
-      this.maskContainerBgProject.endFill();
-      this.maskContainer.addChild(this.maskContainerBgProject);
+      this.updateProjectBgColor();
 
       // Events
       this.maskContainer.on('mouseover', () => {
@@ -199,9 +201,9 @@ export default {
     },
 
     initRect() {
-      const rectWidth = (this.appW / 2.24);
       this.rect = new PIXI.Graphics();
 
+      const rectWidth = (this.appW / 2.24);
       this.rect.beginFill(0x000000, 1);
       this.rect.moveTo(0, 0);
       this.rect.lineTo(0, 0);
@@ -214,6 +216,12 @@ export default {
       this.rectContainer.position.set(this.appW - (rectWidth / 2), (this.rect.height /2));
       this.rectContainer.pivot.set((rectWidth / 2), (this.rect.height /2));
 
+      if (this.$route.name === 'index') {
+        this.rectContainer.scale.set(1, 1);
+      } else if (this.$route.name === 'projects-slug') {
+        this.rectContainer.scale.set(4, 2);
+      }
+
       this.noiseFilterRect = new PIXI.filters.NoiseFilter();
       this.noiseFilterRect.noise = 0.2;
       this.rect.filters = [this.noiseFilterRect];
@@ -223,12 +231,12 @@ export default {
     },
 
     switchToHome() {
-      const newProjectBgX = this.maskContainerBgProject.x - this.maskContainerBgProject.x;
-      TweenMax.to(this.maskContainerBgProject.skew, 0.6, {x: 0.2, delay: 0.2, ease: Power3.easeInOut});
-      TweenMax.to(this.maskContainerBgProject, 0.6, {x: newProjectBgX, delay: 0.2, ease: Power3.easeInOut});
-      TweenMax.to(this.maskContainerBgProject.skew, 0.6, {x: 0, delay: 0.5, ease: Power3.easeInOut});
+      const newProjectBgX = this.maskBgProject.x - this.maskBgProject.x;
+      TweenMax.to(this.maskBgProject.skew, 0.6, {x: 0.2, delay: 0.2, ease: Power3.easeInOut});
+      TweenMax.to(this.maskBgProject, 0.6, {x: newProjectBgX, delay: 0.2, ease: Power3.easeInOut});
+      TweenMax.to(this.maskBgProject.skew, 0.6, {x: 0, delay: 0.5, ease: Power3.easeInOut});
       setTimeout(() => {
-        this.maskContainerBgProject.scale.set(1);
+        this.maskBgProject.scale.set(1);
       }, 1500);
 
       TweenMax.to(this.rectContainer.skew, 0.5, {x: 0.3, ease: Power3.easeInOut});
@@ -245,15 +253,15 @@ export default {
     },
 
     switchToProject() {
-      const newProjectBgX = this.maskContainerBgProject.x + this.images[0].width + 350;
-      this.maskContainerBgProject.scale.set(1.5);
-      TweenMax.to(this.maskContainerBgProject.skew, 0.6, {x: 0.2, delay: 0.2, ease: Power3.easeInOut});
-      TweenMax.to(this.maskContainerBgProject, 0.6, {x: newProjectBgX, delay: 0.2,ease: Power3.easeInOut});
-      TweenMax.to(this.maskContainerBgProject.skew, 0.6, {x: 0, delay: 0.5, ease: Power3.easeInOut});
+      const newProjectBgX = this.maskBgProject.x + this.images[0].width + 350;
+      this.maskBgProject.scale.set(1.5);
+      TweenMax.to(this.maskBgProject.skew, 0.6, {x: 0.2, delay: 0.2, ease: Power3.easeInOut});
+      TweenMax.to(this.maskBgProject, 0.6, {x: newProjectBgX, delay: 0.2,ease: Power3.easeInOut});
+      TweenMax.to(this.maskBgProject.skew, 0.6, {x: 0, delay: 0.5, ease: Power3.easeInOut});
 
-      this.projectsContainer.removeChild(this.images[this.currentImageIndex]);
-      this.currentImageIndex = this.$store.state.currentProjectIndex;
-      this.projectsContainer.addChild(this.images[this.currentImageIndex]);
+      this.projectsContainer.removeChild(this.images[this.currentProjectIndex]);
+      this.currentProjectIndex = this.$store.state.currentProjectIndex;
+      this.projectsContainer.addChild(this.images[this.currentProjectIndex]);
 
       this.projectsContainer.filterArea = new PIXI.Rectangle(0, 0, this.appW, this.appH);
       TweenMax.to(this.rectContainer.skew, 0.5, {x: 0.3, ease: Power3.easeInOut});
@@ -265,9 +273,8 @@ export default {
       TweenMax.to(this.maskContainer.skew, 0.7, {x: 0, delay:0.3 , ease: Power3.easeInOut});
     },
 
-
     changeImage(currentImageIndex, nextImageIndex) {
-      this.currentImageIndex = nextImageIndex;
+      this.currentProjectIndex = nextImageIndex;
       this.images[currentImageIndex].alpha = 1;
       this.images[nextImageIndex].alpha = 0;
       this.projectsContainer.removeChild(this.images[currentImageIndex], this.images[nextImageIndex]);
@@ -285,6 +292,34 @@ export default {
 
       TweenMax.to(this.displacementFilter.scale, 3, {x: 5,y: 5, delay: 1, ease: Cubic.easeInOut});
       TweenMax.to(this, 3, {displacementSpeed: 1, delay: 1, ease: Cubic.easeInOut});
+
+      this.maskContainer.removeChild(this.maskBgProject);
+
+      this.updateProjectBgColor();
+
+      this.maskContainer.removeChild(this.projectsContainer);
+      this.maskContainer.addChild(this.projectsContainer);
+    },
+
+    updateProjectBgColor() {
+      const color = this.projectsArray[this.currentProjectIndex].color;
+      const bgProjectX = this.maskX - this.images[0].width;
+      this.maskBgProject = new PIXI.Graphics();
+      this.maskBgProject.beginFill(color, 1);
+      this.maskBgProject.moveTo(bgProjectX + this.padding, this.maskY + this.padding);
+      this.maskBgProject.lineTo(bgProjectX + this.padding, this.maskY + this.padding);
+      this.maskBgProject.lineTo((bgProjectX + this.images[0].width) - this.padding, this.maskY + this.padding);
+      this.maskBgProject.lineTo((bgProjectX + this.images[0].width) - this.padding, (this.maskY + this.images[0].height) - this.padding);
+      this.maskBgProject.lineTo(bgProjectX + this.padding, (this.maskY + this.images[0].height) - this.padding);
+      this.maskBgProject.endFill();
+      this.maskContainer.addChild(this.maskBgProject);
+
+      if (this.$route.name === 'projects-slug') {
+        const newProjectBgX = this.maskBgProject.x + this.images[0].width + 350;
+        this.maskBgProject.scale.set(1.5);
+        this.maskBgProject.x = newProjectBgX;
+        this.projectsContainer.filterArea = new PIXI.Rectangle(0, 0, this.appW, this.appH);
+      }
     },
 
     listenResize() {
@@ -321,7 +356,15 @@ export default {
       this.noiseFilterRect.seed = (Math.random() * 1) * 0.05;
       this.displacementSprite.x += this.displacementSpeed;
       this.displacementSprite.y += this.displacementSpeed;
-    }
+    },
+
+    convertProjectsToArray() {
+      for (let key in this.projects) {
+        if (!this.projects.hasOwnProperty(key)) continue;
+        let project = this.projects[key];
+        this.projectsArray.push(project);
+      }
+    },
 
   }
 }

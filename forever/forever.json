@@ -1,8 +1,0 @@
-{
-    // Comments are supported
-    "uid": "app2",
-    "append": true,
-    "watch": true,
-    "script": "run.sh",
-    "sourceDir": "/var/www/2018"
-}
