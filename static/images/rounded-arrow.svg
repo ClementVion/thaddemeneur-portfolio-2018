@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="68px" height="68px" viewBox="0 0 68 68" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 7</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Project/OhMyGeorge" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-89.000000, -748.000000)">
+        <g id="Group-7" transform="translate(77.000000, 736.000000)">
+            <path d="M46,79 C64.2253967,79 79,64.2253967 79,46 C79,27.7746033 64.2253967,13 46,13 C27.7746033,13 13,27.7746033 13,46" id="Oval" stroke="#000000"></path>
+            <path d="M46,79 C64.2253967,79 79,64.2253967 79,46 C79,27.7746033 64.2253967,13 46,13 C27.7746033,13 13,27.7746033 13,46" id="Oval" stroke="#FCFDFF" transform="translate(46.000000, 46.000000) rotate(-300.000000) translate(-46.000000, -46.000000) "></path>
+            <path d="M45.5,35.5 L45.5,57.5" id="Line" stroke="#FDFDFF" stroke-linecap="square"></path>
+            <path d="M41.3768944,53.3768944 L45.5,57.5" id="Line" stroke="#FDFDFF" stroke-linecap="square"></path>
+            <path d="M49.5,53.5 L45.5,57.5" id="Line" stroke="#FDFDFF" stroke-linecap="square"></path>
+        </g>
+    </g>
+</svg>

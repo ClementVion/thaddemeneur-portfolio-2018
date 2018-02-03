@@ -1,8 +1,22 @@
 <template lang="html">
   <section class="Project">
 
+    <div class="Project__Header">
+      <div class="Project__HeaderBack" @click="clickedOnGoBack()">
+        <img src="/images/back-arrow.svg" alt="Back arrow">
+        <span> Go back </span>
+      </div>
+    </div>
+
     <div class="Project__Hero">
       <h2 class="Project__Title js-toSplit" :data-text="project.title" ref="title"> </h2>
+    </div>
+
+    <div class="Project__HeroFooter">
+      <div class="Project__HeroFooterContainer">
+        <img src="/images/rounded-arrow.svg" alt="Scroll down arrow">
+        <p class="Project__HeroFooterCta"> Scroll down </p>
+      </div>
     </div>
 
     <div v-if="project.content" class="Project__Content">
@@ -89,6 +103,10 @@ export default {
       }
     },
 
+    clickedOnGoBack() {
+      this.$router.go(-1);
+    }
+
   },
 
 
@@ -101,13 +119,44 @@ export default {
   overflow: hidden;
 }
 
+.Project__Header {
+  position: fixed;
+  top: 55px;
+  right: 5%;
+  z-index: 10;
+}
+
+.Project__HeaderBack {
+  color: #FFF;
+  font-size: 1.5rem;
+  font-weight: 600;
+  width: 104px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.page-enter-active .Project__HeaderBack {
+  transition: ease 0.3s 1s;
+}
+
+.page-leave-active .Project__HeaderBack {
+  transition: ease 0.3s;
+}
+
+.page-enter .Project__HeaderBack,
+.page-leave-active .Project__HeaderBack{
+  opacity: 0;
+}
+
 .Project__Hero {
   height: 100vh;
   width: 100%;
   position: relative;
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 }
 
 .Project__Title {
@@ -118,6 +167,8 @@ export default {
   z-index: 10;
   color: #FFF;
   left: calc(50% - 228px);
+  top: calc(50% - 52px);
+  height: 104px;
   white-space: nowrap;
 }
 
@@ -149,6 +200,43 @@ $delay: 30;
   .page-leave-active .letter:nth-child(#{$i}) {
     transition-delay: $i * 0.02s;
   }
+}
+
+.Project__HeroFooter {
+  position: fixed;
+  width: 100%;
+  top: 84vh;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Project__HeroFooterContainer {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Project__HeroFooterCta {
+  color: #FFF;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.page-enter-active .Project__HeroFooter {
+  transition: ease 0.3s 1.5s;
+}
+
+.page-leave-active .Project__HeroFooter {
+  transition: ease 0.3s;
+}
+
+.page-enter .Project__HeroFooter,
+.page-leave-active .Project__HeroFooter{
+  opacity: 0;
 }
 
 .Project__Content {
