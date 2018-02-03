@@ -223,7 +223,14 @@ export default {
     },
 
     switchToHome() {
-      this.changeBgToHome();
+      const newProjectBgX = this.maskContainerBgProject.x - this.maskContainerBgProject.x;
+      TweenMax.to(this.maskContainerBgProject.skew, 0.6, {x: 0.2, delay: 0.2, ease: Power3.easeInOut});
+      TweenMax.to(this.maskContainerBgProject, 0.6, {x: newProjectBgX, delay: 0.2, ease: Power3.easeInOut});
+      TweenMax.to(this.maskContainerBgProject.skew, 0.6, {x: 0, delay: 0.5, ease: Power3.easeInOut});
+      setTimeout(() => {
+        this.maskContainerBgProject.scale.set(1);
+      }, 1500);
+
       TweenMax.to(this.rectContainer.skew, 0.5, {x: 0.3, ease: Power3.easeInOut});
       TweenMax.to(this.rectContainer.scale, 0.9, {x: 1, y: 1, ease: Power3.easeInOut});
       TweenMax.to(this.rectContainer.skew, 0.5, {x: 0, delay: 0.25, ease: Power3.easeInOut});
@@ -238,7 +245,12 @@ export default {
     },
 
     switchToProject() {
-      this.changeBgToProject();
+      const newProjectBgX = this.maskContainerBgProject.x + this.images[0].width + 350;
+      this.maskContainerBgProject.scale.set(1.5);
+      TweenMax.to(this.maskContainerBgProject.skew, 0.6, {x: 0.2, delay: 0.2, ease: Power3.easeInOut});
+      TweenMax.to(this.maskContainerBgProject, 0.6, {x: newProjectBgX, delay: 0.2,ease: Power3.easeInOut});
+      TweenMax.to(this.maskContainerBgProject.skew, 0.6, {x: 0, delay: 0.5, ease: Power3.easeInOut});
+
       this.projectsContainer.removeChild(this.images[this.currentImageIndex]);
       this.currentImageIndex = this.$store.state.currentProjectIndex;
       this.projectsContainer.addChild(this.images[this.currentImageIndex]);
@@ -253,28 +265,11 @@ export default {
       TweenMax.to(this.maskContainer.skew, 0.7, {x: 0, delay:0.3 , ease: Power3.easeInOut});
     },
 
-    changeBgToHome() {
-      const newProjectBgX = this.maskContainerBgProject.x - this.maskContainerBgProject.x;
-      TweenMax.to(this.maskContainerBgProject.skew, 0.6, {x: 0.2, delay: 0.2, ease: Power3.easeInOut});
-      TweenMax.to(this.maskContainerBgProject, 0.6, {x: newProjectBgX, delay: 0.2, ease: Power3.easeInOut});
-      TweenMax.to(this.maskContainerBgProject.skew, 0.6, {x: 0, delay: 0.5, ease: Power3.easeInOut});
-      setTimeout(() => {
-        this.maskContainerBgProject.scale.set(1);
-      }, 1500);
-    },
-
-    changeBgToProject() {
-      const newProjectBgX = this.maskContainerBgProject.x + this.images[0].width + 350;
-      this.maskContainerBgProject.scale.set(1.5);
-      TweenMax.to(this.maskContainerBgProject.skew, 0.6, {x: 0.2, delay: 0.2, ease: Power3.easeInOut});
-      TweenMax.to(this.maskContainerBgProject, 0.6, {x: newProjectBgX, delay: 0.2,ease: Power3.easeInOut});
-      TweenMax.to(this.maskContainerBgProject.skew, 0.6, {x: 0, delay: 0.5, ease: Power3.easeInOut});
-    },
 
     changeImage(currentImageIndex, nextImageIndex) {
       this.currentImageIndex = nextImageIndex;
       this.images[currentImageIndex].alpha = 1;
-      this.images[nextImageIndex].alpha = 1;
+      this.images[nextImageIndex].alpha = 0;
       this.projectsContainer.removeChild(this.images[currentImageIndex], this.images[nextImageIndex]);
       this.projectsContainer.addChild(this.images[nextImageIndex], this.images[currentImageIndex]);
 
@@ -284,6 +279,7 @@ export default {
       TweenMax.to(this.projectsContainer.scale, 1, {x: 1.05,y: 1.05, ease: Cubic.easeInOut});
 
       TweenMax.to(this.images[currentImageIndex], 2, {alpha: 0, delay: 0.5, ease: Cubic.easeInOut});
+      TweenMax.to(this.images[nextImageIndex], 2, {alpha: 1, delay: 0.5, ease: Cubic.easeInOut});
 
       TweenMax.to(this.projectsContainer.scale, 1.5, {x: 1,y: 1, delay: 1.25, ease: Cubic.easeInOut});
 

@@ -15,7 +15,7 @@ export default {
 
   transition: {
     name: 'page',
-    duration: 100,
+    duration: 500,
   },
 
   components: {

@@ -2,7 +2,7 @@
   <section class="Project">
 
     <div class="Project__Hero">
-      <!-- <h2 class="Project__Title" ref="title"> {{ project.title }} </h2> -->
+      <h2 class="Project__Title js-toSplit" :data-text="project.title" ref="title"> </h2>
     </div>
 
     <div v-if="project.content" class="Project__Content">
@@ -30,6 +30,7 @@
 <script>
 import projects from '~/static/data/projects.json'
 import Scroll from '~/mixins/Scroll.js';
+import TextSplit from '~/mixins/TextSplit.js';
 import EventBus from '~/components/bus/EventBus.js'
 import Infos from '~/components/layouts/Infos.vue'
 import TripleScreens from '~/components/layouts/TripleScreens.vue'
@@ -45,7 +46,7 @@ export default {
 
   transition: {
     name: 'page',
-    duration: 100,
+    duration: 500,
   },
 
   components: {
@@ -60,7 +61,7 @@ export default {
     Islands
   },
 
-  mixins: [Scroll],
+  mixins: [Scroll, TextSplit],
 
   data() {
     return {
@@ -73,20 +74,23 @@ export default {
     setTimeout(() => {
       EventBus.$emit('switchToProject');
     }, 100)
-    // this.runParallax();
+    this.runParallax();
   },
 
   methods: {
 
-    // runParallax() {
-    //   requestAnimationFrame(this.runParallax);
-    //
-    //   const elm = this.$refs.title;
-    //   let distance = Math.abs(this.scrollbar.scrollTop) * 0.3;
-    //   elm.style.transform = 'translate3d(0,' + (-distance) + 'px,0)';
-    // },
+    runParallax() {
+      this.parallaxAnimationId = requestAnimationFrame(this.runParallax);
 
-  }
+      const elm = this.$refs.title;
+      if (elm) {
+        let distance = Math.abs(this.scrollbar.scrollTop) * 1;
+        elm.style.transform = 'translate3d(' + (-distance) + 'px,0,0)';
+      }
+    },
+
+  },
+
 
 }
 </script>
@@ -99,19 +103,52 @@ export default {
 
 .Project__Hero {
   height: 100vh;
+  width: 100%;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .Project__Title {
-  font-size: 8.4rem;
+  position: absolute;
+  width: 100%;
+  font-size: 10.4rem;
   font-weight: 600;
   z-index: 10;
   color: #FFF;
-  text-align: center;
-  /* margin-left: calc(50% - 232px); */
+  left: calc(50% - 228px);
   white-space: nowrap;
+}
+
+.Project__Title .letter {
+  display: inline-block;
+
+  &.space {
+    width: 35px;
+  }
+}
+
+.page-enter-active .Project__Title .letter,
+.page-leave-active .Project__Title .letter {
+  transition-duration: 0.4s;
+  transition-timing-function: ease;
+}
+
+.page-enter .Project__Title .letter,
+.page-leave-active .Project__Title .letter{
+  opacity: 0;
+  transform: translateY(50%);
+}
+
+$delay: 30;
+@for $i from 1 to 100 {
+  .letter:nth-child(#{$i}) {
+    transition-delay: ($i + $delay) * 0.02s;
+  }
+  .page-leave-active .letter:nth-child(#{$i}) {
+    transition-delay: $i * 0.02s;
+  }
 }
 
 .Project__Content {
