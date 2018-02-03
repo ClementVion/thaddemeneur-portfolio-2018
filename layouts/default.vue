@@ -11,6 +11,7 @@
 <script>
 import projects from '~/static/data/projects.json';
 import store from '~/store/index.js';
+import EventBus from '~/components/bus/EventBus.js'
 import Header from '~/components/Header.vue';
 import GlobalCanvas from '~/components/GlobalCanvas.vue';
 
@@ -30,7 +31,12 @@ export default {
   },
 
   mounted() {
-
+    this.$router.beforeEach((to, from, next) => {
+      if (to.name === 'projects-slug') {
+        EventBus.$emit('switchToProject');
+      }
+      next();
+    })
   }
 }
 </script>

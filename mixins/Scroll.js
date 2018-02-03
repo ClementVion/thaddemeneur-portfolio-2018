@@ -21,7 +21,6 @@ export default {
       requestAnimationFrame(this.runScrollParallax);
 
       const parallaxElms = document.querySelectorAll('[data-parallax="true"]');
-      console.log(parallaxElms)
       for (let elm of parallaxElms) {
         let sym = '';
         let distance = Math.abs(this.scrollbar.scrollTop) * parseFloat(elm.getAttribute('data-speed'));

@@ -1,17 +1,17 @@
 <template>
   <section class="Slider" ref="container">
+    <div class="Slider__Container">
+      <div class="Slider__Track" ref="track">
 
-    <div class="Slider__Track" ref="track">
+        <img
+          class="Slider__Slide"
+          v-for="(slide, index) in layout.slides"
+          :key="index"
+          :src="slide"
+          alt="Project image">
 
-      <img
-        class="Slider__Slide"
-        v-for="(slide, index) in layout.slides"
-        :key="index"
-        :src="slide"
-        alt="Project image">
-
+      </div>
     </div>
-
   </section>
 
 </template>
@@ -33,13 +33,19 @@ export default {
 <style lang="scss">
 
 .Slider {
-  min-height: 630px;
+  min-height: 800px;
   width: 100%;
-  background: #191919;
   display: flex;
   align-items: center;
   overflow: hidden;
   cursor: grab;
+}
+
+.Slider__Container {
+  height: 630px;
+  background: #191919;
+  display: flex;
+  align-items: center;
 }
 
 .Slider__Track {

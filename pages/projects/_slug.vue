@@ -86,7 +86,7 @@ export default {
   mounted() {
     this.$store.commit('change', projects[this.$route.params.slug].id);
     setTimeout(() => {
-      EventBus.$emit('switchToProject');
+      // EventBus.$emit('switchToProject');
     }, 100)
     this.runParallax();
   },
@@ -117,6 +117,7 @@ export default {
 
 .Project {
   overflow: hidden;
+  background: #000;
 }
 
 .Project__Header {
@@ -138,7 +139,7 @@ export default {
 }
 
 .page-enter-active .Project__HeaderBack {
-  transition: ease 0.3s 1s;
+  transition: ease 0.3s 0.2s;
 }
 
 .page-leave-active .Project__HeaderBack {
@@ -154,6 +155,7 @@ export default {
   height: 100vh;
   width: 100%;
   position: relative;
+  margin-bottom: 84px;
   /* display: flex;
   justify-content: center;
   align-items: center; */
@@ -227,7 +229,7 @@ $delay: 30;
 }
 
 .page-enter-active .Project__HeroFooter {
-  transition: ease 0.3s 1.5s;
+  transition: ease 0.3s 0.2s;
 }
 
 .page-leave-active .Project__HeroFooter {

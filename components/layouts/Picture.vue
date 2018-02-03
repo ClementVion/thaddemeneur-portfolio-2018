@@ -25,7 +25,7 @@ export default {
 <style lang="scss">
 
 .Picture {
-  height: 728px;
+  min-height: 800px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,10 +33,14 @@ export default {
 
 .Picture__Container {
   width: 90%;
+  height: 630px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .Picture__Image {
-  width: 100%;
+  height: 100%;
 }
 
 </style>
