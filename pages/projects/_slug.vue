@@ -86,7 +86,7 @@ export default {
   mounted() {
     this.$store.commit('change', projects[this.$route.params.slug].id);
     setTimeout(() => {
-      // EventBus.$emit('switchToProject');
+      EventBus.$emit('switchToProject');
     }, 100)
     this.runParallax();
   },

@@ -1,7 +1,7 @@
 <template>
 
   <div class="Canvas" ref="canvas"></div>
-
+  
 </template>
 
 <script>
@@ -245,25 +245,24 @@ export default {
     },
 
     switchToProject() {
-      console.log('switchToProject');
       const newProjectBgX = this.maskContainerBgProject.x + this.images[0].width + 350;
       this.maskContainerBgProject.scale.set(1.5);
-      TweenMax.to(this.maskContainerBgProject.skew, 0.6, {x: 0.2, ease: Power3.easeInOut});
-      TweenMax.to(this.maskContainerBgProject, 0.6, {x: newProjectBgX,ease: Power3.easeInOut});
-      TweenMax.to(this.maskContainerBgProject.skew, 0.6, {x: 0, delay: 0.3, ease: Power3.easeInOut});
+      TweenMax.to(this.maskContainerBgProject.skew, 0.6, {x: 0.2, delay: 0.2, ease: Power3.easeInOut});
+      TweenMax.to(this.maskContainerBgProject, 0.6, {x: newProjectBgX, delay: 0.2,ease: Power3.easeInOut});
+      TweenMax.to(this.maskContainerBgProject.skew, 0.6, {x: 0, delay: 0.5, ease: Power3.easeInOut});
 
       this.projectsContainer.removeChild(this.images[this.currentImageIndex]);
       this.currentImageIndex = this.$store.state.currentProjectIndex;
       this.projectsContainer.addChild(this.images[this.currentImageIndex]);
 
       this.projectsContainer.filterArea = new PIXI.Rectangle(0, 0, this.appW, this.appH);
-      TweenMax.to(this.rectContainer.skew, 0.5, {x: 0.3, delay: 0.4, ease: Power3.easeInOut});
-      TweenMax.to(this.rectContainer.scale, 0.7, {x: 4, y: 2, delay: 0.4, ease: Power3.easeInOut});
-      TweenMax.to(this.rectContainer.skew, 0.5, {x: 0, delay: 0.2, delay: 0.7, ease: Power3.easeInOut});
+      TweenMax.to(this.rectContainer.skew, 0.5, {x: 0.3, ease: Power3.easeInOut});
+      TweenMax.to(this.rectContainer.scale, 0.7, {x: 4, y: 2, ease: Power3.easeInOut});
+      TweenMax.to(this.rectContainer.skew, 0.5, {x: 0, delay: 0.2, ease: Power3.easeInOut});
 
-      TweenMax.to(this.maskContainer.skew, 0.7, {x: 0.2, delay: 0.4, ease: Power3.easeInOut});
-      TweenMax.to(this.maskContainer, 1, {x: window.innerWidth / 2, delay: 0.4, ease: Power3.easeInOut});
-      TweenMax.to(this.maskContainer.skew, 0.7, {x: 0, delay:0.3, delay: 0.7, ease: Power3.easeInOut});
+      TweenMax.to(this.maskContainer.skew, 0.7, {x: 0.2, ease: Power3.easeInOut});
+      TweenMax.to(this.maskContainer, 1, {x: window.innerWidth / 2, ease: Power3.easeInOut});
+      TweenMax.to(this.maskContainer.skew, 0.7, {x: 0, delay:0.3 , ease: Power3.easeInOut});
     },
 
 

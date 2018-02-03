@@ -89,7 +89,7 @@
         {
           "id": 9,
           "type": "thanks",
-          "title": "special thanks ✌️",
+          "title": "Special thanks ✌️",
           "people": [
             {
               "name": "Ivan Provenzale",
@@ -190,7 +190,7 @@
         {
           "id": 8,
           "type": "thanks",
-          "title": "special thanks ✌️",
+          "title": "Special thanks ✌️",
           "people": [
             {
               "name": "Margaux Tellier",
@@ -198,7 +198,7 @@
             },
             {
               "name": "Lucie Zevaco",
-              "role": "Lead Designer"
+              "role": "UI/UX"
             },
             {
               "name": "Clément Vion",

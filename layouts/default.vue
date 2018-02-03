@@ -31,12 +31,12 @@ export default {
   },
 
   mounted() {
-    this.$router.beforeEach((to, from, next) => {
-      if (to.name === 'projects-slug') {
-        EventBus.$emit('switchToProject');
-      }
-      next();
-    })
+    // this.$router.beforeEach((to, from, next) => {
+    //   if (to.name === 'projects-slug') {
+    //     EventBus.$emit('switchToProject');
+    //   }
+    //   next();
+    // })
   }
 }
 </script>
