@@ -140,7 +140,7 @@ export default {
 
   transition: {
     name: 'page',
-    duration: 500,
+    duration: 1000,
   },
 
   mixins: [Scroll, Grab],
@@ -166,7 +166,22 @@ $containerWidth: 638px;
 .About {
   position: relative;
   z-index: 10;
+  overflow-x: hidden;
 }
+
+.page-enter-active .About {
+  transition: ease 0.5s 0.5s;
+}
+
+.page-leave-active .About {
+  transition: ease 0.3s;
+}
+
+.page-enter .About,
+.page-leave-active .About{
+  opacity: 0;
+}
+
 
 .About__Header {
   position: fixed;
@@ -215,7 +230,7 @@ $containerWidth: 638px;
 }
 
 .About__Beer {
-  padding: 75px 0;
+  padding: 140px 0 75px 0;
   max-width: 900px;
 }
 

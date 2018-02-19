@@ -158,6 +158,8 @@ export default {
         this.projectsContainer.removeChild(this.images[this.currentProjectIndex]);
         this.currentProjectIndex = this.$store.state.currentProjectIndex;
         this.projectsContainer.addChild(this.images[this.currentProjectIndex]);
+      } else if (this.$route.name === 'about') {
+        this.maskContainer.x = this.appW * 1.3;
       }
 
       this.maskContainer.y = this.appH / 2;
@@ -220,6 +222,8 @@ export default {
         this.rectContainer.scale.set(1, 1);
       } else if (this.$route.name === 'projects-slug') {
         this.rectContainer.scale.set(4, 2);
+      } else if (this.$route.name === 'about') {
+        this.rectContainer.x = this.appW * 1.3;
       }
 
       // this.noiseFilterRect = new PIXI.filters.NoiseFilter();
