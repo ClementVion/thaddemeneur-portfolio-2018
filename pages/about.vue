@@ -118,7 +118,33 @@
         </p>
       </div>
 
-      <h1 class="About__Beer"> Drop me a line if you want to have a beer or something. If you have a project you want us to work together on, that’s even better. </h1>
+      <h4 class="About__Beer"> Drop me a line if you want to have a beer or something. If you have a project you want us to work together on, that’s even better. </h4>
+
+      <ul class="About__Socials">
+        <li> <a href="mailto:thaddemeneur@gmail.com"> Contact </a> </li>
+        <li> <a target="_blank" href="https://www.behance.net/Thadde"> Behance </a> </li>
+        <li> <a target="_blank" href="https://dribbble.com/Thadde"> Dribbble </a> </li>
+        <li> <a target="_blank" href="https://www.linkedin.com/in/thadd%C3%A9-meneur/"> LinkedIn </a> </li>
+        <li> <a target="_blank" href="https://www.instagram.com/thaddemeneur/"> Instagram </a> </li>
+      </ul>
+
+      <div class="About__Archives">
+        <div class="About__ArchivesContainer">
+          <a target="_blank" href="http://www.2017.thaddemeneur.com"> Archive - Portfolio 2017 </a>
+        </div>
+      </div>
+
+      <div class="About__Internship">
+        <p class="About__InternshipText">
+           → Oh, and I am looking for an internship from July to December in the United States. Clément is also looking for an internship. ←
+        </p>
+      </div>
+
+
+      <div class="About__Footer">
+        <p class="About__FooterCredits"> © All rights reserved, 2018 </p>
+        <a target="_blank" href="http://clementvion.fr" class="About__Developer"> Coded by Clement Vion 🍺 </a>
+      </div>
 
     </section>
   </div>
@@ -193,7 +219,7 @@ $containerWidth: 638px;
 .About__HeaderBack {
   color: #000;
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: bold;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -220,7 +246,7 @@ $containerWidth: 638px;
 
 .About__Title, .About__Beer {
   font-size: 3.8rem;
-  font-weight: 600;
+  font-weight: bold;
   max-width: 632px;
   text-align: center;
   padding: 240px 0 75px 0;
@@ -240,7 +266,7 @@ $containerWidth: 638px;
 }
 
 .About__SubTitle {
-  font-weight: 600;
+  font-weight: bold;
   font-size: 1.8rem;
   margin-bottom: 20px;
 }
@@ -277,7 +303,7 @@ $containerWidth: 638px;
 
 .About__NumbersBig {
   font-size: 3.8rem;
-  font-weight: 600;
+  font-weight: bold;
 }
 
 .About__NumbersDesc {
@@ -336,5 +362,81 @@ $containerWidth: 638px;
   }
 }
 
+.About__Socials {
+  max-width: 475px;
+  margin: 35px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.About__Socials li, .About__ArchivesContainer{
+  position: relative;
+  font-size: 1.8rem;
+
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+
+  &:after {
+    content: '';
+    background: #D8D8D8;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+  }
+}
+
+.About__Archives {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 60px auto;
+}
+
+.About__Internship {
+  max-width: 910px;
+  margin: 50px auto 170px auto;
+  height: 116px;
+  background: #FFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.About__InternshipText {
+  max-width: 632px;
+  font-size: 1.8rem;
+  line-height: 2.8rem;
+  text-align: center;
+}
+
+.About__Footer {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto 60px auto;
+  font-size: 1.5rem;
+  font-weight: 600;
+  width: 90%;
+
+  a {
+    position: relative;
+    text-decoration: none;
+    color: #000;
+
+    &:after {
+      content: '';
+      background: #D8D8D8;
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+    }
+  }
+}
 
 </style>
