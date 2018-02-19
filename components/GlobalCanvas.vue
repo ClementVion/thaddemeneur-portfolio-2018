@@ -239,7 +239,7 @@ export default {
         this.maskBgProject.scale.set(1);
       }, 1500);
 
-      TweenMax.to(this.rectContainer.skew, 0.5, {x: 0.3, ease: Power3.easeInOut});
+      TweenMax.to(this.rectContainer.skew, 0.5, {x: 0.2, ease: Power3.easeInOut});
       TweenMax.to(this.rectContainer.scale, 0.9, {x: 1, y: 1, ease: Power3.easeInOut});
       TweenMax.to(this.rectContainer, 0.9, {x: (this.appW - (this.rect.width / 2)), ease: Power3.easeInOut});
       TweenMax.to(this.rectContainer.skew, 0.5, {x: 0, delay: 0.25, ease: Power3.easeInOut});

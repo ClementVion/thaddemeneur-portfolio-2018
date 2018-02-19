@@ -19,19 +19,22 @@ export default {
   methods: {
 
     listenGlobalEvents() {
-      EventBus.$on('switchToAllProjects', ($event) => {
-        this.$refs.container.classList.remove('home');
-        this.$refs.container.classList.add('project');
+      EventBus.$on('switchToHome', ($event) => {
+        this.$refs.container.classList.remove('project');
+        this.$refs.container.classList.remove('about');
+        this.$refs.container.classList.add('home');
       });
 
       EventBus.$on('switchToProject', ($event) => {
         this.$refs.container.classList.remove('home');
+        this.$refs.container.classList.remove('about');
         this.$refs.container.classList.add('project');
       });
 
-      EventBus.$on('switchToHome', ($event) => {
+      EventBus.$on('switchToAbout', ($event) => {
+        this.$refs.container.classList.remove('home');
         this.$refs.container.classList.remove('project');
-        this.$refs.container.classList.add('home');
+        this.$refs.container.classList.add('about');
       });
     }
 
@@ -48,18 +51,27 @@ export default {
   position: fixed;
   top: 55px;
   z-index: 10;
+}
 
-  &.project {
+.Header.project {
 
-    .Header__Title {
-      color: #FFF;
-    }
-
-    .Header__About {
-      transition: ease 0.3s;
-      opacity: 0;
-    }
+  .Header__Title {
+    color: #FFF;
   }
+
+  .Header__About {
+    transition: ease 0.3s;
+    opacity: 0;
+  }
+}
+
+.Header.about {
+
+  .Header__About {
+    transition: ease 0.3s;
+    opacity: 0;
+  }
+
 }
 
 .Header__Container {
@@ -83,6 +95,7 @@ export default {
 .Header__About {
   transition: ease 0.3s 1s;
   color: $grey;
+  opacity: 1;
 }
 
 </style>
