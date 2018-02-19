@@ -228,7 +228,7 @@ $delay: 1;
     transform: translate(0, 0);
   }
   50% {
-    transform: translate(0, 5px);
+    transform: translate(0, 10px);
   }
   100% {
     transform: translate(0, 0);
@@ -240,7 +240,7 @@ $delay: 1;
     transform: translate(0, 0) scale(1);
   }
   50% {
-    transform: translate(0, 5px) scale(0.95);
+    transform: translate(0, 10px) scale(0.95);
   }
   100% {
     transform: translate(0, 0) scale(1);

@@ -222,9 +222,9 @@ export default {
         this.rectContainer.scale.set(4, 2);
       }
 
-      this.noiseFilterRect = new PIXI.filters.NoiseFilter();
-      this.noiseFilterRect.noise = 0.2;
-      this.rect.filters = [this.noiseFilterRect];
+      // this.noiseFilterRect = new PIXI.filters.NoiseFilter();
+      // this.noiseFilterRect.noise = 0.2;
+      // this.rect.filters = [this.noiseFilterRect];
 
       this.rectContainer.addChild(this.rect);
       this.app.stage.addChild(this.rectContainer);
@@ -241,6 +241,7 @@ export default {
 
       TweenMax.to(this.rectContainer.skew, 0.5, {x: 0.3, ease: Power3.easeInOut});
       TweenMax.to(this.rectContainer.scale, 0.9, {x: 1, y: 1, ease: Power3.easeInOut});
+      TweenMax.to(this.rectContainer, 0.9, {x: (this.appW - (this.rect.width / 2)), ease: Power3.easeInOut});
       TweenMax.to(this.rectContainer.skew, 0.5, {x: 0, delay: 0.25, ease: Power3.easeInOut});
 
       TweenMax.to(this.maskContainer.skew, 0.7, {x: 0.2, ease: Power3.easeInOut});
@@ -269,8 +270,20 @@ export default {
       TweenMax.to(this.rectContainer.skew, 0.5, {x: 0, delay: 0.2, ease: Power3.easeInOut});
 
       TweenMax.to(this.maskContainer.skew, 0.7, {x: 0.2, ease: Power3.easeInOut});
-      TweenMax.to(this.maskContainer, 1, {x: window.innerWidth / 2, ease: Power3.easeInOut});
+      TweenMax.to(this.maskContainer, 1, {x: this.appW / 2, ease: Power3.easeInOut});
       TweenMax.to(this.maskContainer.skew, 0.7, {x: 0, delay:0.3 , ease: Power3.easeInOut});
+    },
+
+    switchToAbout() {
+      const newRectX = this.appW * 1.3;
+      TweenMax.to(this.rectContainer.skew, 0.8, {x: 0.3, ease: Power3.easeInOut});
+      TweenMax.to(this.rectContainer.scale, 1, {x: 1.2, y: 1.2, ease: Power3.easeInOut});
+      TweenMax.to(this.rectContainer, 1.2, {x: newRectX, ease: Power3.easeInOut});
+      TweenMax.to(this.rectContainer.skew, 0.8, {x: 0, delay: 0.3, ease: Power3.easeInOut});
+
+      TweenMax.to(this.maskContainer.skew, 0.8, {x: 0.2, ease: Power3.easeInOut});
+      TweenMax.to(this.maskContainer, 1.2, {x: newRectX, ease: Power3.easeInOut});
+      TweenMax.to(this.maskContainer.skew, 0.8, {x: 0, delay:0.3 , ease: Power3.easeInOut});
     },
 
     changeImage(currentImageIndex, nextImageIndex) {
@@ -345,6 +358,10 @@ export default {
         this.switchToProject();
       })
 
+      EventBus.$on('switchToAbout', ($event) => {
+        this.switchToAbout();
+      })
+
       EventBus.$on('changeProject', ($event) => {
         this.changeImage($event.currentProjectIndex, $event.nextProjectIndex);
       })
@@ -353,7 +370,7 @@ export default {
     animate() {
       requestAnimationFrame(this.animate);
       this.noiseFilterBg.seed = (Math.random() * 1) * 0.05;
-      this.noiseFilterRect.seed = (Math.random() * 1) * 0.05;
+      // this.noiseFilterRect.seed = (Math.random() * 1) * 0.05;
       this.displacementSprite.x += this.displacementSpeed;
       this.displacementSprite.y += this.displacementSpeed;
     },
@@ -370,7 +387,7 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="scss">
   .Canvas {
     position: relative;
     top: 0;

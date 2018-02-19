@@ -12,7 +12,7 @@
       <h2 class="Project__Title js-toSplit" :data-text="project.title" ref="title"> </h2>
     </div>
 
-    <div class="Project__HeroFooter">
+    <div class="Project__HeroFooter js-hideOnScroll">
       <div class="Project__HeroFooterContainer">
         <img src="/images/rounded-arrow.svg" alt="Scroll down arrow">
         <p class="Project__HeroFooterCta"> Scroll down </p>
@@ -105,8 +105,8 @@ export default {
 
       const elm = this.$refs.title;
       if (elm) {
-        let distance = Math.abs(this.scrollbar.scrollTop) * 1;
-        elm.style.transform = 'translate3d(' + (-distance) + 'px,0,0)';
+        let distance = Math.abs(this.scrollbar.scrollTop) * 0.2;
+        elm.style.transform = 'translate3d(0,' + (distance) + 'px,0)';
       }
     },
 
@@ -216,6 +216,13 @@ $delay: 15;
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+
+  &.hidden {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
 }
 
 .Project__HeroFooterContainer {
