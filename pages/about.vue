@@ -195,19 +195,6 @@ $containerWidth: 638px;
   overflow-x: hidden;
 }
 
-.page-enter-active .About {
-  transition: ease 0.5s 0.5s;
-}
-
-.page-leave-active .About {
-  transition: ease 0.3s;
-}
-
-.page-enter .About,
-.page-leave-active .About{
-  opacity: 0;
-}
-
 
 .About__Header {
   position: fixed;
@@ -255,15 +242,52 @@ $containerWidth: 638px;
   color: #000;
 }
 
+.page-enter-active .About__Title,
+.page-leave-active .About__Title {
+  transition: ease 0.5s;
+}
+
+.page-enter .About__Title,
+.page-leave-active .About__Title{
+  transform: rotate(-1deg) translate(0px, -20px);
+  opacity: 0;
+}
+
 .About__Beer {
   padding: 140px 0 75px 0;
   max-width: 900px;
+}
+
+.page-enter-active .About__Beer,
+.page-leave-active .About__Beer {
+  transition: ease 0.5s;
+}
+
+.page-enter .About__Beer,
+.page-leave-active .About__Beer{
+  transform: rotate(-1deg) translate(0px, -20px);
+  opacity: 0;
 }
 
 .About__Block {
   margin: 35px auto;
   max-width: $containerWidth;
 }
+
+.page-enter-active .About__Block {
+  transition: ease 0.5s 0.2s;
+}
+
+.page-leave-active .About__Block {
+  transition: ease 0.3s;
+}
+
+.page-enter .About__Block,
+.page-leave-active .About__Block{
+  transform: rotate(-1deg) translate(0px, -20px);
+  opacity: 0;
+}
+
 
 .About__SubTitle {
   font-weight: bold;
@@ -288,6 +312,21 @@ $containerWidth: 638px;
   display: flex;
   align-items: center;
 }
+
+.page-enter-active .About__Numbers {
+  transition: ease 0.5s 0.3s;
+}
+
+.page-leave-active .About__Numbers {
+  transition: ease 0.3s;
+}
+
+.page-enter .About__Numbers,
+.page-leave-active .About__Numbers{
+  transform: rotate(-1deg) translate(0px, -20px);
+  opacity: 0;
+}
+
 
 .About__NumbersContainer {
   max-width: $containerWidth;
@@ -316,6 +355,20 @@ $containerWidth: 638px;
 .About__Reviews {
   max-width: 910px;
   margin: 110px auto;
+}
+
+.page-enter-active .About__Reviews {
+  transition: ease 0.5s 0.3s;
+}
+
+.page-leave-active .About__Reviews {
+  transition: ease 0.3s;
+}
+
+.page-enter .About__Reviews,
+.page-leave-active .About__Reviews{
+  transform: rotate(-1deg) translate(0px, -20px);
+  opacity: 0;
 }
 
 .About__ReviewsTitle {
@@ -370,6 +423,20 @@ $containerWidth: 638px;
   align-items: center;
 }
 
+.page-enter-active .About__Socials {
+  transition: ease 0.5s 0.3s;
+}
+
+.page-leave-active .About__Socials {
+  transition: ease 0.3s;
+}
+
+.page-enter .About__Socials,
+.page-leave-active .About__Socials{
+  transform: rotate(-1deg) translate(0px, -20px);
+  opacity: 0;
+}
+
 .About__Socials li, .About__ArchivesContainer{
   position: relative;
   font-size: 1.8rem;
@@ -397,6 +464,20 @@ $containerWidth: 638px;
   margin: 60px auto;
 }
 
+.page-enter-active .About__Archives {
+  transition: ease 0.5s 0.3s;
+}
+
+.page-leave-active .About__Archives {
+  transition: ease 0.3s;
+}
+
+.page-enter .About__Archives,
+.page-leave-active .About__Archives{
+  transform: rotate(-1deg) translate(0px, -20px);
+  opacity: 0;
+}
+
 .About__Internship {
   max-width: 910px;
   margin: 50px auto 170px auto;
@@ -406,6 +487,21 @@ $containerWidth: 638px;
   justify-content: center;
   align-items: center;
 }
+
+.page-enter-active .About__Internship {
+  transition: ease 0.5s 0.3s;
+}
+
+.page-leave-active .About__Internship {
+  transition: ease 0.3s;
+}
+
+.page-enter .About__Internship,
+.page-leave-active .About__Internship{
+  transform: rotate(-1deg) translate(0px, -20px);
+  opacity: 0;
+}
+
 
 .About__InternshipText {
   max-width: 632px;
@@ -437,6 +533,19 @@ $containerWidth: 638px;
       height: 2px;
     }
   }
+}
+
+.page-enter-active .About__Footer {
+  transition: ease 0.5s 0.3s;
+}
+
+.page-leave-active .About__Footer {
+  transition: ease 0.3s;
+}
+
+.page-enter .About__Footer,
+.page-leave-active .About__Footer{
+  opacity: 0;
 }
 
 </style>

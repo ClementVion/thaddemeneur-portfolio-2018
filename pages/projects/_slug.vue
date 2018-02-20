@@ -92,9 +92,6 @@ export default {
 
   mounted() {
     this.$store.commit('change', projects[this.$route.params.slug].id);
-    // setTimeout(() => {
-    //   EventBus.$emit('switchToProject');
-    // }, 100)
     this.runParallax();
   },
 
@@ -105,8 +102,9 @@ export default {
 
       const elm = this.$refs.title;
       if (elm) {
-        let distance = Math.abs(this.scrollbar.scrollTop) * 0.2;
-        elm.style.transform = 'translate3d(0,' + (distance) + 'px,0)';
+        let distanceX = Math.abs(this.scrollbar.scrollTop) * 1;
+        let distanceY = Math.abs(this.scrollbar.scrollTop) * 0.2;
+        elm.style.transform = 'translate3d(' + (-distanceX) + 'px,' + (distanceY) + 'px,0)';
       }
     },
 
