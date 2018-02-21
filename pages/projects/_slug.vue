@@ -38,6 +38,9 @@
 
       </div>
     </div>
+
+    <NextProject :currentProject="project" />
+
   </section>
 </template>
 
@@ -55,6 +58,7 @@ import SliderParallax from '~/components/layouts/SliderParallax.vue'
 import Thanks from '~/components/layouts/Thanks.vue'
 import Picture from '~/components/layouts/Picture.vue'
 import Islands from '~/components/layouts/customs/Islands.vue'
+import NextProject from '~/components/NextProject.vue'
 
 export default {
 
@@ -79,7 +83,8 @@ export default {
     SliderParallax,
     Thanks,
     Picture,
-    Islands
+    Islands,
+    NextProject
   },
 
   mixins: [Scroll, TextSplit],

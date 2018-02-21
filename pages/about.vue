@@ -63,7 +63,7 @@
       </div>
 
 
-      <div class="About__Reviews">
+      <!-- <div class="About__Reviews">
 
         <div class="About__SubTitle About__ReviewsTitle"> Client reviews </div>
 
@@ -97,7 +97,7 @@
           </div>
         </div>
 
-      </div>
+      </div> -->
 
       <div class="About__Block About__Awards">
         <div class="About__SubTitle"> Awards and distinctions </div>
@@ -352,7 +352,7 @@ $containerWidth: 638px;
   color: #818181;
 }
 
-.About__Reviews {
+/*.About__Reviews {
   max-width: 910px;
   margin: 110px auto;
 }
@@ -413,7 +413,7 @@ $containerWidth: 638px;
       margin-top: 0;
     }
   }
-}
+}*/
 
 .About__Socials {
   max-width: 475px;
@@ -544,7 +544,7 @@ $containerWidth: 638px;
 }
 
 .page-enter .About__Footer,
-.page-leave-active .About__Footer{
+.page-leave-active .About__Footer {
   opacity: 0;
 }
 
