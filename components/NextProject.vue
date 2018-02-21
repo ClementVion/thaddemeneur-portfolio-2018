@@ -1,13 +1,17 @@
 <template>
   <section class="NextProject">
-    <div class="NextProject__Mask" ref="mask">
-      <img :src="imageUrl" alt="" class="NextProject__Image">
-    </div>
+    <nuxt-link :to="'/projects/' + nextProject.slug" @click.native="changeProjectOnCanvas">
+      <div class="NextProject__ImageContainer">
+        <img :src="imageUrl" alt="" class="NextProject__Image">
+      </div>
+      <div class="NextProject__Background" ref="mask"></div>
+    </nuxt-link>
   </section>
 </template>
 
 <script>
-import projects from '~/static/data/projects.json'
+import projects from '~/static/data/projects.json';
+import EventBus from '~/components/bus/EventBus.js';
 
 export default {
 
@@ -46,6 +50,13 @@ export default {
       } else {
         this.nextProject = this.projectsArray[this.currentProject.id + 1];
       }
+    },
+
+    changeProjectOnCanvas() {
+      EventBus.$emit('changeProjectWithoutAnimation', {
+        'currentProjectIndex': this.currentProject.id,
+        'nextProjectIndex': this.nextProject.id,
+      });
     }
 
   }
@@ -56,23 +67,36 @@ export default {
 <style lang="scss">
 
   .NextProject {
-    height: 600px;
+    position: relative;
+    height: 85vh;
     width: 100%;
     cursor: pointer;
     margin-top: 110px;
   }
 
-  .NextProject__Mask {
+  .NextProject__ImageContainer {
+    position: absolute;
+    z-index: 10;
     width: 100%;
     height: 100%;
     display: flex;
-    overflow: hidden;
     justify-content: center;
     align-items: flex-end;
   }
 
   .NextProject__Image {
     max-height: 100%;
+  }
+
+  .NextProject__Background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  .page-leave-active .NextProject__Background {
+    transition: 0.4s ease;
+    // transform: scaleX(0.26);
   }
 
 </style>

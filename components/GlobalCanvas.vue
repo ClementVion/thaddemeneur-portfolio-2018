@@ -318,6 +318,16 @@ export default {
       this.maskContainer.addChild(this.projectsContainer);
     },
 
+    changeImageWithoutAnimation(currentImageIndex, nextImageIndex) {
+      this.currentProjectIndex = nextImageIndex;
+      this.projectsContainer.removeChild(this.images[currentImageIndex]);
+      this.projectsContainer.addChild(this.images[nextImageIndex]);
+      this.maskContainer.removeChild(this.maskBgProject);
+      this.updateProjectBgColor();
+      this.maskContainer.removeChild(this.projectsContainer);
+      this.maskContainer.addChild(this.projectsContainer);
+    },
+
     updateProjectBgColor() {
       const color = this.projectsArray[this.currentProjectIndex].color;
       const bgProjectX = this.maskX - this.images[0].width;
@@ -339,17 +349,21 @@ export default {
       }
     },
 
+    updateCanvas() {
+      this.app.stage.removeChild(this.bgContainer);
+      this.app.stage.removeChild(this.rectContainer);
+      this.app.stage.removeChild(this.maskContainer);
+      this.initBackground();
+      this.initRect();
+      this.initProjectsImages();
+    },
+
     listenResize() {
       window.addEventListener('resize', () => {
         this.appW = window.innerWidth;
         this.appH = window.innerHeight;
         this.app.renderer.resize(this.appW, this.appH);
-        this.app.stage.removeChild(this.bgContainer);
-        this.app.stage.removeChild(this.rectContainer);
-        this.app.stage.removeChild(this.maskContainer);
-        this.initBackground();
-        this.initRect();
-        this.initProjectsImages();
+        this.updateCanvas();
       });
     },
 
@@ -366,8 +380,16 @@ export default {
         this.switchToAbout();
       })
 
+      /*EventBus.$on('updateCanvas', ($event) => {
+        this.updateCanvas();
+      })*/
+
       EventBus.$on('changeProject', ($event) => {
         this.changeImage($event.currentProjectIndex, $event.nextProjectIndex);
+      })
+
+      EventBus.$on('changeProjectWithoutAnimation', ($event) => {
+        this.changeImageWithoutAnimation($event.currentProjectIndex, $event.nextProjectIndex);
       })
     },
 
