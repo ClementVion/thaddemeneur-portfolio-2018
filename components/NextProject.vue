@@ -117,13 +117,14 @@ export default {
       const widthToReach = 362;
       const heightToReach = 552;
       this.appH = window.innerHeight;
-      TweenMax.to(this.imageContainer, 0.5, {y: this.appH / 2, ease: Cubic.easeInOut});
+      TweenMax.to(this.imageContainer, 0.5, {y: this.appH / 2 - 1, ease: Cubic.easeInOut});
       TweenMax.to(this.background, 0.5, {
         width: widthToReach,
         height: heightToReach,
         x: (this.appW / 2) - (widthToReach / 2),
         y: (this.appH / 2) - (heightToReach / 2),
-        ease: Cubic.easeInOut
+        ease: Cubic.easeInOut,
+        delay: 0.4
       });
     },
 

@@ -45,6 +45,7 @@
 </template>
 
 <script>
+import {TweenMax} from 'gsap';
 import projects from '~/static/data/projects.json'
 import Scroll from '~/mixins/Scroll.js';
 import TextSplit from '~/mixins/TextSplit.js';
@@ -121,8 +122,7 @@ export default {
     },
 
     clickOnNextProject() {
-      console.log('clickedOnNextProject');
-      // Here we need to scroll to bottom
+      TweenMax.to(this.scrollbar, 0.3, {scrollTop: this.scrollbar.limit.y, ease: Cubic.easeInOut});
     }
 
   },
