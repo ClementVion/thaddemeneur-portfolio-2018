@@ -71,7 +71,7 @@ export default {
 
   transition: {
     name: 'page',
-    duration: 500,
+    duration: 1000,
   },
 
   components: {
@@ -98,6 +98,9 @@ export default {
   mounted() {
     this.$store.commit('change', projects[this.$route.params.slug].id);
     this.runParallax();
+    EventBus.$on('clickOnNextProject', ($event) => {
+      this.clickOnNextProject();
+    })
   },
 
   methods: {
@@ -115,6 +118,11 @@ export default {
 
     clickedOnGoBack() {
       this.$router.go(-1);
+    },
+
+    clickOnNextProject() {
+      console.log('clickedOnNextProject');
+      // Here we need to scroll to bottom
     }
 
   },
