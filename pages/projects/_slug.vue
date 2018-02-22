@@ -154,6 +154,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  text-decoration: none;
 }
 
 .page-enter-active .Project__HeaderBack {

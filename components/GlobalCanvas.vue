@@ -218,8 +218,11 @@ export default {
       this.rect.endFill();
 
       this.rectContainer = new PIXI.Container();
-      // this.rectContainer.position.set(this.appW - (rectWidth / 2), (this.rect.height /2));
-      this.rectContainer.position.set(this.appW + (rectWidth / 2), (this.rect.height /2));
+      if (this.$route.name === 'index') {
+        this.rectContainer.position.set(this.appW + (rectWidth / 2), (this.rect.height /2));
+      } else {
+        this.rectContainer.position.set(this.appW - (rectWidth / 2), (this.rect.height /2));
+      }
       this.rectContainer.pivot.set((rectWidth / 2), (this.rect.height /2));
 
       if (this.$route.name === 'index') {
@@ -396,9 +399,9 @@ export default {
         this.switchToAbout();
       })
 
-      /*EventBus.$on('updateCanvas', ($event) => {
+      EventBus.$on('updateCanvas', ($event) => {
         this.updateCanvas();
-      })*/
+      })
 
       EventBus.$on('changeProject', ($event) => {
         this.changeImage($event.currentProjectIndex, $event.nextProjectIndex);

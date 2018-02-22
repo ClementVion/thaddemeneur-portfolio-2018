@@ -35,14 +35,29 @@ export default {
   },
 
   mounted() {
-    EventBus.$on('loadingEnded', ($event) => {
-      setTimeout(() => {
-        this.showLoader = false;
-        if (this.$route.name === 'index') {
-          EventBus.$emit('switchToHome');
-        }
-      }, 500);
-    })
+    this.listenLoadingEnd();
+  },
+
+  methods: {
+
+    listenLoadingEnd() {
+      EventBus.$on('loadingEnded', ($event) => {
+        setTimeout(() => {
+          this.showLoader = false;
+          if (this.$route.name === 'index') {
+            EventBus.$emit('updateCanvas');
+            EventBus.$emit('switchToHome');
+          } else if (this.$route.name === 'projects-slug') {
+            EventBus.$emit('switchToProject');
+            EventBus.$emit('updateCanvas');
+          } else if (this.$route.name === 'about') {
+            EventBus.$emit('switchToAbout');
+            EventBus.$emit('updateCanvas');
+          }
+        }, 500);
+      })
+    }
+
   }
 
 }
