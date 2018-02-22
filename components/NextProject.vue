@@ -124,7 +124,6 @@ export default {
       TweenMax.to(this.imageContainer, 0.2, {y: this.appH / 2, ease: Cubic.ease});
       TweenMax.to(this.background, 0.5, {
         width: this.widthToReach,
-        // height: this.heightToReach,
         x: (this.appW / 2) - (this.widthToReach / 2),
         y: (this.appH / 2) - (this.heightToReach / 2),
         ease: Cubic.ease,
@@ -133,10 +132,8 @@ export default {
 
     toggleNextProjectCanvas(stateToUpdate) {
       if (stateToUpdate === 'start' && this.app.renderer.view.style.display === "none") {
-        console.log('NEXT PROJECT start')
         this.app.renderer.view.style.display = "block";
       } else if (stateToUpdate === 'stop' && this.app.renderer.view.style.display === "block"){
-        console.log('NEXT PROJECT stop')
         this.app.renderer.view.style.display = "none";
       }
     },

@@ -351,10 +351,8 @@ export default {
 
     toggleMainCanvas(stateToUpdate) {
       if (stateToUpdate === 'start' && this.app.renderer.view.style.display === "none") {
-        console.log('MAIN CANVAS start');
         this.app.renderer.view.style.display = "block";
       } else if (stateToUpdate === 'stop' && this.app.renderer.view.style.display === "block") {
-        console.log('MAIN CANVAS stop');
         this.app.renderer.view.style.display = "none";
       }
     },
