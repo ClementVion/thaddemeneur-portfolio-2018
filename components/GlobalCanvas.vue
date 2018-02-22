@@ -319,6 +319,7 @@ export default {
     },
 
     changeImageWithoutAnimation(currentImageIndex, nextImageIndex) {
+      this.app.start();
       this.currentProjectIndex = nextImageIndex;
       this.projectsContainer.removeChild(this.images[currentImageIndex]);
       this.projectsContainer.addChild(this.images[nextImageIndex]);
