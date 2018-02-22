@@ -72,7 +72,7 @@ export default {
 
   transition: {
     name: 'page',
-    duration: 1000,
+    duration: 500,
   },
 
   components: {
@@ -122,7 +122,7 @@ export default {
     },
 
     clickOnNextProject() {
-      TweenMax.to(this.scrollbar, 0.3, {scrollTop: this.scrollbar.limit.y, ease: Cubic.easeInOut});
+      TweenMax.to(this.scrollbar, 0.4, {scrollTop: this.scrollbar.limit.y, ease: Cubic.ease});
     }
 
   },

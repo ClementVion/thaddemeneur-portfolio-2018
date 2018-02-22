@@ -32,6 +32,9 @@ export default {
       background: '',
       imageContainer: '',
       image: '',
+      widthToReach: 362,
+      heightToReach: 552,
+      mask: ''
     }
   },
 
@@ -39,9 +42,6 @@ export default {
     this.convertProjectsToArray();
     this.getNextProject();
     this.imageUrl = this.nextProject.images.main;
-    // this.color = this.nextProject.color.substring(2);
-    // this.$refs.mask.style.backgroundColor = '#' + this.color;
-
     this.initCanvas();
   },
 
@@ -69,13 +69,18 @@ export default {
       this.app.renderer.resize(this.appW, this.appH);
       this.$refs.nextProjectCanvas.appendChild(this.app.view);
 
-      this.setup();
+      // if (PIXI.utils.TextureCache[this.imageUrl] === undefined) {
+      //   PIXI.loader
+      //     .add(this.imageUrl)
+      //     .load(this.setup);
+      // } else {
+        this.setup();
+      // }
     },
 
     setup() {
       this.initNextProjectBackground();
       this.initNextProjectImage();
-      // this.animate();
     },
 
     initNextProjectBackground() {
@@ -90,9 +95,7 @@ export default {
       this.background.lineTo(0,this.appH);
       this.background.endFill();
 
-      this.backgroundContainer.pivot.set(this.backgroundContainer.width / 2, this.backgroundContainer.height / 2);
       this.background.pivot.set(this.backgroundContainer.width / 2, this.backgroundContainer.height / 2);
-      this.backgroundContainer.position.set(this.backgroundContainer.width / 2, this.backgroundContainer.height / 2);
       this.background.position.set(this.backgroundContainer.width / 2, this.backgroundContainer.height / 2);
 
       this.backgroundContainer.addChild(this.background);
@@ -107,24 +110,21 @@ export default {
       this.imageContainer.scale.x = 0.45;
       this.imageContainer.scale.y = 0.45;
       this.imageContainer.position.x = this.appW / 2;
-      this.imageContainer.position.y = this.appH - ((this.image.height * 0.45) / 2);
+      this.imageContainer.position.y = ((this.image.height * 0.45) / 2);
 
       this.imageContainer.addChild(this.image);
       this.app.stage.addChild(this.imageContainer);
     },
 
     setCanvasToNextProject() {
-      const widthToReach = 362;
-      const heightToReach = 552;
       this.appH = window.innerHeight;
-      TweenMax.to(this.imageContainer, 0.5, {y: this.appH / 2 - 1, ease: Cubic.easeInOut});
-      TweenMax.to(this.background, 0.5, {
-        width: widthToReach,
-        height: heightToReach,
-        x: (this.appW / 2) - (widthToReach / 2),
-        y: (this.appH / 2) - (heightToReach / 2),
-        ease: Cubic.easeInOut,
-        delay: 0.4
+      TweenMax.to(this.imageContainer, 0.4, {y: this.appH / 2, ease: Cubic.ease});
+      TweenMax.to(this.background, 0.4, {
+        width: this.widthToReach,
+        // height: this.heightToReach,
+        x: (this.appW / 2) - (this.widthToReach / 2),
+        y: (this.appH / 2) - (this.heightToReach / 2),
+        ease: Cubic.ease,
       });
     },
 
@@ -163,7 +163,7 @@ export default {
   .NextProject {
     position: relative;
     // height: 85vh;
-    height: 85vh;
+    height: 552px;
     width: 100%;
     cursor: pointer;
     margin-top: 110px;
@@ -172,7 +172,8 @@ export default {
   .NextProject__Canvas {
     // display: flex;
     // align-items: flex-end;
-    margin-top: 15vh;
+    margin-top: calc(100vh - 552px);
+    height: 552px;
   }
 
   .page-leave-active .NextProject {
@@ -180,41 +181,7 @@ export default {
   }
 
   .page-leave-active .NextProject__Canvas {
-    margin-top: 0;
+    margin-top: calc(100vh - 552px);
   }
-
-  // .NextProject__ImageContainer {
-  //   position: absolute;
-  //   z-index: 10;
-  //   width: 100%;
-  //   height: 100%;
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: flex-end;
-  // }
-  //
-  // .NextProject__Image {
-  //   height: 552px;
-  // }
-  //
-  // .page-leave-active .NextProject__Image {
-  //   transition: 0.4s ease;
-  //   transform: translateY(-200px);
-  // }
-  //
-  // .NextProject__Background {
-  //   position: absolute;
-  //   width: 100%;
-  //   height: 100%;
-  // }
-  //
-  // .page-leave-active .NextProject__Background {
-  //   transition: left 0.8s ease, all 0.4s ease;
-  //   // transform: translateY(-9%) scaleX(0.25) scaleY(0.8);
-  //   width: 362px;
-  //   height: 552px;
-  //   left: calc(50% - 181px);
-  //   top: calc(50% - 276px);
-  // }
 
 </style>
