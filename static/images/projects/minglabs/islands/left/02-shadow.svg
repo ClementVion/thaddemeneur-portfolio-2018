@@ -8,8 +8,8 @@
             <feGaussianBlur stdDeviation="2.41415753" in="SourceGraphic"></feGaussianBlur>
         </filter>
     </defs>
-    <g id="Desktop-HD-Copy-17" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-268.000000, -1837.000000)">
-        <g id="Illustration" transform="translate(274.000000, 1643.000000)" fill="#060606">
+    <g id="Project/MingLabs" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-268.000000, -1837.000000)">
+        <g id="Illustration" transform="translate(274.000000, 1643.000000)" fill="#000000">
             <g id="Shadow" transform="translate(0.000000, 128.747346)">
                 <path d="M29.4380645,156.635532 L6.18,143.191108 C-2.06,138.399036 -2.06,126.418855 6.18,121.626783 L91.1131355,72.2471425 C94.967329,69.9842196 99.6189419,69.9842196 103.473135,72.2471425 L137.496361,91.8147702 C143.875716,95.5419374 143.875716,104.726742 137.496361,108.453909 L54.1580645,156.768645 C46.5825806,161.028265 37.1464516,161.028265 29.4380645,156.635532" id="02-shadow" filter="url(#filter-1)"></path>
             </g>

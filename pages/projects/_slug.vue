@@ -122,7 +122,7 @@ export default {
     },
 
     clickOnNextProject() {
-      TweenMax.to(this.scrollbar, 0.4, {scrollTop: this.scrollbar.limit.y, ease: Cubic.ease});
+      TweenMax.to(this.scrollbar, 0.5, {scrollTop: this.scrollbar.limit.y, ease: Cubic.ease});
     }
 
   },

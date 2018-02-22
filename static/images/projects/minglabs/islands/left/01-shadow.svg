@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="152px" height="99px" viewBox="0 0 152 99" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="154px" height="101px" viewBox="0 0 154 101" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
     <title>01-shadow</title>
     <desc>Created with Sketch.</desc>
@@ -8,8 +8,8 @@
             <feGaussianBlur stdDeviation="2.41415753" in="SourceGraphic"></feGaussianBlur>
         </filter>
     </defs>
-    <g id="Desktop-HD-Copy-17" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-390.000000, -1767.000000)" fill-opacity="0.225260417">
-        <g id="Illustration" transform="translate(274.000000, 1643.000000)" fill="#797979">
+    <g id="Project/MingLabs" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-389.000000, -1766.000000)">
+        <g id="Illustration" transform="translate(274.000000, 1643.000000)" fill="#000000">
             <g id="Shadow" transform="translate(0.000000, 128.747346)">
                 <path d="M150.489764,86.028699 L127.2317,72.5842745 C118.9917,67.7922024 118.9917,55.8120222 126.387764,51.5098063 L211.322229,2.13149676 C216.019029,-0.622613568 220.670642,-0.622613568 224.524835,1.64030937 L258.548061,21.2079371 C264.927416,24.9351043 264.927416,34.1199091 258.548061,37.8470763 L175.209764,86.1618121 C167.63428,90.4214317 158.198151,90.4214317 150.489764,86.028699" id="01-shadow" filter="url(#filter-1)"></path>
             </g>

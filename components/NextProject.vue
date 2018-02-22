@@ -118,8 +118,8 @@ export default {
 
     setCanvasToNextProject() {
       this.appH = window.innerHeight;
-      TweenMax.to(this.imageContainer, 0.4, {y: this.appH / 2, ease: Cubic.ease});
-      TweenMax.to(this.background, 0.4, {
+      TweenMax.to(this.imageContainer, 0.2, {y: this.appH / 2, ease: Cubic.ease});
+      TweenMax.to(this.background, 0.5, {
         width: this.widthToReach,
         // height: this.heightToReach,
         x: (this.appW / 2) - (this.widthToReach / 2),

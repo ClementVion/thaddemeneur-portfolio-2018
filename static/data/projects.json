@@ -5,7 +5,7 @@
     "number": "First Story",
     "title": "My internship at Minglabs",
     "desc": "and the way we helped craftsmen be more efficient at work",
-    "color": "0x5F87D6",
+    "color": "0x8BA1CD",
     "images": {
       "main": "/images/terminmeister.png"
     },
@@ -118,7 +118,7 @@
     "number": "Second Story",
     "title": "Tesla x Go Pro School Project",
     "desc": "salut thaddé tu n'as pas écrit le contenu de ce paragraphe, des bisous.",
-    "color": "0xD65F5F",
+    "color": "0xCD8B8B",
     "images": {
       "main": "/images/chair.png"
     },
@@ -232,7 +232,7 @@
     "number": "Third Story",
     "title": "Weekmeal, School Project",
     "desc": "finally finding a good idea of what to cook for dinner tonight",
-    "color": "0xD68E5F",
+    "color": "0x8BCDA6",
     "images": {
       "main": "/images/fruits.png"
     },
@@ -332,7 +332,7 @@
     "number": "Fourth Story",
     "title": "My internship at OhMyGeorge",
     "desc": "turning trading into an accessible and fun mobile game.",
-    "color": "0x953292",
+    "color": "0x8B8CCD",
     "images": {
       "main": "/images/ohmygeorge.png"
     },
@@ -422,7 +422,7 @@
     "number": "Fifth Story",
     "title": "Pickorr, Freelance Project",
     "desc": "designing the future of news curation for medecine staff and students.",
-    "color": "0x5AA474",
+    "color": "0xCD8BB3",
     "images": {
       "main": "/images/pickorr.png"
     },
