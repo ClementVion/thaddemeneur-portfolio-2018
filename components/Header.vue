@@ -14,6 +14,9 @@ export default {
 
   mounted() {
     this.listenGlobalEvents();
+    setTimeout(() => {
+      this.$refs.container.classList.add('appeared');
+    }, 100);
   },
 
   methods: {
@@ -51,6 +54,12 @@ export default {
   position: fixed;
   top: 55px;
   z-index: 10;
+  opacity: 0;
+
+  &.appeared {
+    transition: 0.3s 1s ease;
+    opacity: 1;
+  }
 }
 
 .Header.project {

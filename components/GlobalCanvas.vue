@@ -88,10 +88,14 @@ export default {
         this.imagesUrl.push(project.images.main);
       }
 
+      PIXI.loader.on('progress', function (loader, loadedResource) {
+        EventBus.$emit('loadingProgress', {'progress': loader.progress});
+      });
+
       PIXI.loader
-      .add(this.imagesUrl)
-      .add("/images/sprite.png")
-      .load(this.setup);
+        .add(this.imagesUrl)
+        .add("/images/sprite.png")
+        .load(this.setup);
     },
 
     initBackground() {
@@ -151,10 +155,9 @@ export default {
       mask.endFill();
 
       if (this.$route.name === 'index') {
-        this.maskContainer.x = this.appW - (this.rectContainer.width / 2);
+        this.maskContainer.x = this.appW + (this.rectContainer.width / 2);
       } else if (this.$route.name === 'projects-slug') {
         this.maskContainer.x = window.innerWidth / 2;
-
         this.projectsContainer.removeChild(this.images[this.currentProjectIndex]);
         this.currentProjectIndex = this.$store.state.currentProjectIndex;
         this.projectsContainer.addChild(this.images[this.currentProjectIndex]);
@@ -215,7 +218,8 @@ export default {
       this.rect.endFill();
 
       this.rectContainer = new PIXI.Container();
-      this.rectContainer.position.set(this.appW - (rectWidth / 2), (this.rect.height /2));
+      // this.rectContainer.position.set(this.appW - (rectWidth / 2), (this.rect.height /2));
+      this.rectContainer.position.set(this.appW + (rectWidth / 2), (this.rect.height /2));
       this.rectContainer.pivot.set((rectWidth / 2), (this.rect.height /2));
 
       if (this.$route.name === 'index') {

@@ -1,5 +1,5 @@
 <template>
-  <section class="ProjectsFooter u-home-container">
+  <section class="ProjectsFooter u-home-container" ref="projectsFooter">
     <div class="ProjectsFooter__Container">
 
       <div class="ProjectsFooter__Progress">
@@ -42,6 +42,9 @@
       this.maxProjectIndex = this.projectsArray.length;
       this.updateIndexAndProgressBar(this.$store.state.currentProjectIndex);
       this.listenGlobalEvents();
+      setTimeout(() => {
+        this.$refs.projectsFooter.classList.add('appeared');
+      }, 1500);
     },
 
     methods: {
@@ -82,6 +85,12 @@
     font-weight: 600;
     position: fixed;
     bottom: 65px;
+    opacity: 0;
+
+    &.appeared {
+      transition: 0.3s ease;
+      opacity: 1;
+    }
   }
 
   .ProjectsFooter__Container {
