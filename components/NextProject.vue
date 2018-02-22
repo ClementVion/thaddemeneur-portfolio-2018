@@ -43,6 +43,9 @@ export default {
     this.getNextProject();
     this.imageUrl = this.nextProject.images.main;
     this.initCanvas();
+    EventBus.$on('toggleNextProjectCanvas', ($event) => {
+      this.toggleNextProjectCanvas($event.state);
+    })
   },
 
   methods: {
@@ -126,6 +129,16 @@ export default {
         y: (this.appH / 2) - (this.heightToReach / 2),
         ease: Cubic.ease,
       });
+    },
+
+    toggleNextProjectCanvas(stateToUpdate) {
+      if (stateToUpdate === 'start' && this.app.renderer.view.style.display === "none") {
+        console.log('NEXT PROJECT start')
+        this.app.renderer.view.style.display = "block";
+      } else if (stateToUpdate === 'stop' && this.app.renderer.view.style.display === "block"){
+        console.log('NEXT PROJECT stop')
+        this.app.renderer.view.style.display = "none";
+      }
     },
 
     convertProjectsToArray() {

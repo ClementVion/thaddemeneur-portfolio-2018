@@ -101,7 +101,8 @@ export default {
     this.runParallax();
     EventBus.$on('clickOnNextProject', ($event) => {
       this.clickOnNextProject();
-    })
+    });
+    this.toggleCanvas();
   },
 
   methods: {
@@ -123,7 +124,7 @@ export default {
 
     clickOnNextProject() {
       TweenMax.to(this.scrollbar, 0.5, {scrollTop: this.scrollbar.limit.y, ease: Cubic.ease});
-    }
+    },
 
   },
 

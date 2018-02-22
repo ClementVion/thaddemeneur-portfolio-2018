@@ -1,4 +1,5 @@
 import Scrollbar from 'smooth-scrollbar';
+import EventBus from '~/components/bus/EventBus.js'
 
 export default {
 
@@ -28,6 +29,8 @@ export default {
         if (elm.getAttribute('data-direction') === 'up'){ sym = '-'; } else { sym = ''; }
         elm.style.transform = 'translate3d(0, ' + sym + distance + 'px,0)';
       }
+
+      this.toggleCanvas();
     },
 
     hideOnScroll() {
@@ -40,6 +43,20 @@ export default {
         } else {
           elm.classList.remove('hidden');
         }
+      }
+    },
+
+    toggleCanvas() {
+      if (this.scrollbar.scrollTop > window.innerHeight) {
+        EventBus.$emit('toggleMainCanvas', {'state' :'stop'});
+      } else {
+        EventBus.$emit('toggleMainCanvas', {'state' :'start'});
+      }
+
+      if (this.scrollbar.scrollTop < (this.scrollbar.limit.y - window.innerHeight)) {
+        EventBus.$emit('toggleNextProjectCanvas', {'state' :'stop'});
+      } else {
+        EventBus.$emit('toggleNextProjectCanvas', {'state' :'start'});
       }
     },
 

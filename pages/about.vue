@@ -153,7 +153,6 @@
 <script>
 import EventBus from '~/components/bus/EventBus.js';
 import Scroll from '~/mixins/Scroll.js';
-import Grab from '~/mixins/Grab.js';
 
 export default {
 
@@ -169,7 +168,7 @@ export default {
     duration: 1000,
   },
 
-  mixins: [Scroll, Grab],
+  mixins: [Scroll],
 
   mounted() {
 

@@ -349,6 +349,16 @@ export default {
       }
     },
 
+    toggleMainCanvas(stateToUpdate) {
+      if (stateToUpdate === 'start' && this.app.renderer.view.style.display === "none") {
+        console.log('MAIN CANVAS start');
+        this.app.renderer.view.style.display = "block";
+      } else if (stateToUpdate === 'stop' && this.app.renderer.view.style.display === "block") {
+        console.log('MAIN CANVAS stop');
+        this.app.renderer.view.style.display = "none";
+      }
+    },
+
     updateCanvas() {
       this.app.stage.removeChild(this.bgContainer);
       this.app.stage.removeChild(this.rectContainer);
@@ -357,6 +367,7 @@ export default {
       this.initRect();
       this.initProjectsImages();
     },
+
 
     listenResize() {
       window.addEventListener('resize', () => {
@@ -390,6 +401,10 @@ export default {
 
       EventBus.$on('changeProjectWithoutAnimation', ($event) => {
         this.changeImageWithoutAnimation($event.currentProjectIndex, $event.nextProjectIndex);
+      })
+
+      EventBus.$on('toggleMainCanvas', ($event) => {
+        this.toggleMainCanvas($event.state);
       })
     },
 
