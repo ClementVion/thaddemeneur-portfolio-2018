@@ -53,7 +53,7 @@ export default {
 .Header {
   position: fixed;
   top: 55px;
-  z-index: 10;
+  z-index: 20;
   opacity: 0;
 
   &.appeared {

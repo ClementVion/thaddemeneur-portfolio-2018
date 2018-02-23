@@ -5,6 +5,7 @@
       <Header v-if="!showLoader" />
       <GlobalCanvas :projects="projects" />
       <nuxt v-if="!showLoader" />
+      <div class="Cursor" ref="cursor"></div>
     </div>
   </div>
 </template>
@@ -16,6 +17,7 @@ import EventBus from '~/components/bus/EventBus.js';
 import Loader from '~/components/Loader.vue';
 import Header from '~/components/Header.vue';
 import GlobalCanvas from '~/components/GlobalCanvas.vue';
+import Cursor from '~/mixins/Cursor.js';
 
 export default {
 
@@ -25,6 +27,8 @@ export default {
       showLoader: true,
     }
   },
+
+  mixins: [Cursor],
 
   store,
 
@@ -69,6 +73,18 @@ export default {
     width: 100vw;
     height: 100vh;
     overflow: auto;
+  }
+
+  .Cursor {
+    display: none;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    width: 63px;
+    height: 63px;
+    background: #CCCCCC;
+    opacity: 0.3;
+    border-radius: 50px;
   }
 
 </style>

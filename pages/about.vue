@@ -191,7 +191,7 @@ $containerWidth: 638px;
 
 .About {
   position: relative;
-  z-index: 10;
+  z-index: 20;
   overflow-x: hidden;
 }
 
@@ -200,7 +200,7 @@ $containerWidth: 638px;
   position: fixed;
   top: 55px;
   right: 5%;
-  z-index: 10;
+  z-index: 20;
 }
 
 .About__HeaderBack {

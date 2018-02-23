@@ -26,6 +26,8 @@ export default {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  z-index: 20;
+  position: relative;
 }
 
 .Button__Container {}

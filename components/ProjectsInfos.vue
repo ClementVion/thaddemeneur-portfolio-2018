@@ -178,6 +178,8 @@ export default {
 .ProjectsInfos__Button {
   opacity: 1;
   transition: 0.6s 0.3s ease;
+  z-index: 20;
+  position: relative;
 
   a {
     color: #000;

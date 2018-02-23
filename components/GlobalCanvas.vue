@@ -26,16 +26,19 @@ export default {
       projectsContainer: '',
       rectContainer: '',
       rect: '',
-      noiseFilterBg: '',
-      noiseFilterRect: '',
-      displacementSprite: '',
+      // noiseFilterBg: '',
+      // noiseFilterRect: '',
+      // displacementSprite: '',
       displacementFilter: '',
       displacementSpeed: 1,
       maskBgHome: '',
       maskBgProject: '',
       padding: 25,
       maskX: 0,
-      maskY: 0
+      maskY: 0,
+      cursorContainer: '',
+      cursorElm: {},
+      cursorPos: {},
     }
   },
 
@@ -54,6 +57,7 @@ export default {
       this.listenResize();
       this.listenGlobalEvents();
       this.animate();
+      this.initCursor();
     },
 
     initCanvas() {
@@ -365,13 +369,44 @@ export default {
       }
     },
 
+    initCursor() {
+      this.cursorContainer = new PIXI.Container();
+      this.cursorElm = new PIXI.Graphics();
+
+      this.cursorElm.beginFill(0xCCCCCC, 1);
+      this.cursorElm.drawCircle(0, 0, 32);
+      this.cursorElm.endFill();
+      this.cursorElm.x = this.appW / 2;
+      this.cursorElm.y = this.appH / 2;
+      this.cursorElm.alpha = 0;
+
+      this.cursorContainer.addChild(this.cursorElm);
+      this.app.stage.addChild(this.cursorContainer);
+
+      this.cursorPos = {x: this.appW / 2, y: this.appH / 2};
+      window.addEventListener('mousemove', (e) => {
+        if (this.cursorElm.alpha !== 1) {
+          TweenMax.to(this.cursorElm, 0.5, {alpha: 1, ease: Cubic.ease});
+        }
+        this.cursorPos.x = e.clientX + 5;
+        this.cursorPos.y = e.clientY + 5;
+      });
+      window.addEventListener('wheel', () => {
+        if (this.cursorElm.alpha !== 0) {
+          TweenMax.to(this.cursorElm, 0.5, {alpha: 0, ease: Cubic.ease});
+        }
+      })
+    },
+
     updateCanvas(isResize) {
+      this.app.stage.removeChild(this.cursorContainer);
       this.app.stage.removeChild(this.bgContainer);
       this.app.stage.removeChild(this.rectContainer);
       this.app.stage.removeChild(this.maskContainer);
       this.initBackground();
       this.initRect(isResize);
       this.initProjectsImages(isResize);
+      this.initCursor();
     },
 
     listenResize() {
@@ -416,9 +451,14 @@ export default {
     animate() {
       requestAnimationFrame(this.animate);
       this.noiseFilterBg.seed = (Math.random() * 1) * 0.05;
-      // this.noiseFilterRect.seed = (Math.random() * 1) * 0.05;
       this.displacementSprite.x += this.displacementSpeed;
       this.displacementSprite.y += this.displacementSpeed;
+
+      TweenMax.to(this.cursorElm, 0.2, {
+        x: this.cursorPos.x,
+        y: this.cursorPos.y,
+        ease: Cubic.ease
+      });
     },
 
     convertProjectsToArray() {
