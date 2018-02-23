@@ -117,12 +117,11 @@ export default {
       }
     },
 
-    clickedOnGoBack() {
-      this.$router.go(-1);
-    },
-
     clickOnNextProject() {
-      TweenMax.to(this.scrollbar, 0.5, {scrollTop: this.scrollbar.limit.y, ease: Cubic.ease});
+      // Firefox need a slight delay to get the new limit
+      setTimeout(() => {
+        TweenMax.to(this.scrollbar, 0.5, {scrollTop: this.scrollbar.limit.y, ease: Cubic.ease});
+      }, 10)
     },
 
   },
@@ -155,6 +154,17 @@ export default {
   align-items: center;
   justify-content: space-between;
   text-decoration: none;
+
+  &:hover {
+    svg {
+      transform: scaleX(-1);
+      transition: transform ease 0.1s;
+    }
+  }
+
+  svg {
+    transition: transform ease 0.1s;
+  }
 }
 
 .page-enter-active .Project__HeaderBack {

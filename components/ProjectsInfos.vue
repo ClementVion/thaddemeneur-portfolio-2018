@@ -10,7 +10,9 @@
       <p class="ProjectsInfos__Desc">  {{ projectDesc }} </p>
 
       <div class="ProjectsInfos__Button" ref="button">
-        <Button text="View case study" />
+        <nuxt-link :to="'/projects/' + projectSlug">
+          <Button text="View case study" />
+        </nuxt-link>
       </div>
 
     </div>
@@ -32,6 +34,7 @@ export default {
       projectNumber: '',
       projectTitle: '',
       projectDesc: '',
+      projectSlug: '',
     }
   },
 
@@ -46,6 +49,7 @@ export default {
     this.projectNumber = this.projectsArray[0].number;
     this.projectTitle = this.projectsArray[0].title;
     this.projectDesc = this.projectsArray[0].desc;
+    this.projectSlug = this.projectsArray[0].slug;
   },
 
   methods: {
@@ -73,6 +77,7 @@ export default {
           this.projectNumber = this.projectsArray[nextProjectIndex].number;
           this.projectTitle = this.projectsArray[nextProjectIndex].title;
           this.projectDesc = this.projectsArray[nextProjectIndex].desc;
+          this.projectSlug = this.projectsArray[nextProjectIndex].slug;
 
           this.$nextTick(() => {
             this.$refs.container.classList.add('fade-in');
@@ -173,6 +178,11 @@ export default {
 .ProjectsInfos__Button {
   opacity: 1;
   transition: 0.6s 0.3s ease;
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
 
   &.fade-out {
     opacity: 0;

@@ -43,9 +43,10 @@ export default {
     this.getNextProject();
     this.imageUrl = this.nextProject.images.main;
     this.initCanvas();
+    this.listenResize();
     EventBus.$on('toggleNextProjectCanvas', ($event) => {
       this.toggleNextProjectCanvas($event.state);
-    })
+    });
   },
 
   methods: {
@@ -163,7 +164,23 @@ export default {
         'currentProjectIndex': this.currentProject.id,
         'nextProjectIndex': this.nextProject.id,
       });
-    }
+    },
+
+    updateCanvas() {
+      this.app.stage.removeChild(this.backgroundContainer);
+      this.app.stage.removeChild(this.imageContainer);
+      this.initNextProjectBackground();
+      this.initNextProjectImage();
+    },
+
+    listenResize() {
+      window.addEventListener('resize', () => {
+        this.appW = window.innerWidth;
+        this.appH = window.innerHeight;
+        this.app.renderer.resize(this.appW, this.appH);
+        this.updateCanvas();
+      });
+    },
 
   }
 

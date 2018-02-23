@@ -119,7 +119,7 @@ export default {
       this.app.stage.addChild(this.bgContainer);
     },
 
-    initProjectsImages() {
+    initProjectsImages(isResize) {
       this.maskContainer = new PIXI.Container();
       this.projectsContainer = new PIXI.Container();
 
@@ -154,8 +154,10 @@ export default {
       mask.lineTo(this.maskX + this.padding, (this.maskY + this.images[0].height) - this.padding);
       mask.endFill();
 
-      if (this.$route.name === 'index') {
+      if (this.$route.name === 'index' && !isResize) {
         this.maskContainer.x = this.appW + (this.rectContainer.width / 2);
+      } else if (this.$route.name === 'index' && isResize) {
+        this.maskContainer.x = this.appW - (this.rectContainer.width / 2);
       } else if (this.$route.name === 'projects-slug') {
         this.maskContainer.x = window.innerWidth / 2;
         this.projectsContainer.removeChild(this.images[this.currentProjectIndex]);
@@ -205,7 +207,8 @@ export default {
       this.app.stage.addChild(this.maskContainer)
     },
 
-    initRect() {
+    initRect(isResize) {
+      this.rectContainer = new PIXI.Container();
       this.rect = new PIXI.Graphics();
 
       const rectWidth = (this.appW / 2.24);
@@ -217,8 +220,7 @@ export default {
       this.rect.lineTo(0, this.appH);
       this.rect.endFill();
 
-      this.rectContainer = new PIXI.Container();
-      if (this.$route.name === 'index') {
+      if (this.$route.name === 'index' && !isResize) {
         this.rectContainer.position.set(this.appW + (rectWidth / 2), (this.rect.height /2));
       } else {
         this.rectContainer.position.set(this.appW - (rectWidth / 2), (this.rect.height /2));
@@ -232,10 +234,6 @@ export default {
       } else if (this.$route.name === 'about') {
         this.rectContainer.x = this.appW * 1.3;
       }
-
-      // this.noiseFilterRect = new PIXI.filters.NoiseFilter();
-      // this.noiseFilterRect.noise = 0.2;
-      // this.rect.filters = [this.noiseFilterRect];
 
       this.rectContainer.addChild(this.rect);
       this.app.stage.addChild(this.rectContainer);
@@ -367,22 +365,21 @@ export default {
       }
     },
 
-    updateCanvas() {
+    updateCanvas(isResize) {
       this.app.stage.removeChild(this.bgContainer);
       this.app.stage.removeChild(this.rectContainer);
       this.app.stage.removeChild(this.maskContainer);
       this.initBackground();
-      this.initRect();
-      this.initProjectsImages();
+      this.initRect(isResize);
+      this.initProjectsImages(isResize);
     },
-
 
     listenResize() {
       window.addEventListener('resize', () => {
         this.appW = window.innerWidth;
         this.appH = window.innerHeight;
         this.app.renderer.resize(this.appW, this.appH);
-        this.updateCanvas();
+        this.updateCanvas(true);
       });
     },
 

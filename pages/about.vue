@@ -215,6 +215,14 @@ $containerWidth: 638px;
     fill: #000;
     transform: scaleX(-1);
     margin-left: 20px;
+    transition: transform ease 0.1s;
+  }
+
+  &:hover {
+    svg {
+      transform: scaleX(1);
+      transition: transform ease 0.1s;
+    }
   }
 }
 
