@@ -121,7 +121,7 @@ export default {
       // Firefox need a slight delay to get the new limit
       setTimeout(() => {
         TweenMax.to(this.scrollbar, 0.5, {scrollTop: this.scrollbar.limit.y, ease: Cubic.ease});
-      }, 10)
+      }, 1)
     },
 
   },

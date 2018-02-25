@@ -34,7 +34,11 @@ export default {
       image: '',
       widthToReach: 362,
       heightToReach: 552,
-      mask: ''
+      mask: '',
+      padding: 25,
+      displacementSprite: '',
+      displacementFilter: '',
+      displacementSpeed: 1,
     }
   },
 
@@ -73,18 +77,14 @@ export default {
       this.app.renderer.resize(this.appW, this.appH);
       this.$refs.nextProjectCanvas.appendChild(this.app.view);
 
-      // if (PIXI.utils.TextureCache[this.imageUrl] === undefined) {
-      //   PIXI.loader
-      //     .add(this.imageUrl)
-      //     .load(this.setup);
-      // } else {
-        this.setup();
-      // }
+      this.setup();
     },
 
     setup() {
       this.initNextProjectBackground();
       this.initNextProjectImage();
+      this.initMask();
+      // this.animate();
     },
 
     initNextProjectBackground() {
@@ -115,9 +115,39 @@ export default {
       this.imageContainer.scale.y = 0.45;
       this.imageContainer.position.x = this.appW / 2;
       this.imageContainer.position.y = ((this.image.height * 0.45) / 2);
-
       this.imageContainer.addChild(this.image);
+
+      // this.displacementSprite = PIXI.Sprite.fromImage('/images/sprite.png');
+      // this.displacementSprite.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
+      // this.displacementSprite.scale.x = 0.5;
+      // this.displacementSprite.scale.y = 0.5;
+      // this.imageContainer.addChild(this.displacementSprite);
+      //
+      // this.displacementFilter = new PIXI.filters.DisplacementFilter(this.displacementSprite);
+      // this.imageContainer.filters = [this.displacementFilter];
+      // this.displacementFilter.scale.x = 10;
+      // this.displacementFilter.scale.y = 10;
+
       this.app.stage.addChild(this.imageContainer);
+    },
+
+    initMask() {
+      const x1 = this.image.x - (this.image.width / 2);
+      const x2 = x1 + this.image.width;
+      const y1 = this.image.y - (this.image.height / 2);
+      const y2 = y1 + this.image.height;
+
+      this.mask = new PIXI.Graphics();
+      this.mask.beginFill(0x8bc5ff, 0.4);
+      this.mask.moveTo(x1  + this.padding, y1 + this.padding);
+      this.mask.lineTo(x1 + this.padding, y1 + this.padding);
+      this.mask.lineTo(x2 - this.padding, y1 + this.padding);
+      this.mask.lineTo(x2 - this.padding, y2 - this.padding);
+      this.mask.lineTo(x1 + this.padding, y2 - this.padding);
+      this.mask.endFill();
+
+      this.imageContainer.mask = this.mask;
+      this.imageContainer.addChild(this.mask);
     },
 
     setCanvasToNextProject() {
@@ -125,6 +155,7 @@ export default {
       TweenMax.to(this.imageContainer, 0.2, {y: this.appH / 2, ease: Cubic.ease});
       TweenMax.to(this.background, 0.5, {
         width: this.widthToReach,
+        height: this.heightToReach,
         x: (this.appW / 2) - (this.widthToReach / 2),
         y: (this.appH / 2) - (this.heightToReach / 2),
         ease: Cubic.ease,
@@ -181,6 +212,12 @@ export default {
         this.updateCanvas();
       });
     },
+
+    animate() {
+      requestAnimationFrame(this.animate);
+      this.displacementSprite.x += this.displacementSpeed;
+      this.displacementSprite.y += this.displacementSpeed;
+    }
 
   }
 

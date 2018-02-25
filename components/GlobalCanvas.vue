@@ -28,7 +28,7 @@ export default {
       rect: '',
       // noiseFilterBg: '',
       // noiseFilterRect: '',
-      // displacementSprite: '',
+      displacementSprite: '',
       displacementFilter: '',
       displacementSpeed: 1,
       maskBgHome: '',
@@ -386,7 +386,7 @@ export default {
       this.cursorPos = {x: this.appW / 2, y: this.appH / 2};
       window.addEventListener('mousemove', (e) => {
         if (this.cursorElm.alpha !== 1) {
-          TweenMax.to(this.cursorElm, 0.5, {alpha: 1, ease: Cubic.ease});
+          TweenMax.to(this.cursorElm, 0.5, {alpha: 0.3, ease: Cubic.ease});
         }
         this.cursorPos.x = e.clientX + 5;
         this.cursorPos.y = e.clientY + 5;
