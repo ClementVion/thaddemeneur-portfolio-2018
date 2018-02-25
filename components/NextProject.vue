@@ -202,6 +202,7 @@ export default {
       this.app.stage.removeChild(this.imageContainer);
       this.initNextProjectBackground();
       this.initNextProjectImage();
+      this.initMask();
     },
 
     listenResize() {
