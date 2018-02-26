@@ -89,7 +89,7 @@
               <div class="About__Review">
                 <div class="About__ReviewContainer">
                   <p> « Thaddé is a very creative person with a deep understanding of commercial and technical constraints, which enables him to consistently deliver actionable design outputs. He's got the right mix of artistic sensitivity, programming knowledge and pragmatic business acumen, so he is of great value in a lead design role. » </p>
-                  <p class="About__ReviewAuthor"> — Lucien Tavano </p>
+                  <p class="About__ReviewAuthor"> — Lucien Tavano, Founder and CEO at OhMyGeorge </p>
                 </div>
               </div>
 
@@ -102,19 +102,19 @@
       <div class="About__Block About__Awards">
         <div class="About__SubTitle"> Awards and distinctions </div>
         <p class="About__Paragraph">
-          Portfolio 2017 — Featured on Co Drops →
+          <a href=" description de la distinction https://tympanus.net/codrops/collective/collective-288/ "> Portfolio 2017 — Featured on Co Drops <span class="arrow">→</span> </a>
         </p>
         <p class="About__Paragraph">
-          Portfolio 2017 — Featured on Web Designer Depot →
+          <a href="http://www.webdesignerdepot.com/2017/02/the-best-new-portfolio-sites-february-2017/"> Portfolio 2017 — Featured on Web Designer Depot <span class="arrow">→</span> </a>
         </p>
         <p class="About__Paragraph">
-          Portfolio 2017 — SOTD French Design Index →
+          <a href="http://www.frenchdesignindex.com/design-index-12838"> Portfolio 2017 — SOTD French Design Index <span class="arrow">→</span> </a>
         </p>
         <p class="About__Paragraph">
-          Portfolio 2017 — SOTD CSS Design →
+          <a href="http://www.cssdsgn.com/thadde-meneur/"> Portfolio 2017 — SOTD CSS Design <span class="arrow">→</span> </a>
         </p>
         <p class="About__Paragraph">
-          Portfolio 2017 — Special Kudos CSS Design Awards →
+          <a href="http://www.cssdesignawards.com/sites/thadde-meneur-portfolio/30062/"> Portfolio 2017 — Special Kudos CSS Design Awards <span class="arrow">→</span> </a>
         </p>
       </div>
 
@@ -306,6 +306,23 @@ $containerWidth: 638px;
 .About__Paragraph {
   font-size: 1.8rem;
   line-height: 2.8rem;
+
+  a {
+    text-decoration: none;
+    color: #000;
+
+    .arrow {
+      display: inline-block;
+      transition: 0.1s ease;
+    }
+
+    &:hover {
+      .arrow {
+        transition: 0.1s ease;
+        transform: translateX(10px);
+      }
+    }
+  }
 }
 
 .About__Experience .About__Paragraph {
@@ -423,6 +440,10 @@ $containerWidth: 638px;
   }
 }
 
+.About__ReviewAuthor {
+  font-weight: 600;
+}
+
 .About__Socials {
   max-width: 475px;
   margin: 35px auto;
@@ -448,20 +469,35 @@ $containerWidth: 638px;
 .About__Socials li, .About__ArchivesContainer{
   position: relative;
   font-size: 1.8rem;
+  height: 30px;
+  overflow: hidden;
 
   a {
     text-decoration: none;
     color: #000;
   }
 
-  &:after {
+  &:before, &:after {
     content: '';
     background: #D8D8D8;
     position: absolute;
-    bottom: -5px;
+    bottom: 5px;
     left: 0;
     width: 100%;
     height: 2px;
+    transition: ease 0.6s;
+  }
+
+  &:before {
+    transform: translateX(-200%);
+  }
+
+  &:hover:before {
+    transform: translateX(0%);
+  }
+
+  &:hover:after {
+    transform: translateX(200%);
   }
 }
 
@@ -530,15 +566,30 @@ $containerWidth: 638px;
     position: relative;
     text-decoration: none;
     color: #000;
+    height: 30px;
+    overflow: hidden;
 
-    &:after {
+    &:before, &:after {
       content: '';
       background: #D8D8D8;
       position: absolute;
-      bottom: -5px;
+      bottom: 5px;
       left: 0;
       width: 100%;
       height: 2px;
+      transition: ease 0.6s;
+    }
+
+    &:before {
+      transform: translateX(-200%);
+    }
+
+    &:hover:before {
+      transform: translateX(0%);
+    }
+
+    &:hover:after {
+      transform: translateX(200%);
     }
   }
 }
