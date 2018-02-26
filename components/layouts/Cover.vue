@@ -9,7 +9,7 @@
         key="image"
         data-parallax="true"
         data-direction="up"
-        data-speed="0.16">
+        data-speed="0.15">
 
     </div>
   </section>
