@@ -16,6 +16,7 @@ import EventBus from '~/components/bus/EventBus.js';
 import Loader from '~/components/Loader.vue';
 import Header from '~/components/Header.vue';
 import GlobalCanvas from '~/components/GlobalCanvas.vue';
+import TextSplit from '~/mixins/TextSplit.js';
 
 export default {
 
@@ -33,6 +34,8 @@ export default {
     GlobalCanvas,
     Loader
   },
+
+  mixins: [TextSplit],
 
   mounted() {
     this.listenLoadingEnd();
@@ -54,7 +57,7 @@ export default {
             EventBus.$emit('switchToAbout');
             EventBus.$emit('updateCanvas');
           }
-        }, 500);
+        }, 1000);
       })
     }
 
