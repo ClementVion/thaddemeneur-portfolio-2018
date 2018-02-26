@@ -102,7 +102,7 @@
       <div class="About__Block About__Awards">
         <div class="About__SubTitle"> Awards and distinctions </div>
         <p class="About__Paragraph">
-          <a href=" description de la distinction https://tympanus.net/codrops/collective/collective-288/ "> Portfolio 2017 — Featured on Co Drops <span class="arrow">→</span> </a>
+          <a href="https://tympanus.net/codrops/collective/collective-288/"> Portfolio 2017 — Featured on Co Drops <span class="arrow">→</span> </a>
         </p>
         <p class="About__Paragraph">
           <a href="http://www.webdesignerdepot.com/2017/02/the-best-new-portfolio-sites-february-2017/"> Portfolio 2017 — Featured on Web Designer Depot <span class="arrow">→</span> </a>
@@ -216,13 +216,6 @@ $containerWidth: 638px;
     transform: scaleX(-1);
     margin-left: 20px;
     transition: transform ease 0.1s;
-  }
-
-  &:hover {
-    svg {
-      transform: scaleX(1);
-      transition: transform ease 0.1s;
-    }
   }
 }
 

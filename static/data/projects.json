@@ -138,9 +138,9 @@
           "id": 1,
           "type": "tripleScreens",
           "images": [
+            "/images/projects/tesla/screen-1.jpg",
             "/images/projects/tesla/screen-2.jpg",
-            "/images/projects/tesla/screen-2.jpg",
-            "/images/projects/tesla/screen-2.jpg"
+            "/images/projects/tesla/screen-3.jpg"
           ]
         },
         {

@@ -154,17 +154,6 @@ export default {
   align-items: center;
   justify-content: space-between;
   text-decoration: none;
-
-  &:hover {
-    svg {
-      transform: scaleX(-1);
-      transition: transform ease 0.1s;
-    }
-  }
-
-  svg {
-    transition: transform ease 0.1s;
-  }
 }
 
 .page-enter-active .Project__HeaderBack {
