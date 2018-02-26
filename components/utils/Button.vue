@@ -1,7 +1,7 @@
 <template>
   <div class="Button">
     <div class="Button__Container">
-      <p class="Button__Text"> {{ text }} </p>
+      <p class="Button__Text"> <span> {{ text }} </span> </p>
     </div>
   </div>
 </template>
@@ -39,6 +39,11 @@ export default {
   width: calc(100% + 25px);
   margin-right: -12.5px;
 
+  span {
+    display: inline-block;
+    transition: ease 0.3s;
+  }
+
   &:before {
     content: '';
     position: absolute;
@@ -47,7 +52,22 @@ export default {
     background: #000;
     width: 14px;
     height: 1px;
+    transition: ease 0.3s;
   }
+}
+
+.Button:hover {
+
+  .Button__Text span {
+    transform: translateX(10px);
+    transition: ease 0.3s;
+  }
+
+  .Button__Text:before {
+    width: 20px;
+    transition: ease 0.3s;
+  }
+
 }
 
 </style>
