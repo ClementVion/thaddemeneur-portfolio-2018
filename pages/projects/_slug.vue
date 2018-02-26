@@ -30,7 +30,7 @@
 
         <div class="Project__layout" v-for="layout in project.content.layouts" :key="layout.id">
 
-          <Infos v-if="layout.type === 'text'" :layout="layout" />
+          <Infos v-if="layout.type === 'text'" :layout="layout" ref="infos" />
           <TripleScreens v-if="layout.type === 'tripleScreens'" :layout="layout" />
           <FourScreens v-if="layout.type === 'fourScreens'" :layout="layout" />
           <Cover v-if="layout.type === 'cover'" :layout="layout" />

@@ -2,7 +2,10 @@
   <section class="Infos">
     <div class="Infos__Container">
       <div class="Infos__Left">
-        <h3 class="Infos__Title"> {{ layout.title }} </h3>
+        <h3 class="Infos__Title">
+          <span class="js-toSplit" :data-text="layout.title"></span>
+          <span> {{ layout.emoji }} </span>
+        </h3>
         <p class="Infos__Subtitle"> {{ layout.subtitle }} </p>
       </div>
       <div class="Infos__Right">
@@ -48,6 +51,29 @@ export default {
     font-size: 4.4rem;
     font-weight: 600;
     line-height: 5.4rem;
+
+    .letter {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(50px);
+    }
+
+    .letter.space {
+      width: 11px;
+    }
+  }
+
+  .Infos.appeared .Infos__Title .letter {
+    opacity: 1;
+    transform: translateY(0);
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+  }
+
+  @for $i from 1 to 100 {
+    .Infos__Title .letter:nth-child(#{$i}) {
+      transition-delay: $i * 0.02s;
+    }
   }
 
   .Infos__Subtitle {

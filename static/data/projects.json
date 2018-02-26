@@ -14,7 +14,8 @@
         {
           "id": 0,
           "type": "text",
-          "title": "About the internship 🛠",
+          "title": "About the internship",
+          "emoji": "🛠",
           "subtitle": "Intro",
           "paragraphs": [
             "A few weeks after I released my first portfolio in 2017, I was contacted by Ming Labs, a creative digital agency that was interested in having me as a design intern.",
@@ -364,7 +365,7 @@
           "subtitle": "Product",
           "paragraphs": [
             "Trading is all about emotions. One of my first task was to somehow help trigger those emotions through the design of the game.",
-            "When you play the game, you have access to real and live data of the trading market. When you bet and it goes up, you win, and if the market goes down you lose. The game is all about knowing when to start betting and when to stop. Emotions were triggered through color. Wh0xen you’re losing, the whole screen goes red, wherehas when you’re winning it goes green."
+            "When you play the game, you have access to real and live data of the trading market. When you bet and it goes up, you win, and if the market goes down you lose. The game is all about knowing when to start betting and when to stop. Emotions were triggered through color. When you’re losing, the whole screen goes red, wherehas when you’re winning it goes green."
           ]
         },
         {
