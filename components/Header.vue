@@ -53,7 +53,7 @@ export default {
 .Header {
   position: fixed;
   top: 55px;
-  z-index: 20;
+  z-index: 50;
   opacity: 0;
 
   &.appeared {
@@ -80,6 +80,7 @@ export default {
     transition: ease 0.3s;
     opacity: 0;
   }
+
 
 }
 
