@@ -63,10 +63,12 @@ export default {
 
     appearElms() {
       const elms = this.$refs.infos;
-      for (let i = 0; i < elms.length; i += 1) {
-        const elm = elms[i].$el;
-        if (this.isElementInViewport(elm) && !elm.classList.contains('appeared')) {
-          elm.classList.add('appeared');
+      if (elms !== undefined) {
+        for (let i = 0; i < elms.length; i += 1) {
+          const elm = elms[i].$el;
+          if (this.isElementInViewport(elm) && !elm.classList.contains('appeared')) {
+            elm.classList.add('appeared');
+          }
         }
       }
     },

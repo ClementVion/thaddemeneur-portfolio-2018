@@ -6,7 +6,8 @@ export default {
       track: '',
       isDragging: false,
       currentPos: 0,
-      nextPos: 0
+      nextPos: 0,
+      lastPosMobile: 0,
     }
   },
 
@@ -21,25 +22,39 @@ export default {
 
     initDrag() {
 
-      this.container.addEventListener('mousedown', () => {
-        if (this.isDragging === false) {
-          this.isDragging = true;
-        }
-      })
+      this.container.addEventListener('mousedown', this.startDrag)
+      this.container.addEventListener('touchstart', this.startDrag)
 
       window.addEventListener('mouseup', this.stopDrag)
+      window.addEventListener('touchend', this.stopDrag)
       this.container.addEventListener('mouseup', this.stopDrag)
+      this.container.addEventListener('touchend', this.stopDrag)
       this.track.addEventListener('mouseup', this.stopDrag)
+      this.track.addEventListener('touchend', this.stopDrag)
 
-      window.addEventListener('mousemove', (e) => {
-        if (this.isDragging === true) {
-          this.nextPos = (e.movementX * 2);
-          if ((this.currentPos + this.nextPos < 1)) {
-            this.currentPos += this.nextPos;
-          }
+      window.addEventListener('mousemove', this.drag)
+      window.addEventListener('touchmove', this.drag)
+
+    },
+
+    startDrag(e) {
+      if (this.isDragging === false) {
+        this.isDragging = true;
+        this.lastPosMobile = e.touches[0].pageX;
+      }
+    },
+
+    drag(e) {
+      if (this.isDragging === true) {
+        this.nextPos = (e.movementX * 2);
+        if (!this.nextPos) {
+          this.nextPos = -(this.lastPosMobile - e.touches[0].pageX);
+          this.lastPosMobile = e.touches[0].pageX;
         }
-      })
-
+        if ((this.currentPos + this.nextPos < 1)) {
+          this.currentPos += this.nextPos;
+        }
+      }
     },
 
     stopDrag() {

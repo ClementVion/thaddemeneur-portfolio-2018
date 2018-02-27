@@ -478,5 +478,9 @@ export default {
     position: relative;
     top: 0;
     z-index: 0;
+
+    @media screen and (max-width: 950px) {
+      display: none;
+    }
   }
 </style>

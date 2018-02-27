@@ -32,7 +32,7 @@
               </div>
 
               <div class="About__NumbersCol">
-                <p class="About__NumbersBig"> 1m+ </p>
+                <p class="About__NumbersBig"> +1m </p>
                 <p class="About__NumbersDesc"> Number of people using products I’ve designed for </p>
               </div>
 

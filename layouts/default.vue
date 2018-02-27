@@ -1,6 +1,7 @@
 <template>
   <div class="Default">
     <div class="ScrollContainer">
+      <Mobile />
       <Loader v-if="showLoader" />
       <Header v-if="!showLoader" />
       <GlobalCanvas :projects="projects" />
@@ -15,6 +16,7 @@ import store from '~/store/index.js';
 import EventBus from '~/components/bus/EventBus.js';
 import Loader from '~/components/Loader.vue';
 import Header from '~/components/Header.vue';
+import Mobile from '~/components/Mobile.vue';
 import GlobalCanvas from '~/components/GlobalCanvas.vue';
 import TextSplit from '~/mixins/TextSplit.js';
 
@@ -32,7 +34,8 @@ export default {
   components: {
     Header,
     GlobalCanvas,
-    Loader
+    Loader,
+    Mobile
   },
 
   mixins: [TextSplit],
