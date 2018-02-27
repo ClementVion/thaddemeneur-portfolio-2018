@@ -14,7 +14,7 @@
         {
           "id": 0,
           "type": "text",
-          "title": "About the internship",
+          "title": ["About the", "internship"],
           "emoji": "🛠",
           "subtitle": "Intro",
           "paragraphs": [
@@ -30,7 +30,8 @@
         {
           "id": 2,
           "type": "text",
-          "title": "German Aerospace Ct. 🚀",
+          "title": ["German", "Aerospace Ct."],
+          "emoji": "🚀",
           "subtitle": "Client",
           "paragraphs": [
             "I worked on several projects at Ming Labs. One of which was a landing website for an app that was created internally for the German Aerospace Center (DLR).",
@@ -50,7 +51,8 @@
         {
           "id": 4,
           "type": "text",
-          "title": "Iterate and explore 🤔",
+          "title": ["Iterate and", "explore"],
+          "emoji": "🤔",
           "subtitle": "Intro",
           "paragraphs": [
             "What you’re seing is one of the many iterations that we made for the landing page. Clement, who was the developer on this project (and also the guy who’s coding this line 🍺), worked  with me on implementing ideas, findind solutions to gather as much inspiration as possible.",
@@ -65,7 +67,8 @@
         {
           "id": 6,
           "type": "text",
-          "title": "Illustration and storytelling 📝",
+          "title": ["Illustration and", "storytelling"],
+          "emoji": "📝",
           "subtitle": "Method",
           "paragraphs": [
             "How can we explain a product that is complicated to a target who’s not necessarily fond of digital services ? Our main answer to that was storytelling through illustration. It was a way to enhance the visual aspect of the product while explaining it in a instinctive way. ",
@@ -80,7 +83,8 @@
         {
           "id": 8,
           "type": "text",
-          "title": "Marketing and business goals 🎯",
+          "title": ["Marketing and", "business goals"],
+          "emoji": "🎯",
           "subtitle": "Ending",
           "paragraphs": [
             "This version that I wanted to show was not the final version. After a lot of exploration, we decided to go back to our first path, which was something more business and marketing oriented, more than storytelling. Even though it lacked storytelling visually, the wording and general vibe was more self-explaining. ",
@@ -128,7 +132,8 @@
         {
           "id": 0,
           "type": "text",
-          "title": "Self-flying drone 📸",
+          "title": ["Self-flying", "drone"],
+          "emoji": "📸",
           "subtitle": "Intro",
           "paragraphs": [
             "Our mission was to redesign, as a team of 10, the overall Tesla interface, including the app, the Cluster, the Watch app and the dashboard. The tricky part was that we had to find a brand and imagine a partnership between that brand and Tesla.",
@@ -147,7 +152,8 @@
         {
           "id": 2,
           "type": "text",
-          "title": "Building the future 🔭",
+          "title": ["Building the", "future"],
+          "emoji": "🔭",
           "subtitle": "Philosophy",
           "paragraphs": [
             "I loved the idea of designing for a screen I’m not used to design for. Besides, Go Pro and Tesla are companies with strong branding that actually somehow matched. It didn’t feel like I was designing a fake interface, I truly cared about how futuristic that actually looked like. ",
@@ -167,7 +173,8 @@
         {
           "id": 4,
           "type": "text",
-          "title": "Sitting in the front seat 🚘",
+          "title": ["Sitting in the", "front seat"],
+          "emoji": "🚘",
           "subtitle": "Learnings",
           "paragraphs": [
             "Designing for a context such as this one is quite interesting since there are a lot of things you can’t really do for security matters. You need to come back to the core of design and think deeply about each feature you’re building, and put yourself in the front seat.",
@@ -182,7 +189,8 @@
         {
           "id": 6,
           "type": "text",
-          "title": "Consistency’s the key 🔑",
+          "title": ["Consistency’s", "the key"],
+          "emoji": "🔑",
           "subtitle": "Learnings",
           "paragraphs": [
             "If there’s one thing we learned from this exercice is how hard being consistent between platforms can be. Designing an Watch App, a Phone app, a car dashboard and cluster was a challenge consistency wise. Especially when you’re working with a big team on the same design.",
@@ -242,7 +250,8 @@
         {
           "id": 0,
           "type": "text",
-          "title": "About the project 🍗",
+          "title": ["About the", "project"],
+          "emoji": "🍗",
           "subtitle": "Intro",
           "paragraphs": [
             "Weekmeal is a project that came to live at HETIC, as we had only one week to conceive, create and develop an Android and iOs app on the theme we wanted.",
@@ -261,7 +270,8 @@
         {
           "id": 2,
           "type": "text",
-          "title": "Features and AI 💡",
+          "title": ["Features and", "AI"],
+          "emoji": "💡",
           "subtitle": "Product",
           "paragraphs": [
             "We were asked by our teacher to use AI to somehow add value to our idea. Therefore, we added individualization to our product through the way the recipes are shown to the user.",
@@ -302,7 +312,8 @@
         {
           "id": 4,
           "type": "text",
-          "title": "Adding value to the app 🌟",
+          "title": ["Adding value", "to the app"],
+          "emoji": "🌟",
           "subtitle": "Service Design",
           "paragraphs": [
             "The main issue when you’re designing an idea that is quite common is to find a good business value. Among those was AI, but also the idea to rather than only design the app, try to design the service behind that.",
@@ -317,7 +328,8 @@
         {
           "id": 6,
           "type": "text",
-          "title": "Design, outside of the box 📦",
+          "title": ["Design, outside", "of the box"],
+          "emoji": "📦",
           "subtitle": "Learnings",
           "paragraphs": [
             "It’s quite fun to design an app that a lot of people already had the idea of. We learned that only designing what you first think of doesn’t lead anywhere. You need to learn from the users, think outside of the box and redesign the whole service to create something interesting.",
@@ -342,7 +354,8 @@
         {
           "id": 0,
           "type": "text",
-          "title": "Play, be brave, trade 📈",
+          "title": ["Play, be brave,", "trade"],
+          "emoji": "📈",
           "subtitle": "Intro",
           "paragraphs": [
             "When I was a second year student, I got hired as a junior designer at Oh My George, a start-up aiming at creating the first trading mobile game. The goal of the app was to make trading accessible to anyone to understand the feelings traders could have when doing their job.",
@@ -361,7 +374,8 @@
         {
           "id": 2,
           "type": "text",
-          "title": "Emotional design 🙉",
+          "title": ["Emotional", "design"],
+          "emoji": "🙉",
           "subtitle": "Product",
           "paragraphs": [
             "Trading is all about emotions. One of my first task was to somehow help trigger those emotions through the design of the game.",
@@ -392,7 +406,8 @@
         {
           "id": 4,
           "type": "text",
-          "title": "Challenge your friends 🏆",
+          "title": ["Challenge", "your friends"],
+          "emoji": "🏆",
           "subtitle": "Competition",
           "paragraphs": [
             "Trading is also about competition. So I also a designed a platform for traders and friends to challenge each other on their bets. You could search for random games as well, and then bet on a chosen market.",
@@ -407,7 +422,8 @@
         {
           "id": 6,
           "type": "text",
-          "title": "Working in a startup 🏓",
+          "title": ["Working in a", "startup"],
+          "emoji": "🏓",
           "subtitle": "Learnings",
           "paragraphs": [
             "This internship was my first occasion to work for a start-up, and it truly is quite different from working for an agency. The opportunity to work on the same product for a few months is good and refreshing and I liked it, as I could focus on UX elements and try my best to do the right thing without being rushed.",
@@ -432,7 +448,8 @@
         {
           "id": 0,
           "type": "text",
-          "title": "The rise of curation 📰",
+          "title": ["The rise of", "curation"],
+          "emoji": "📰",
           "subtitle": "Intro",
           "paragraphs": [
             "During my third year I was contacted through Behance by Alexis Raison, an entrepeneur from Paris wanting to create a medecine curation media for doctors and students. ",
@@ -451,7 +468,8 @@
         {
           "id": 2,
           "type": "text",
-          "title": "About design thinking 💊",
+          "title": ["About design", "thinking"],
+          "emoji": "💊",
           "subtitle": "Method",
           "paragraphs": [
             "Using design thinking on this project was crucial. My client, Alexis, had a precise idea in his head of what he wanted but didn’t have the design approach needed to create his product. ",
@@ -470,7 +488,8 @@
         {
           "id": 4,
           "type": "text",
-          "title": "Customer journeys 🗺️",
+          "title": ["Customer", "journeys"],
+          "emoji": "🗺️",
           "subtitle": "Method",
           "paragraphs": [
             "Curating content is useful for people who have neither time nor envy to go through long reads. For people working in the medecine industry, it truly makes sense to curate since : first, they have uncommon working hours, and second, new discoveries are made all the time.",
@@ -485,7 +504,8 @@
         {
           "id": 6,
           "type": "text",
-          "title": "Working as a freelance 👨‍💻",
+          "title": ["Working as a", "freelance"],
+          "emoji": "👨‍💻",
           "subtitle": "Learnings",
           "paragraphs": [
             "Pickorr was not my first experience as a freelance digital designer. But it was a perfect exemple of why I love freelancing. Not only is it interesting and refreshing, it enables you to meet new people and work on new exiting stuff. Alexis was a great client and human being and showed great empathy towards me as a young student and freelance designer.",

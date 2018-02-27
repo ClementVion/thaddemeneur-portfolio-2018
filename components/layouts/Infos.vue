@@ -3,8 +3,13 @@
     <div class="Infos__Container">
       <div class="Infos__Left">
         <h3 class="Infos__Title">
-          <span class="js-toSplit" :data-text="layout.title"></span>
-          <span> {{ layout.emoji }} </span>
+          <span
+            v-for="(line, index) in layout.title"
+            :key="index"
+            class="Infos__TitleLine js-toSplit"
+            :data-text="line">
+          </span>
+          <span class="Infos__TitleEmoji"> {{ layout.emoji }} </span>
         </h3>
         <p class="Infos__Subtitle"> {{ layout.subtitle }} </p>
       </div>
@@ -44,7 +49,7 @@ export default {
   }
 
   .Infos__Left {
-    max-width: 31%;
+    max-width: 38%;
   }
 
   .Infos__Title {
@@ -55,7 +60,7 @@ export default {
     .letter {
       display: inline-block;
       opacity: 0;
-      transform: translateY(50px);
+      transform: translateY(25px);
     }
 
     .letter.space {
@@ -74,6 +79,23 @@ export default {
     .Infos__Title .letter:nth-child(#{$i}) {
       transition-delay: $i * 0.02s;
     }
+  }
+
+  .Infos__TitleLine {
+    display: block;
+
+    &:nth-child(2) {
+      display: inline-block;
+    }
+  }
+
+  .Infos__TitleEmoji {
+    opacity: 0;
+  }
+
+  .Infos.appeared .Infos__TitleEmoji {
+    transition: 0.3s 0.2s ease;
+    opacity: 1;
   }
 
   .Infos__Subtitle {
