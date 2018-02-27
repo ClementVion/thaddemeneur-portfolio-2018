@@ -201,8 +201,6 @@ export default {
       this.maskContainer.on('mousemove', (e) => {
         if (isOnImage === true) {
           const event = e.data.global;
-          // console.log(e.data.global.x, this.maskContainer.x);
-
           // Top left and bottom right
           // Top right and bottom left
           if ((event.x < this.maskContainer.x && event.y < this.maskContainer.y) ||

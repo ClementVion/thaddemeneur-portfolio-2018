@@ -3,6 +3,10 @@ html {
   height: 100%;
   font-size: 10px;
   -webkit-font-smoothing: antialiased;
+
+  @media screen and (max-width: 950px) {
+    overflow: auto;
+  }
 }
 
 body {

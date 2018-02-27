@@ -139,10 +139,6 @@ export default {
 .Project {
   overflow: hidden;
   background: #000;
-
-  @media screen and (max-width: 950px) {
-    display: none;
-  }
 }
 
 .Project__Header {

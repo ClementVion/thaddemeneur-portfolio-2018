@@ -124,9 +124,5 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    @media screen and (max-width: 950px) {
-      display: none;
-    }
   }
 </style>

@@ -75,6 +75,10 @@ export default {
     width: 100vw;
     height: 100vh;
     overflow: auto;
+
+    @media screen and (max-width: 950px) {
+      display: none;
+    }
   }
 
 </style>
