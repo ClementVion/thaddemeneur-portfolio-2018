@@ -1,7 +1,7 @@
 <template>
   <div class="Default">
+    <Mobile />
     <div class="ScrollContainer">
-      <Mobile />
       <Loader v-if="showLoader" />
       <Header v-if="!showLoader" />
       <GlobalCanvas :projects="projects" />

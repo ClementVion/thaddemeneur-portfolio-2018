@@ -192,12 +192,33 @@ export default {
       this.updateProjectBgColor();
 
       // Events
+      let isOnImage = false;
       this.maskContainer.on('mouseover', () => {
         TweenMax.to(this, 0.5, {displacementSpeed: 5, ease: Cubic.ease});
+        isOnImage = true;
+      })
+
+      this.maskContainer.on('mousemove', (e) => {
+        if (isOnImage === true) {
+          const event = e.data.global;
+          // console.log(e.data.global.x, this.maskContainer.x);
+
+          // Top left and bottom right
+          // Top right and bottom left
+          if ((event.x < this.maskContainer.x && event.y < this.maskContainer.y) ||
+            (event.x > this.maskContainer.x && event.y > this.maskContainer.y)) {
+                TweenMax.to(this.maskContainer.skew, 1, {x: 0.0075, y: 0.0075});
+          } else if ((event.x > this.maskContainer.x && event.y < this.maskContainer.y) ||
+            (event.x < this.maskContainer.x && event.y > this.maskContainer.y)) {
+            TweenMax.to(this.maskContainer.skew, 1, {x: -0.0075, y: -0.0075});
+          }
+        }
       })
 
       this.maskContainer.on('mouseout', () => {
-        TweenMax.to(this, 1.5, {displacementSpeed: 1, ease: Cubic.ease});
+        isOnImage = false;
+        TweenMax.to(this, 1.5, {displacementSpeed: 1});
+        TweenMax.to(this.maskContainer.skew, 0.5, {x: 0, y: 0, ease: Cubic.ease});
       })
 
       this.maskContainer.on('click', () => {

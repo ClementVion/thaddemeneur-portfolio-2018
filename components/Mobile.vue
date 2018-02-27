@@ -203,7 +203,7 @@ $maxWidth: 950px;
 
 .Mobile__Alert {
   width: 90%;
-  margin: 90px auto 100px auto;
+  margin: 90px auto 70px auto;
   height: 116px;
   background: #FFF;
   display: flex;
