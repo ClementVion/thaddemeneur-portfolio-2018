@@ -60,6 +60,10 @@ export default {
     transition: 0.3s 1s ease;
     opacity: 1;
   }
+
+  @media screen and (max-width: 950px) {
+    display: none;
+  }
 }
 
 .Header.project {

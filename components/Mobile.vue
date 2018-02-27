@@ -1,6 +1,10 @@
 <template>
   <section class="Mobile">
 
+    <div class="Mobile__Header">
+      <h1> Thaddé Méneur </h1>
+    </div>
+
     <div class="Mobile__Alert">
       <div class="Mobile__AlertText">
         <div class="Mobile__SubTitle"> Coming soon </div>
@@ -10,7 +14,7 @@
       </div>
     </div>
 
-    <h1 class="Mobile__Title"> Design student and freelance digital designer from Paris, France. </h1>
+    <h2 class="Mobile__Title"> Design student and freelance digital designer from Paris, France. </h2>
 
     <div class="Mobile__Block">
       <div class="Mobile__SubTitle"> About me </div>
@@ -190,9 +194,16 @@ $maxWidth: 950px;
   }
 }
 
+.Mobile__Header {
+  width: $containerWidth;
+  margin: 50px auto;
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
 .Mobile__Alert {
   width: 90%;
-  margin: 200px auto 100px auto;
+  margin: 90px auto 100px auto;
   height: 116px;
   background: #FFF;
   display: flex;
