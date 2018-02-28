@@ -205,10 +205,10 @@ export default {
           // Top right and bottom left
           if ((event.x < this.maskContainer.x && event.y < this.maskContainer.y) ||
             (event.x > this.maskContainer.x && event.y > this.maskContainer.y)) {
-                TweenMax.to(this.maskContainer.skew, 1, {x: 0.0075, y: 0.0075});
+                TweenMax.to(this.maskContainer.skew, 1, {x: -0.0075, y: -0.0075, z: -0.0075 });
           } else if ((event.x > this.maskContainer.x && event.y < this.maskContainer.y) ||
             (event.x < this.maskContainer.x && event.y > this.maskContainer.y)) {
-            TweenMax.to(this.maskContainer.skew, 1, {x: -0.0075, y: -0.0075});
+            TweenMax.to(this.maskContainer.skew, 1, {x: 0.0075, y: 0.0075, z: 0.0075});
           }
         }
       })
