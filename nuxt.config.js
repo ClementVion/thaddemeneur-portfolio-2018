@@ -44,5 +44,8 @@ module.exports = {
   css: [
     // SCSS file in the project
     '@/assets/scss/main.scss'
+  ],
+  plugins: [
+    { src: '~plugins/ga.js', ssr: false }
   ]
 }
