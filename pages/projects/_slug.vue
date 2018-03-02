@@ -164,6 +164,12 @@ export default {
   align-items: center;
   justify-content: space-between;
   text-decoration: none;
+  transition: transform ease 0.3s;
+
+  &:hover {
+    transform: rotate(-2deg);
+    transition: transform ease 0.3s;
+  }
 }
 
 .page-enter-active .Project__HeaderBack {

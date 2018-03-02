@@ -215,6 +215,12 @@ $containerWidth: 638px;
   display: flex;
   align-items: center;
   text-decoration: none;
+  transition: transform ease 0.3s;
+
+  &:hover {
+    transform: rotate(-2deg);
+    transition: transform ease 0.3s;
+  }
 
   svg {
     fill: #000;

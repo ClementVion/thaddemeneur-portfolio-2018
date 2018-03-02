@@ -195,6 +195,7 @@ export default {
       let isOnImage = false;
       this.maskContainer.on('mouseover', () => {
         TweenMax.to(this, 0.5, {displacementSpeed: 5, ease: Cubic.ease});
+        EventBus.$emit('triggerLinkHover', {'state': 'hover'});
         isOnImage = true;
       })
 
@@ -217,6 +218,7 @@ export default {
         isOnImage = false;
         TweenMax.to(this, 1.5, {displacementSpeed: 1});
         TweenMax.to(this.maskContainer.skew, 0.5, {x: 0, y: 0, ease: Cubic.ease});
+        EventBus.$emit('triggerLinkHover', {'state': 'out'});
       })
 
       this.maskContainer.on('click', () => {

@@ -109,14 +109,14 @@ export default {
 }
 
 .Header__About {
-  transition: all ease 0.3s 1s, transform ease 0.1s;
+  transition: all ease 0.3s 1s, transform ease 0.3s;
   color: $grey;
   opacity: 1;
 
-  // &:hover {
-  //   transform: rotate(-10deg);
-  //   transition: transform ease 0.1s;
-  // }
+  &:hover {
+    transform: rotate(-2deg);
+    transition: transform ease 0.3s;
+  }
 }
 
 </style>
