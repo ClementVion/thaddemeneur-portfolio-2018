@@ -173,7 +173,6 @@ export default {
     },
 
     setCanvasToNextProject() {
-      this.cursorElm.alpha = 0;
       TweenMax.to(this.imageContainer.scale, 0.2, {x: 0.45, y: 0.45, ease: Cubic.easeOut});
       this.appH = window.innerHeight;
       TweenMax.to(this.imageContainer, 0.2, {y: this.appH / 2, ease: Cubic.ease});
@@ -184,6 +183,8 @@ export default {
         y: (this.appH / 2) - (this.heightToReach / 2),
         ease: Cubic.ease,
       });
+      TweenMax.to(this.cursorElm, 0.5, {alpha: 0, ease: Cubic.ease});
+      TweenMax.to(this.$refs.cursorText, 0.5, {opacity: 0, ease: Cubic.ease});
     },
 
     toggleNextProjectCanvas(stateToUpdate) {
@@ -226,7 +227,7 @@ export default {
       this.cursorElm = new PIXI.Graphics();
 
       this.cursorElm.beginFill(0x000, 0.4);
-      this.cursorElm.drawCircle(0, 0, 23);
+      this.cursorElm.drawCircle(0, 0, 20);
       this.cursorElm.endFill();
       this.cursorElm.x = this.appW / 2;
       this.cursorElm.y = this.appH / 2;
@@ -238,18 +239,22 @@ export default {
       this.cursorPos = {x: this.appW / 2, y: this.appH / 2};
 
       const canvas = this.$refs.nextProjectCanvas.querySelector('canvas');
+
       canvas.addEventListener('mousemove', (e) => {
         if (this.cursorElm.alpha !== 1) {
           TweenMax.to(this.cursorElm, 0.5, {alpha: 0.3, ease: Cubic.ease});
+          TweenMax.to(this.$refs.cursorText, 0.5, {opacity: 1, ease: Cubic.ease});
         }
 
-        const diff = (parseInt(window.innerHeight) - parseInt(canvas.style.height)) * 2;
+        const diff = canvas.getBoundingClientRect().top;
+
         this.cursorPos.x = e.clientX + 2;
         this.cursorPos.y = e.clientY - diff + 5;
       });
       window.addEventListener('wheel', () => {
         if (this.cursorElm.alpha !== 0) {
           TweenMax.to(this.cursorElm, 0.5, {alpha: 0, ease: Cubic.ease});
+          TweenMax.to(this.$refs.cursorText, 0.5, {opacity: 0, ease: Cubic.ease});
         }
       })
 
@@ -285,8 +290,8 @@ export default {
       });
 
       TweenMax.to(this.$refs.cursorText, 0.3, {
-        x: this.cursorPos.x - 56,
-        y: this.cursorPos.y - 56,
+        left: this.cursorPos.x - 56,
+        top: this.cursorPos.y - 56,
         ease: Cubic.ease
       });
     }
@@ -308,10 +313,12 @@ export default {
   }
 
   .NextProject__TextCusor {
-    position: fixed;
+    position: absolute;
     z-index: 50;
     pointer-events: none;
     opacity: 0;
+    transform-origin: 50% 50%;
+    animation: rotate 5s linear infinite;
   }
 
   .NextProject__Canvas {
@@ -327,6 +334,15 @@ export default {
 
   .page-leave-active .NextProject__Canvas {
     margin-top: calc(100vh - 552px);
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(0) scale(0.8);
+    }
+    100% {
+      transform: rotate(360deg) scale(0.8);
+    }
   }
 
 </style>
