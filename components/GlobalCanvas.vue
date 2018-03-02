@@ -398,6 +398,8 @@ export default {
       this.cursorElm.x = this.appW / 2;
       this.cursorElm.y = this.appH / 2;
       this.cursorElm.alpha = 0;
+      this.cursorElm.scale.x = 0.3;
+      this.cursorElm.scale.y = 0.3;
 
       this.cursorContainer.addChild(this.cursorElm);
       this.app.stage.addChild(this.cursorContainer);
@@ -413,6 +415,14 @@ export default {
       window.addEventListener('wheel', () => {
         if (this.cursorElm.alpha !== 0) {
           TweenMax.to(this.cursorElm, 0.5, {alpha: 0, ease: Cubic.ease});
+        }
+      })
+
+      EventBus.$on('triggerLinkHover', ($event) => {
+        if ($event.state === 'hover') {
+          TweenMax.to(this.cursorElm.scale, 0.3, {x: 1, y: 1, ease: Cubic.ease});
+        } else if ($event.state === 'out') {
+          TweenMax.to(this.cursorElm.scale, 0.3, {x: 0.3, y: 0.3, ease: Cubic.ease});
         }
       })
     },
@@ -473,7 +483,7 @@ export default {
       this.displacementSprite.x += this.displacementSpeed;
       this.displacementSprite.y += this.displacementSpeed;
 
-      TweenMax.to(this.cursorElm, 0.2, {
+      TweenMax.to(this.cursorElm, 0.5, {
         x: this.cursorPos.x,
         y: this.cursorPos.y,
         ease: Cubic.ease

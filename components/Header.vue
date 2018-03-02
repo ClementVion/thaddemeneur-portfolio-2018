@@ -2,13 +2,14 @@
   <section class="Header u-home-container" ref="container">
     <div class="Header__Container">
       <nuxt-link class="Header__Title" to="/"> Thaddé Méneur </nuxt-link>
-      <nuxt-link class="Header__About" to="/about">About</nuxt-link>
+      <nuxt-link class="Header__About js-linkToHover" to="/about">About</nuxt-link>
     </div>
   </section>
 </template>
 
 <script>
 import EventBus from '~/components/bus/EventBus';
+import HoverLinks from '~/mixins/HoverLinks';
 
 export default {
 
@@ -18,6 +19,8 @@ export default {
       this.$refs.container.classList.add('appeared');
     }, 100);
   },
+
+  mixins: [HoverLinks],
 
   methods: {
 
@@ -39,8 +42,7 @@ export default {
         this.$refs.container.classList.remove('project');
         this.$refs.container.classList.add('about');
       });
-    }
-
+    },
   }
 
 }
@@ -111,10 +113,10 @@ export default {
   color: $grey;
   opacity: 1;
 
-  &:hover {
-    transform: rotate(-10deg);
-    transition: transform ease 0.1s;
-  }
+  // &:hover {
+  //   transform: rotate(-10deg);
+  //   transition: transform ease 0.1s;
+  // }
 }
 
 </style>

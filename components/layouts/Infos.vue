@@ -105,6 +105,7 @@ export default {
     font-weight: 600;
     text-transform: uppercase;
     margin-top: 40px;
+    opacity: 0;
 
     &:after {
       position: absolute;
@@ -117,6 +118,11 @@ export default {
     }
   }
 
+  .Infos.appeared .Infos__Subtitle {
+    transition: 0.3s 0.2s ease;
+    opacity: 1;
+  }
+
   .Infos__Right {
     max-width: 55%;
   }
@@ -125,10 +131,25 @@ export default {
     font-size: 1.8rem;
     line-height: 2.7rem;
     margin-bottom: 36px;
+    opacity: 0;
+    transform: translateY(30px);
 
     &:last-child() {
       margin-bottom: 0;
     }
   }
+
+  .Infos.appeared .Infos__Paragraph {
+    transition: 0.6s ease;
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  @for $i from 1 to 100 {
+    .Infos__Right .Infos__Paragraph:nth-child(#{$i}) {
+      transition-delay: $i * 0.1s;
+    }
+  }
+
 
 </style>
