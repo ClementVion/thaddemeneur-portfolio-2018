@@ -14,7 +14,7 @@
 
     <div class="Project__HeroFooter js-hideOnScroll">
       <div class="Project__HeroFooterContainer">
-        <svg width="68" height="68" xmlns="http://www.w3.org/2000/svg">
+        <svg width="68" height="68" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 68">
           <g fill="none" fill-rule="evenodd">
             <g fill="none" fill-rule="evenodd" class="circleContainer">
               <path class="circle" d="M5.421 50.5C14.534 66.284 34.716 71.692 50.5 62.579 66.284 53.466 71.692 33.284 62.579 17.5 53.466 1.716 33.284-3.692 17.5 5.421" stroke="#FCFDFF"/>
