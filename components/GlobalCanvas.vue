@@ -494,7 +494,7 @@ export default {
 
 <style lang="scss">
   .Canvas {
-    position: relative;
+    position: fixed;
     top: 0;
     z-index: 0;
 

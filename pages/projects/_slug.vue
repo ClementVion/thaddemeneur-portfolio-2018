@@ -16,7 +16,9 @@
       <div class="Project__HeroFooterContainer">
         <svg width="68" height="68" xmlns="http://www.w3.org/2000/svg">
           <g fill="none" fill-rule="evenodd">
-            <path class="circle" d="M5.421 50.5C14.534 66.284 34.716 71.692 50.5 62.579 66.284 53.466 71.692 33.284 62.579 17.5 53.466 1.716 33.284-3.692 17.5 5.421" stroke="#FCFDFF"/>
+            <g fill="none" fill-rule="evenodd" class="circleContainer">
+              <path class="circle" d="M5.421 50.5C14.534 66.284 34.716 71.692 50.5 62.579 66.284 53.466 71.692 33.284 62.579 17.5 53.466 1.716 33.284-3.692 17.5 5.421" stroke="#FCFDFF"/>
+            </g>
             <path d="M33.5 23.5v22M29.377 41.377L33.5 45.5M37.5 41.5l-4 4" stroke="#FDFDFF" stroke-linecap="square"/></g>
           </svg>
         <p class="Project__HeroFooterCta"> Scroll down </p>
@@ -249,11 +251,15 @@ $delay: 15;
 
   svg {
     transform: scale(0.9);
+    transform-origin: center;
   }
 
-  svg .circle {
-    transform-origin: center;
-    animation: rotateCircle 5s infinite;
+  svg .circleContainer {
+    transform-origin: 50% 50%;
+    animation-name: rotateCircle;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
   }
 }
 
