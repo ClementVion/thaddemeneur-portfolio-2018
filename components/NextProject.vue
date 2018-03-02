@@ -117,6 +117,14 @@ export default {
       this.imageContainer.position.y = ((this.image.height * 0.45) / 2);
       this.imageContainer.addChild(this.image);
 
+      this.$refs.nextProjectCanvas.addEventListener('mouseenter', () => {
+        TweenMax.to(this.imageContainer.scale, 0.5, {x: 0.47, y: 0.47, ease: Cubic.easeOut});
+      })
+
+      this.$refs.nextProjectCanvas.addEventListener('mouseout', () => {
+        TweenMax.to(this.imageContainer.scale, 0.5, {x: 0.45, y: 0.45, ease: Cubic.easeOut});
+      })
+
       // this.displacementSprite = PIXI.Sprite.fromImage('/images/sprite.png');
       // this.displacementSprite.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
       // this.displacementSprite.scale.x = 0.5;
@@ -151,6 +159,7 @@ export default {
     },
 
     setCanvasToNextProject() {
+      TweenMax.to(this.imageContainer.scale, 0.2, {x: 0.45, y: 0.45, ease: Cubic.easeOut});
       this.appH = window.innerHeight;
       TweenMax.to(this.imageContainer, 0.2, {y: this.appH / 2, ease: Cubic.ease});
       TweenMax.to(this.background, 0.5, {

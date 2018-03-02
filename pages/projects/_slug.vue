@@ -104,6 +104,7 @@ export default {
   },
 
   mounted() {
+    this.scrollbar.scrollTop = 0;
     this.$store.commit('change', projects[this.$route.params.slug].id);
     this.runParallax();
     EventBus.$on('clickOnNextProject', ($event) => {
@@ -127,7 +128,7 @@ export default {
     clickOnNextProject() {
       // Firefox need a slight delay to get the new limit
       setTimeout(() => {
-        if (this.scrollbar.scrollTop > 20) {
+        if (this.scrollbar.scrollTop > 300) {
           TweenMax.to(this.scrollbar, 0.5, {scrollTop: this.scrollbar.limit.y, ease: Cubic.ease});
         }
       }, 1)
