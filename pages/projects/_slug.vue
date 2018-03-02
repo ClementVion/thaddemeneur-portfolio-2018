@@ -126,7 +126,9 @@ export default {
     clickOnNextProject() {
       // Firefox need a slight delay to get the new limit
       setTimeout(() => {
-        TweenMax.to(this.scrollbar, 0.5, {scrollTop: this.scrollbar.limit.y, ease: Cubic.ease});
+        if (this.scrollbar.scrollTop > 20) {
+          TweenMax.to(this.scrollbar, 0.5, {scrollTop: this.scrollbar.limit.y, ease: Cubic.ease});
+        }
       }, 1)
     },
 
@@ -251,12 +253,10 @@ $delay: 15;
 
   svg {
     transform: scale(0.9);
-    // transform-origin: center;
     transform-origin: 34px 34px;
   }
 
   svg .circle {
-    // transform-origin: 50% 50%;
     transform-origin: 34px 34px;
     animation-name: rotateCircle;
     animation-duration: 5s;

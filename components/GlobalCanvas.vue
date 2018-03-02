@@ -349,10 +349,10 @@ export default {
     changeImageWithoutAnimation(currentImageIndex, nextImageIndex) {
       this.app.start();
       this.currentProjectIndex = nextImageIndex;
-      this.projectsContainer.removeChild(this.images[currentImageIndex]);
-      this.projectsContainer.addChild(this.images[nextImageIndex]);
       this.maskContainer.removeChild(this.maskBgProject);
       this.updateProjectBgColor();
+      this.projectsContainer.removeChild(this.images[currentImageIndex]);
+      this.projectsContainer.addChild(this.images[nextImageIndex]);
       this.maskContainer.removeChild(this.projectsContainer);
       this.maskContainer.addChild(this.projectsContainer);
     },
