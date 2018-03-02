@@ -172,7 +172,7 @@ export default {
       })
     },
 
-    setCanvasToNextProject() {
+    setCanvasToNextProject() {      
       TweenMax.to(this.imageContainer.scale, 0.2, {x: 0.45, y: 0.45, ease: Cubic.easeOut});
       this.appH = window.innerHeight;
       TweenMax.to(this.imageContainer, 0.2, {y: this.appH / 2, ease: Cubic.ease});
@@ -183,8 +183,6 @@ export default {
         y: (this.appH / 2) - (this.heightToReach / 2),
         ease: Cubic.ease,
       });
-      TweenMax.to(this.cursorElm, 0.5, {alpha: 0, ease: Cubic.ease});
-      TweenMax.to(this.$refs.cursorText, 0.5, {opacity: 0, ease: Cubic.ease});
     },
 
     toggleNextProjectCanvas(stateToUpdate) {
@@ -254,7 +252,9 @@ export default {
       window.addEventListener('wheel', () => {
         if (this.cursorElm.alpha !== 0) {
           TweenMax.to(this.cursorElm, 0.5, {alpha: 0, ease: Cubic.ease});
-          TweenMax.to(this.$refs.cursorText, 0.5, {opacity: 0, ease: Cubic.ease});
+          if (this.$refs.cursorText) {
+            TweenMax.to(this.$refs.cursorText, 0.5, {opacity: 0, ease: Cubic.ease});
+          }
         }
       })
 
@@ -289,11 +289,13 @@ export default {
         ease: Cubic.ease
       });
 
-      TweenMax.to(this.$refs.cursorText, 0.3, {
-        left: this.cursorPos.x - 56,
-        top: this.cursorPos.y - 56,
-        ease: Cubic.ease
-      });
+      if (this.$refs.cursorText) {
+        TweenMax.to(this.$refs.cursorText, 0.3, {
+          left: this.cursorPos.x - 56,
+          top: this.cursorPos.y - 56,
+          ease: Cubic.ease
+        });
+      }
     }
 
   }
@@ -314,6 +316,7 @@ export default {
 
   .NextProject__TextCusor {
     position: absolute;
+    top: 0;
     z-index: 50;
     pointer-events: none;
     opacity: 0;
