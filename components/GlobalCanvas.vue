@@ -270,6 +270,7 @@ export default {
 
     initAllProjects() {
       this.allProjectsContainer = new PIXI.Container();
+      this.allProjectsContainer.x = this.appW / 2;
 
       for (let i = 0; i < this.images.length; i += 1) {
         this.imagesAllProjects[i] = this.images[i];
@@ -517,7 +518,9 @@ export default {
     },
 
     moveAllProjects(index) {
-      console.log(index)
+      // this.allProjectsContainer.x = index * 500;
+      const point = (this.appW / 2) - (index * 500);
+      TweenMax.to(this.allProjectsContainer, 0.5, {x: point, ease: Cubic.ease});
     },
 
     updateCanvas(isResize) {
