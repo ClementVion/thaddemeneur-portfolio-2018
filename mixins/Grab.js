@@ -40,14 +40,16 @@ export default {
     startDrag(e) {
       if (this.isDragging === false) {
         this.isDragging = true;
-        this.lastPosMobile = e.touches[0].pageX;
+        if (e.touches) {
+          this.lastPosMobile = e.touches[0].pageX;
+        }
       }
     },
 
     drag(e) {
       if (this.isDragging === true) {
         this.nextPos = (e.movementX * 2);
-        if (!this.nextPos) {
+        if (e.movementX === undefined) {
           this.nextPos = -(this.lastPosMobile - e.touches[0].pageX);
           this.lastPosMobile = e.touches[0].pageX;
         }
