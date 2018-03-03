@@ -71,9 +71,11 @@ import HoverLinks from '~/mixins/HoverLinks'
 export default {
 
   beforeRouteEnter (to, from, next) {
-    setTimeout(() => {
-      EventBus.$emit('switchToProject');
-    }, 300);
+    if (from.name !== 'allprojects') {
+      setTimeout(() => {
+        EventBus.$emit('switchToProject');
+      }, 300);
+    }
     next();
   },
 

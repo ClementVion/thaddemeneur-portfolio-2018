@@ -1,18 +1,18 @@
 <template>
   <section class="AllProjects">
 
-    <div class="AllProjects__Content">
+    <div class="AllProjects__Content" ref="content">
       <ul class="AllProjects__Titles">
         <li
           v-for="(project, index) in projects"
           :key="index"
           class="AllProjects__Title">
-          <span> {{ project.title }} </span>
+          <span> <nuxt-link :to="'/projects/' + project.slug"> {{ project.title }} </nuxt-link> </span>
         </li>
       </ul>
     </div>
 
-    <div class="AllProjects__Overlay"></div>
+    <div class="AllProjects__Overlay" ref="overlay"></div>
 
   </section>
 </template>
@@ -51,9 +51,17 @@ export default {
       const titles = document.querySelectorAll('.AllProjects__Title');
 
       for (let i = 0; i < titles.length; i += 1) {
+
         titles[i].addEventListener('mouseover', () => {
           EventBus.$emit('allProjectHover', {index: i});
         })
+
+        titles[i].addEventListener('click', () => {
+          EventBus.$emit('allProjectClick', {index: i});
+          document.querySelector('.AllProjects__Content').classList.add('hidden');
+          document.querySelector('.AllProjects__Overlay').classList.add('hidden');
+        })
+
       }
     }
 
@@ -74,6 +82,12 @@ export default {
   .AllProjects__Content {
     z-index: 100;
     margin-left: 5%;
+    transition: ease 0.3s;
+
+    &.hidden {
+      opacity: 0;
+      transition: ease 0.3s;
+    }
   }
 
   .AllProjects__Title {
@@ -99,13 +113,22 @@ export default {
     }
 
     span {
-      color: #4E4E4E;
       transition: 0.5s ease;
       display: inline-block;
+
+      a {
+        text-decoration: none;
+        transition: 0.5s ease;
+        color: #4E4E4E;
+      }
     }
 
     &:hover span {
       transform: translateX(66px);
+      transition: 0.5s ease;
+    }
+
+    &:hover span a {
       transition: 0.5s ease;
       color: #FFF;
     }
@@ -123,6 +146,11 @@ export default {
     position: fixed;
     top: 0;
     background: rgba(0, 0, 0, 0.7);
+
+    &.hidden {
+      opacity: 0;
+      transition: 0.2s ease;
+    }
   }
 
 </style>

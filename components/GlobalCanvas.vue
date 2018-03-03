@@ -296,8 +296,8 @@ export default {
         this.containersAllProjects[i].addChild(bg);
         this.containersAllProjects[i].addChild(this.imagesAllProjects[i]);
 
-        this.containersAllProjects[i].scale.x = 0.45;
-        this.containersAllProjects[i].scale.y = 0.45;
+        this.containersAllProjects[i].scale.x = 0.43;
+        this.containersAllProjects[i].scale.y = 0.43;
         this.containersAllProjects[i].x = i * 500;
         this.containersAllProjects[i].y = this.appH / 2;
 
@@ -326,7 +326,6 @@ export default {
           this.allProjectsContainer.visible = false;
         }, 300);
       }
-
 
       const newProjectBgX = this.maskBgProject.x - this.maskBgProject.x;
       TweenMax.to(this.maskBgProject.skew, 0.6, {x: 0.2, delay: 0.2, ease: Power3.easeInOut});
@@ -396,8 +395,10 @@ export default {
 
       this.app.stage.removeChild(this.bgContainer);
       this.app.stage.removeChild(this.rectContainer);
+      this.app.stage.removeChild(this.maskContainer);
       this.app.stage.addChild(this.bgContainer);
       this.app.stage.addChild(this.rectContainer);
+      this.app.stage.addChild(this.maskContainer);
 
       this.projectsContainer.filterArea = new PIXI.Rectangle(0, 0, this.appW, this.appH);
       TweenMax.to(this.rectContainer.skew, 0.7, {x: 0.3, ease: Power3.easeInOut});
@@ -518,9 +519,19 @@ export default {
     },
 
     moveAllProjects(index) {
-      // this.allProjectsContainer.x = index * 500;
       const point = (this.appW / 2) - (index * 500);
       TweenMax.to(this.allProjectsContainer, 0.5, {x: point, ease: Cubic.ease});
+    },
+
+    selectAllProjects(index) {
+      this.changeImageWithoutAnimation(this.$store.state.currentProjectIndex, index)
+      this.$store.state.currentProjectIndex = index;
+      this.maskBgProject.scale.set(1.5);
+      this.maskBgProject.x = this.images[0].width + 350;
+      this.maskContainer.x = this.appW / 2;
+      TweenMax.to(this.allProjectsContainer, 0.5, {alpha: 0, ease: Cubic.ease});
+      this.maskContainer.visible = true;
+      TweenMax.to(this.maskContainer, 0.2, {alpha: 1, ease: Cubic.ease});
     },
 
     updateCanvas(isResize) {
@@ -578,6 +589,10 @@ export default {
 
       EventBus.$on('allProjectHover', ($event) => {
         this.moveAllProjects($event.index);
+      })
+
+      EventBus.$on('allProjectClick', ($event) => {
+        this.selectAllProjects($event.index);
       })
     },
 
