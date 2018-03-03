@@ -10,6 +10,18 @@ import EventBus from '~/components/bus/EventBus.js';
 
 export default {
 
+  beforeRouteEnter (to, from, next) {
+    setTimeout(() => {
+      EventBus.$emit('switchToAllProjects');
+    }, 300);
+    next();
+  },
+
+  transition: {
+    name: 'page',
+    duration: 1000,
+  },
+
   mounted() {
 
   }

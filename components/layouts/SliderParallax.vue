@@ -4,7 +4,7 @@
     <div class="SliderParallax__Track" ref="track">
 
       <div class="SliderParallax__Slide" v-for="(slide, index) in layout.slides" :key="index">
-
+        
         <img
           class="SliderParallax__SlideImage"
           :src="slide.image"

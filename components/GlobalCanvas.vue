@@ -265,6 +265,13 @@ export default {
     },
 
     switchToHome() {
+      if (this.maskContainer.visible === false) {
+        this.maskContainer.visible = true;
+        setTimeout(() => {
+          TweenMax.to(this.maskContainer, 0.2, {alpha: 1, ease: Cubic.ease});
+        }, 1000);
+      }
+
       const newProjectBgX = this.maskBgProject.x - this.maskBgProject.x;
       TweenMax.to(this.maskBgProject.skew, 0.6, {x: 0.2, delay: 0.2, ease: Power3.easeInOut});
       TweenMax.to(this.maskBgProject, 0.6, {x: newProjectBgX, delay: 0.2, ease: Power3.easeInOut});
@@ -318,6 +325,18 @@ export default {
       TweenMax.to(this.maskContainer.skew, 0.8, {x: 0.2, ease: Power3.easeInOut});
       TweenMax.to(this.maskContainer, 1.2, {x: newRectX, ease: Power3.easeInOut});
       TweenMax.to(this.maskContainer.skew, 0.8, {x: 0, delay:0.3 , ease: Power3.easeInOut});
+    },
+
+    switchToAllProjects() {
+      TweenMax.to(this.maskContainer, 0.2, {alpha: 0, ease: Cubic.ease});
+      setTimeout(() => {
+        this.maskContainer.visible = false;
+      }, 300);
+
+      this.projectsContainer.filterArea = new PIXI.Rectangle(0, 0, this.appW, this.appH);
+      TweenMax.to(this.rectContainer.skew, 0.7, {x: 0.3, ease: Power3.easeInOut});
+      TweenMax.to(this.rectContainer.scale, 1.2, {x: 4, y: 2, ease: Power3.easeInOut});
+      TweenMax.to(this.rectContainer.skew, 0.7, {x: 0, delay: 0.3, ease: Power3.easeInOut});
     },
 
     changeImage(currentImageIndex, nextImageIndex) {
@@ -460,6 +479,10 @@ export default {
 
       EventBus.$on('switchToAbout', ($event) => {
         this.switchToAbout();
+      })
+
+      EventBus.$on('switchToAllProjects', ($event) => {
+        this.switchToAllProjects();
       })
 
       EventBus.$on('updateCanvas', ($event) => {

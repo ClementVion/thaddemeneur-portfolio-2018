@@ -2,7 +2,10 @@
   <section class="Header u-home-container" ref="container">
     <div class="Header__Container">
       <nuxt-link class="Header__Title" to="/"> Thaddé Méneur </nuxt-link>
-      <nuxt-link class="Header__About js-linkToHover" to="/about">About</nuxt-link>
+      <div class="Header__Right">
+        <nuxt-link class="Header__AllProjects js-linkToHover" to="/allprojects">All Projects</nuxt-link>
+        <nuxt-link class="Header__About js-linkToHover" to="/about">About</nuxt-link>
+      </div>
     </div>
   </section>
 </template>
@@ -28,19 +31,29 @@ export default {
       EventBus.$on('switchToHome', ($event) => {
         this.$refs.container.classList.remove('project');
         this.$refs.container.classList.remove('about');
+        this.$refs.container.classList.remove('allprojects');
         this.$refs.container.classList.add('home');
       });
 
       EventBus.$on('switchToProject', ($event) => {
         this.$refs.container.classList.remove('home');
         this.$refs.container.classList.remove('about');
+        this.$refs.container.classList.remove('allprojects');
         this.$refs.container.classList.add('project');
       });
 
       EventBus.$on('switchToAbout', ($event) => {
         this.$refs.container.classList.remove('home');
         this.$refs.container.classList.remove('project');
+        this.$refs.container.classList.remove('allprojects');
         this.$refs.container.classList.add('about');
+      });
+
+      EventBus.$on('switchToAllProjects', ($event) => {
+        this.$refs.container.classList.remove('home');
+        this.$refs.container.classList.remove('project');
+        this.$refs.container.classList.remove('about');
+        this.$refs.container.classList.add('allprojects');
       });
     },
   }
@@ -74,20 +87,27 @@ export default {
     color: #FFF;
   }
 
-  .Header__About {
+  .Header__Right {
     transition: ease 0.3s;
     opacity: 0;
   }
 }
 
 .Header.about {
-
-  .Header__About {
+  .Header__Right {
     transition: ease 0.3s;
     opacity: 0;
   }
+}
 
-
+.Header.allprojects {
+  .Header__Title {
+    color: #FFF;
+  }
+  .Header__Right {
+    transition: ease 0.3s;
+    opacity: 0;
+  }
 }
 
 .Header__Container {
@@ -108,10 +128,17 @@ export default {
   color: $black;
 }
 
-.Header__About {
-  transition: all ease 0.3s 1s, transform ease 0.3s;
-  color: $grey;
+.Header__Right {
+  width: 179px;
+  display: flex;
+  justify-content: space-between;
   opacity: 1;
+  transition: all ease 0.3s 1s, transform ease 0.3s;
+}
+
+.Header__AllProjects, .Header__About {
+  color: $grey;
+  text-decoration: none;
 
   &:hover {
     transform: rotate(-2deg);
