@@ -45,7 +45,9 @@ export default {
     this.convertProjectsToArray();
     // EventBus.$emit('switchToHome');
     this.initEvents();
-    this.listenGlobalEvents();
+    setTimeout(() => {
+      this.listenGlobalEvents();
+    }, 1000);
   },
 
   methods: {
@@ -56,6 +58,7 @@ export default {
 
     removeEvents() {
       document.removeEventListener('wheel', this.wheelEvent);
+      EventBus.$off('clickedOnImage');
     },
 
     wheelEvent(e) {

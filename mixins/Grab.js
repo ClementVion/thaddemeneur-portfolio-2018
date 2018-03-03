@@ -50,7 +50,7 @@ export default {
       if (this.isDragging === true) {
         this.nextPos = (e.movementX * 2);
         if (e.movementX === undefined) {
-          this.nextPos = -(this.lastPosMobile - e.touches[0].pageX);
+          this.nextPos = -(this.lastPosMobile - e.touches[0].pageX) * 2;
           this.lastPosMobile = e.touches[0].pageX;
         }
         if ((this.currentPos + this.nextPos < 1)) {
