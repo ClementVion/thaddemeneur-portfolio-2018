@@ -234,6 +234,11 @@ export default {
 
       this.maskContainer.addChild(this.projectsContainer);
       this.app.stage.addChild(this.maskContainer)
+
+      if (this.$route.name === 'allprojects') {
+        this.maskContainer.visible = false;
+        this.maskContainer.alpha = 0;
+      }
     },
 
     initRect(isResize) {
@@ -258,7 +263,7 @@ export default {
 
       if (this.$route.name === 'index') {
         this.rectContainer.scale.set(1, 1);
-      } else if (this.$route.name === 'projects-slug') {
+      } else if (this.$route.name === 'projects-slug' || this.$route.name === 'allprojects') {
         this.rectContainer.scale.set(4, 2);
       } else if (this.$route.name === 'about') {
         this.rectContainer.x = this.appW * 1.3;
@@ -272,8 +277,13 @@ export default {
       this.allProjectsContainer = new PIXI.Container();
       this.allProjectsContainer.x = this.appW / 2;
 
-      for (let i = 0; i < this.images.length; i += 1) {
-        this.imagesAllProjects[i] = this.images[i];
+      if (this.imagesAllProjects.length === 0) {
+        for (let i = 0; i < this.images.length; i += 1) {
+          this.imagesAllProjects[i] = this.images[i];
+        }
+      }
+
+      for (let i = 0; i < this.imagesAllProjects.length; i += 1) {
         this.imagesAllProjects[i].skew.x = 0;
 
         // Create a Background
@@ -305,8 +315,10 @@ export default {
       }
 
       this.app.stage.addChild(this.allProjectsContainer);
-      this.allProjectsContainer.visible = false;
-      this.allProjectsContainer.alpha = 0;
+      if (this.$route.name !== 'allprojects') {
+        this.allProjectsContainer.visible = false;
+        this.allProjectsContainer.alpha = 0;
+      }
     },
 
     switchToHome() {
@@ -384,8 +396,9 @@ export default {
 
     switchToAllProjects() {
       this.allProjectsContainer.visible = true;
+      this.allProjectsContainer.x += 100;
       setTimeout(() => {
-        TweenMax.to(this.allProjectsContainer, 0.2, {alpha: 1, ease: Cubic.ease});
+        TweenMax.to(this.allProjectsContainer, 0.4, {alpha: 1, x: this.allProjectsContainer.x - 100, ease: Cubic.ease});
       }, 1000);
 
       TweenMax.to(this.maskContainer, 0.2, {alpha: 0, ease: Cubic.ease});
@@ -542,6 +555,7 @@ export default {
       this.initBackground();
       this.initRect(isResize);
       this.initProjectsImages(isResize);
+      this.initAllProjects();
       this.initCursor();
     },
 

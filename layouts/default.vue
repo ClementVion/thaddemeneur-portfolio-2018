@@ -41,6 +41,9 @@ export default {
   mixins: [TextSplit],
 
   mounted() {
+    if (this.$route.name === 'allprojects') {
+      this.$router.replace('/');
+    }
     this.listenLoadingEnd();
   },
 
