@@ -276,12 +276,13 @@ export default {
         this.imagesAllProjects[i].skew.x = 0;
 
         // Create a Background
+        const color = this.projectsArray[i].color;
         const width = this.imagesAllProjects[i].width;
         const height = this.imagesAllProjects[i].height;
         const x = this.imagesAllProjects[i].x - (width / 2);
         const y = this.imagesAllProjects[i].y - (height / 2);
         let bg = new PIXI.Graphics();
-        bg.beginFill(0xffffff, 1);
+        bg.beginFill(color, 1);
         bg.moveTo(x, y);
         bg.lineTo(x, y);
         bg.lineTo(x + width, y);
@@ -515,6 +516,10 @@ export default {
       })
     },
 
+    moveAllProjects(index) {
+      console.log(index)
+    },
+
     updateCanvas(isResize) {
       this.app.stage.removeChild(this.cursorContainer);
       this.app.stage.removeChild(this.bgContainer);
@@ -566,6 +571,10 @@ export default {
 
       EventBus.$on('toggleMainCanvas', ($event) => {
         this.toggleMainCanvas($event.state);
+      })
+
+      EventBus.$on('allProjectHover', ($event) => {
+        this.moveAllProjects($event.index);
       })
     },
 
