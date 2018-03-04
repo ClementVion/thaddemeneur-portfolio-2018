@@ -42,6 +42,7 @@ export default {
       allProjectsContainer: '',
       imagesAllProjects: [],
       containersAllProjects: [],
+      lastAllProjectsIndex: 0,
     }
   },
 
@@ -362,7 +363,6 @@ export default {
     },
 
     switchToProject() {
-      console.log('switchToProject')
       const newProjectBgX = this.maskBgProject.x + this.images[0].width + 350;
       this.maskBgProject.scale.set(1.5);
       TweenMax.to(this.maskBgProject.skew, 0.8, {x: 0.2, delay: 0.3, ease: Power3.easeInOut});
@@ -405,6 +405,9 @@ export default {
       TweenMax.to(this.maskContainer, 0.2, {alpha: 0, ease: Cubic.ease});
       setTimeout(() => {
         this.maskContainer.visible = false;
+        this.maskContainer.worldVisible = false;
+        this.app.stage.removeChild(this.maskContainer);
+        this.app.stage.removeChild(this.bgContainer);
       }, 300);
 
       this.app.stage.removeChild(this.bgContainer);
@@ -459,12 +462,10 @@ export default {
       this.maskContainer.removeChild(this.maskBgProject);
       this.updateProjectBgColor();
 
-      console.log('DEBUG : ');
-      console.log('previous image', this.images[currentImageIndex]);
-      console.log('next image', this.images[nextImageIndex]);
-      this.projectsContainer.removeChild(this.images[currentImageIndex]);
-      // Put a set timeout here ?
-      this.projectsContainer.addChild(this.images[nextImageIndex]);
+      setTimeout(() => { // In case of performances problems (test)
+        this.projectsContainer.removeChild(this.images[currentImageIndex]);
+        this.projectsContainer.addChild(this.images[nextImageIndex]);
+      }, 50)
 
       this.maskContainer.removeChild(this.projectsContainer);
       this.maskContainer.addChild(this.projectsContainer);
@@ -542,7 +543,14 @@ export default {
 
     moveAllProjects(index) {
       const point = (this.appW / 2) - (index * 500);
-      TweenMax.to(this.allProjectsContainer, 0.5, {x: point, ease: Cubic.ease});
+      if (index !== this.lastAllProjectsIndex) {
+        for (let i = 0; i < this.containersAllProjects.length; i += 1) {
+          TweenMax.to(this.containersAllProjects[i].skew, 0.3, {x: 0.05, ease: Power3.easeInOut});
+          TweenMax.to(this.containersAllProjects[i].skew, 0.3, {x: 0, delay: 0.2, ease: Power3.easeInOut});
+        }
+        TweenMax.to(this.allProjectsContainer, 0.6, {x: point, ease: Cubic.ease});
+        this.lastAllProjectsIndex = index;
+      }
     },
 
     selectAllProjects(index) {

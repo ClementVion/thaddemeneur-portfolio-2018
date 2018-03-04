@@ -19,7 +19,7 @@
             v-for="(project, index) in projects"
             :key="index"
             class="AllProjects__Title">
-            <span> <nuxt-link :to="'/projects/' + project.slug"> {{ project.title }} </nuxt-link> </span>
+            <nuxt-link class="AllProjects__TitleLink" :to="'/projects/' + project.slug"> {{ project.title }} </nuxt-link>
           </li>
         </ul>
       </div>
@@ -67,8 +67,13 @@ export default {
 
       for (let i = 0; i < titles.length; i += 1) {
 
-        titles[i].addEventListener('mouseover', () => {
+        titles[i].addEventListener('mouseenter', () => {
+          titles[i].classList.add('hover');
           EventBus.$emit('allProjectHover', {index: i});
+        })
+
+        titles[i].addEventListener('mouseout', () => {
+          titles[i].classList.remove('hover');
         })
 
         titles[i].addEventListener('click', () => {
@@ -186,13 +191,14 @@ export default {
   }
 
   .AllProjects__Title {
+    position: relative;
+    width: 100%;
     color: #FFF;
     font-size: 4.5rem;
     font-weight: bold;
     margin-bottom: 30px;
     cursor: pointer;
     transition: 0.5s ease;
-    position: relative;
 
     &:before {
       content: '';
@@ -204,35 +210,36 @@ export default {
       background: #4E4E4E;
       transform: scaleX(0);
       transform-origin: left center;
-      transition: ease 0.3s;
-    }
-
-    span {
-      transition: 0.5s ease;
-      display: inline-block;
-
-      a {
-        text-decoration: none;
-        transition: 0.5s ease;
-        color: #4E4E4E;
-      }
-    }
-
-    &:hover span {
-      transform: translateX(66px);
       transition: 0.5s ease;
     }
 
-    &:hover span a {
-      transition: 0.5s ease;
-      color: #FFF;
-    }
-
-    &:hover:before {
+    &.hover:before {
       transform: scaleX(1);
-      transition: 0.5s ease;
+      transition-property: transform;
+      transition-duration: 0.5s;
+      transition-timing-function: ease;
       background: #FFF;
     }
+
+    &.hover .AllProjects__TitleLink {
+      transform: translateX(66px);
+      color: #FFF;
+      transition-property: transform;
+      transition-duration: 0.5s;
+      transition-timing-function: ease;
+    }
+  }
+
+  .AllProjects__TitleLink {
+    display: block;
+    // position: absolute;
+    width: 100%;
+    text-decoration: none;
+    color: #4E4E4E;
+    transform: translateX(0px);
+    transition-property: transform;
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
   }
 
   .page-enter-active .AllProjects__Title {
