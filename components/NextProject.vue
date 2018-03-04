@@ -172,7 +172,7 @@ export default {
       })
     },
 
-    setCanvasToNextProject() {      
+    setCanvasToNextProject() {
       TweenMax.to(this.imageContainer.scale, 0.2, {x: 0.45, y: 0.45, ease: Cubic.easeOut});
       this.appH = window.innerHeight;
       TweenMax.to(this.imageContainer, 0.2, {y: this.appH / 2, ease: Cubic.ease});
@@ -225,7 +225,7 @@ export default {
       this.cursorElm = new PIXI.Graphics();
 
       this.cursorElm.beginFill(0x000, 0.4);
-      this.cursorElm.drawCircle(0, 0, 20);
+      this.cursorElm.drawCircle(0, 0, 16);
       this.cursorElm.endFill();
       this.cursorElm.x = this.appW / 2;
       this.cursorElm.y = this.appH / 2;
@@ -341,10 +341,10 @@ export default {
 
   @keyframes rotate {
     0% {
-      transform: rotate(0) scale(0.8);
+      transform: rotate(0) scale(0.7);
     }
     100% {
-      transform: rotate(360deg) scale(0.8);
+      transform: rotate(360deg) scale(0.7);
     }
   }
 

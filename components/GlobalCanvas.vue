@@ -337,6 +337,7 @@ export default {
         TweenMax.to(this.allProjectsContainer, 0.2, {alpha: 0, ease: Cubic.ease});
         setTimeout(() => {
           this.allProjectsContainer.visible = false;
+          this.app.stage.removeChild(this.allProjectsContainer);
         }, 300);
       }
 
@@ -405,7 +406,6 @@ export default {
       TweenMax.to(this.maskContainer, 0.2, {alpha: 0, ease: Cubic.ease});
       setTimeout(() => {
         this.maskContainer.visible = false;
-        this.maskContainer.worldVisible = false;
         this.app.stage.removeChild(this.maskContainer);
         this.app.stage.removeChild(this.bgContainer);
       }, 300);
@@ -462,10 +462,10 @@ export default {
       this.maskContainer.removeChild(this.maskBgProject);
       this.updateProjectBgColor();
 
-      setTimeout(() => { // In case of performances problems (test)
+      // setTimeout(() => { // In case of performances problems (test)
         this.projectsContainer.removeChild(this.images[currentImageIndex]);
         this.projectsContainer.addChild(this.images[nextImageIndex]);
-      }, 50)
+      // }, 10)
 
       this.maskContainer.removeChild(this.projectsContainer);
       this.maskContainer.addChild(this.projectsContainer);
@@ -545,10 +545,10 @@ export default {
       const point = (this.appW / 2) - (index * 500);
       if (index !== this.lastAllProjectsIndex) {
         for (let i = 0; i < this.containersAllProjects.length; i += 1) {
-          TweenMax.to(this.containersAllProjects[i].skew, 0.3, {x: 0.05, ease: Power3.easeInOut});
-          TweenMax.to(this.containersAllProjects[i].skew, 0.3, {x: 0, delay: 0.2, ease: Power3.easeInOut});
+          TweenMax.to(this.containersAllProjects[i].skew, 0.2, {x: 0.05, ease: Power3.easeInOut});
+          TweenMax.to(this.containersAllProjects[i].skew, 0.2, {x: 0, delay: 0.2, ease: Power3.easeInOut});
         }
-        TweenMax.to(this.allProjectsContainer, 0.6, {x: point, ease: Cubic.ease});
+        TweenMax.to(this.allProjectsContainer, 0.5, {x: point, ease: Cubic.ease});
         this.lastAllProjectsIndex = index;
       }
     },
@@ -560,7 +560,12 @@ export default {
       this.maskBgProject.x = this.images[0].width + 350;
       this.maskContainer.x = this.appW / 2;
       TweenMax.to(this.allProjectsContainer, 0.5, {alpha: 0, ease: Cubic.ease});
+      setTimeout(() => {
+        this.allProjectsContainer.visible = false;
+        this.app.stage.removeChild(this.allProjectsContainer);
+      }, 500)
       this.maskContainer.visible = true;
+      this.app.stage.addChild(this.maskContainer);
       TweenMax.to(this.maskContainer, 0.2, {alpha: 1, ease: Cubic.ease});
     },
 
