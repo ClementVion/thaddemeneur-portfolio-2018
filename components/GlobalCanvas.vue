@@ -455,8 +455,14 @@ export default {
       this.currentProjectIndex = nextImageIndex;
       this.maskContainer.removeChild(this.maskBgProject);
       this.updateProjectBgColor();
+
+      console.log('DEBUG : ');
+      console.log('previous image', this.images[currentImageIndex]);
+      console.log('next image', this.images[nextImageIndex]);
       this.projectsContainer.removeChild(this.images[currentImageIndex]);
+      // Put a set timeout here ?
       this.projectsContainer.addChild(this.images[nextImageIndex]);
+
       this.maskContainer.removeChild(this.projectsContainer);
       this.maskContainer.addChild(this.projectsContainer);
     },

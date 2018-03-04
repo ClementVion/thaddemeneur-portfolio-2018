@@ -3,8 +3,10 @@
 
     <div class="AllProjects__Header">
       <nuxt-link class="AllProjects__HeaderBack js-linkToHover" to="/">
+      <!-- <div class="AllProjects__HeaderBack" @click="clickedOnGoBack"> -->
         <span> Go back </span>
         <svg width="24" height="15" xmlns="http://www.w3.org/2000/svg"><path d="M.293 5.943l3.83-4.788a.957.957 0 0 1 1.494 1.197L3.031 5.584H16.36c3.285 0 6.723 2.149 6.723 5.745v1.915a.957.957 0 1 1-1.915 0V11.33c0-2.397-2.463-3.83-4.808-3.83H3.031l2.585 3.232a.957.957 0 1 1-1.494 1.197L.292 7.14a.96.96 0 0 1 0-1.197z" fill="#FFF" fill-rule="nonzero"/></svg>
+      <!-- </div> -->
       </nuxt-link>
     </div>
 
@@ -75,6 +77,10 @@ export default {
         })
 
       }
+    },
+
+    clickedOnGoBack() {
+      this.$router.go(-1);
     }
 
   }
