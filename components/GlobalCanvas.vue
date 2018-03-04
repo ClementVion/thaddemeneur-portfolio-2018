@@ -333,9 +333,11 @@ export default {
       this.app.stage.removeChild(this.bgContainer);
       this.app.stage.removeChild(this.rectContainer);
       this.app.stage.removeChild(this.maskContainer);
+      this.app.stage.removeChild(this.cursorContainer);
       this.app.stage.addChild(this.bgContainer);
       this.app.stage.addChild(this.rectContainer);
       this.app.stage.addChild(this.maskContainer);
+      this.app.stage.addChild(this.cursorContainer);
 
       if (this.allProjectsContainer.visible === true) {
         TweenMax.to(this.allProjectsContainer, 0.2, {alpha: 0, ease: Cubic.ease});
@@ -346,8 +348,8 @@ export default {
       }
 
       const newProjectBgX = this.maskBgProject.x - this.maskBgProject.x;
-      TweenMax.to(this.maskBgProject.skew, 0.6, {x: 0.2, delay: 0.2, ease: Power3.easeInOut});
-      TweenMax.to(this.maskBgProject, 0.6, {x: newProjectBgX, delay: 0.2, ease: Power3.easeInOut});
+      TweenMax.to(this.maskBgProject.skew, 0.6, {x: 0.2, delay: 0.1, ease: Power3.easeInOut});
+      TweenMax.to(this.maskBgProject, 0.6, {x: newProjectBgX, delay: 0.1, ease: Power3.easeInOut});
       TweenMax.to(this.maskBgProject.skew, 0.6, {x: 0, delay: 0.5, ease: Power3.easeInOut});
       setTimeout(() => {
         this.maskBgProject.scale.set(1);
@@ -370,22 +372,22 @@ export default {
     switchToProject() {
       const newProjectBgX = this.maskBgProject.x + this.images[0].width + 350;
       this.maskBgProject.scale.set(1.5);
-      TweenMax.to(this.maskBgProject.skew, 0.8, {x: 0.2, delay: 0.3, ease: Power3.easeInOut});
+      TweenMax.to(this.maskBgProject.skew, 0.8, {x: 0.2, delay: 0.2, ease: Power3.easeInOut});
       TweenMax.to(this.maskBgProject, 0.8, {x: newProjectBgX, delay: 0.3,ease: Power3.easeInOut});
-      TweenMax.to(this.maskBgProject.skew, 0.8, {x: 0, delay: 0.6, ease: Power3.easeInOut});
+      TweenMax.to(this.maskBgProject.skew, 0.8, {x: 0, delay: 0.5, ease: Power3.easeInOut});
 
       this.projectsContainer.removeChild(this.images[this.currentProjectIndex]);
       this.currentProjectIndex = this.$store.state.currentProjectIndex;
       this.projectsContainer.addChild(this.images[this.currentProjectIndex]);
 
       this.projectsContainer.filterArea = new PIXI.Rectangle(0, 0, this.appW, this.appH);
-      TweenMax.to(this.rectContainer.skew, 0.7, {x: 0.3, ease: Power3.easeInOut});
+      TweenMax.to(this.rectContainer.skew, 0.7, {x: 0.2, ease: Power3.easeInOut});
       TweenMax.to(this.rectContainer.scale, 1.2, {x: 4, y: 2, ease: Power3.easeInOut});
       TweenMax.to(this.rectContainer.skew, 0.7, {x: 0, delay: 0.3, ease: Power3.easeInOut});
 
       TweenMax.to(this.maskContainer.skew, 0.8, {x: 0.2, ease: Power3.easeInOut});
       TweenMax.to(this.maskContainer, 1.1, {x: this.appW / 2, ease: Power3.easeInOut});
-      TweenMax.to(this.maskContainer.skew, 0.8, {x: 0, delay:0.3 , ease: Power3.easeInOut});
+      TweenMax.to(this.maskContainer.skew, 0.6, {x: 0, delay:0.3 , ease: Power3.easeInOut});
 
       setTimeout(() => {
         this.app.stage.removeChild(this.bgContainer);
@@ -466,10 +468,8 @@ export default {
       this.maskContainer.removeChild(this.maskBgProject);
       this.updateProjectBgColor();
 
-      // setTimeout(() => { // In case of performances problems (test)
-        this.projectsContainer.removeChild(this.images[currentImageIndex]);
-        this.projectsContainer.addChild(this.images[nextImageIndex]);
-      // }, 10)
+      this.projectsContainer.removeChild(this.images[currentImageIndex]);
+      this.projectsContainer.addChild(this.images[nextImageIndex]);
 
       this.maskContainer.removeChild(this.projectsContainer);
       this.maskContainer.addChild(this.projectsContainer);
