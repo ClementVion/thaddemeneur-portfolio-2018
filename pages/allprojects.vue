@@ -224,9 +224,7 @@ export default {
     &.hover .AllProjects__TitleLink {
       transform: translateX(66px);
       color: #FFF;
-      transition-property: transform;
-      transition-duration: 0.5s;
-      transition-timing-function: ease;
+      transition: 0.5s ease;
     }
   }
 
@@ -237,9 +235,7 @@ export default {
     text-decoration: none;
     color: #4E4E4E;
     transform: translateX(0px);
-    transition-property: transform;
-    transition-duration: 0.5s;
-    transition-timing-function: ease;
+    transition: 0.5s ease;
   }
 
   .page-enter-active .AllProjects__Title {

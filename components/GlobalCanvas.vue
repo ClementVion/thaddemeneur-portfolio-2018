@@ -330,7 +330,11 @@ export default {
         }, 1000);
       }
 
+      this.app.stage.removeChild(this.bgContainer);
+      this.app.stage.removeChild(this.rectContainer);
       this.app.stage.removeChild(this.maskContainer);
+      this.app.stage.addChild(this.bgContainer);
+      this.app.stage.addChild(this.rectContainer);
       this.app.stage.addChild(this.maskContainer);
 
       if (this.allProjectsContainer.visible === true) {
@@ -382,6 +386,10 @@ export default {
       TweenMax.to(this.maskContainer.skew, 0.8, {x: 0.2, ease: Power3.easeInOut});
       TweenMax.to(this.maskContainer, 1.1, {x: this.appW / 2, ease: Power3.easeInOut});
       TweenMax.to(this.maskContainer.skew, 0.8, {x: 0, delay:0.3 , ease: Power3.easeInOut});
+
+      setTimeout(() => {
+        this.app.stage.removeChild(this.bgContainer);
+      }, 500);
     },
 
     switchToAbout() {
@@ -403,29 +411,25 @@ export default {
         TweenMax.to(this.allProjectsContainer, 0.4, {alpha: 1, x: this.allProjectsContainer.x - 100, ease: Cubic.ease});
       }, 1000);
 
-      TweenMax.to(this.maskContainer, 0.2, {alpha: 0, ease: Cubic.ease});
+      TweenMax.to(this.maskContainer, 0.4, {alpha: 0, ease: Cubic.ease});
       setTimeout(() => {
         this.maskContainer.visible = false;
         this.app.stage.removeChild(this.maskContainer);
         this.app.stage.removeChild(this.bgContainer);
-      }, 300);
 
-      this.app.stage.removeChild(this.bgContainer);
-      this.app.stage.removeChild(this.rectContainer);
-      this.app.stage.removeChild(this.maskContainer);
-      this.app.stage.removeChild(this.cursorContainer);
-      this.app.stage.addChild(this.bgContainer);
-      this.app.stage.addChild(this.rectContainer);
-      this.app.stage.addChild(this.maskContainer);
-      this.app.stage.addChild(this.cursorContainer);
+        this.app.stage.removeChild(this.rectContainer);
+        this.app.stage.removeChild(this.cursorContainer);
+        this.app.stage.addChild(this.rectContainer);
+        this.app.stage.addChild(this.cursorContainer);
+
+        this.app.stage.removeChild(this.allProjectsContainer);
+        this.app.stage.addChild(this.allProjectsContainer);
+      }, 500);
 
       this.projectsContainer.filterArea = new PIXI.Rectangle(0, 0, this.appW, this.appH);
       TweenMax.to(this.rectContainer.skew, 0.7, {x: 0.3, ease: Power3.easeInOut});
       TweenMax.to(this.rectContainer.scale, 1.2, {x: 4, y: 2, ease: Power3.easeInOut});
       TweenMax.to(this.rectContainer.skew, 0.7, {x: 0, delay: 0.3, ease: Power3.easeInOut});
-
-      this.app.stage.removeChild(this.allProjectsContainer);
-      this.app.stage.addChild(this.allProjectsContainer);
     },
 
     changeImage(currentImageIndex, nextImageIndex) {
