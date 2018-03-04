@@ -55,6 +55,13 @@ export default {
         this.$refs.container.classList.remove('about');
         this.$refs.container.classList.add('allprojects');
       });
+
+      EventBus.$on('allProjectClick', ($event) => {
+        this.$refs.container.classList.remove('home');
+        this.$refs.container.classList.remove('about');
+        this.$refs.container.classList.remove('allprojects');
+        this.$refs.container.classList.add('project');
+      })
     },
   }
 
@@ -84,7 +91,7 @@ export default {
 .Header.project {
 
   .Header__Title {
-    color: #FFF;
+    opacity: 0;
   }
 
   .Header__Right {

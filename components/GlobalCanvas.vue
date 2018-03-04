@@ -362,6 +362,7 @@ export default {
     },
 
     switchToProject() {
+      console.log('switchToProject')
       const newProjectBgX = this.maskBgProject.x + this.images[0].width + 350;
       this.maskBgProject.scale.set(1.5);
       TweenMax.to(this.maskBgProject.skew, 0.8, {x: 0.2, delay: 0.3, ease: Power3.easeInOut});
@@ -409,9 +410,11 @@ export default {
       this.app.stage.removeChild(this.bgContainer);
       this.app.stage.removeChild(this.rectContainer);
       this.app.stage.removeChild(this.maskContainer);
+      this.app.stage.removeChild(this.cursorContainer);
       this.app.stage.addChild(this.bgContainer);
       this.app.stage.addChild(this.rectContainer);
       this.app.stage.addChild(this.maskContainer);
+      this.app.stage.addChild(this.cursorContainer);
 
       this.projectsContainer.filterArea = new PIXI.Rectangle(0, 0, this.appW, this.appH);
       TweenMax.to(this.rectContainer.skew, 0.7, {x: 0.3, ease: Power3.easeInOut});
