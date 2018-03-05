@@ -3,17 +3,19 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: '',
+    title: 'Thaddé Méneur',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Nuxt.js project' }
+      { hid: 'description', name: 'description', content: 'Portfolio of digital designer Thaddé Méneur' }
     ],
     script: [
       { src: 'https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.5.1/pixi.min.js' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', sizes:'32x32', type: 'image/png', href: '/favicon-32x32.png' },
+      { rel: 'icon', sizes:'96x96', type: 'image/png', href: '/favicon-96x96.png' },
+      { rel: 'icon', sizes:'16x16', type: 'image/png', href: '/favicon-16x16.png' }
     ]
   },
   /*
