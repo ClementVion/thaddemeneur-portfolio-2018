@@ -162,13 +162,13 @@ export default {
       this.maskContainer.addChild(this.hoverDisplacementSprite);
       this.maskContainer.filters = [this.hoverDisplacementFilter];
 
-      this.hoverDisplacementFilter.scale.x = -80;
-      this.hoverDisplacementFilter.scale.y = -80;
+      this.hoverDisplacementFilter.scale.x = -60;
+      this.hoverDisplacementFilter.scale.y = -60;
       this.hoverDisplacementSprite.scale.x = 20;
       this.hoverDisplacementSprite.scale.y = 20;
       this.hoverDisplacementSprite.anchor.set(0.5);
       this.hoverDisplacementSprite.position.set(0, 0);
-
+      this.hoverDisplacementFilter.enabled = false;
 
       this.maskX = (this.images[0].position.x - (this.images[0].width / 2));
       this.maskY = (this.images[0].position.y - (this.images[0].height / 2));
@@ -184,8 +184,10 @@ export default {
 
       if (this.$route.name === 'index' && !isResize) {
         this.maskContainer.x = this.appW + (this.rectContainer.width / 2);
+        this.hoverDisplacementFilter.enabled = true;
       } else if (this.$route.name === 'index' && isResize) {
         this.maskContainer.x = this.appW - (this.rectContainer.width / 2);
+        this.hoverDisplacementFilter.enabled = true;
       } else if (this.$route.name === 'projects-slug') {
         this.maskContainer.x = window.innerWidth / 2;
         this.projectsContainer.removeChild(this.images[this.currentProjectIndex]);
@@ -196,8 +198,8 @@ export default {
       }
 
       this.maskContainer.y = this.appH / 2;
-      this.maskContainer.scale.x = 0.45;
-      this.maskContainer.scale.y = 0.45;
+      this.maskContainer.scale.x = 0.47;
+      this.maskContainer.scale.y = 0.47;
       this.maskContainer.interactive = true;
       this.maskContainer.buttonMode = true;
       this.maskContainer.defaultCursor = 'pointer';
@@ -327,8 +329,8 @@ export default {
         this.containersAllProjects[i].addChild(bg);
         this.containersAllProjects[i].addChild(this.imagesAllProjects[i]);
 
-        this.containersAllProjects[i].scale.x = 0.43;
-        this.containersAllProjects[i].scale.y = 0.43;
+        this.containersAllProjects[i].scale.x = 0.45;
+        this.containersAllProjects[i].scale.y = 0.45;
         this.containersAllProjects[i].x = i * 500;
         this.containersAllProjects[i].y = this.appH / 2;
 
@@ -343,6 +345,8 @@ export default {
     },
 
     switchToHome() {
+      this.hoverDisplacementFilter.enabled = true;
+
       if (this.maskContainer.visible === false) {
         this.maskContainer.visible = true;
         setTimeout(() => {
@@ -411,6 +415,7 @@ export default {
 
       setTimeout(() => {
         this.app.stage.removeChild(this.bgContainer);
+        this.hoverDisplacementFilter.enabled = false;
       }, 500);
     },
 
