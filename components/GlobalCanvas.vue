@@ -162,8 +162,8 @@ export default {
       this.maskContainer.addChild(this.hoverDisplacementSprite);
       this.maskContainer.filters = [this.hoverDisplacementFilter];
 
-      this.hoverDisplacementFilter.scale.x = -40;
-      this.hoverDisplacementFilter.scale.y = -40;
+      this.hoverDisplacementFilter.scale.x = -80;
+      this.hoverDisplacementFilter.scale.y = -80;
       this.hoverDisplacementSprite.scale.x = 20;
       this.hoverDisplacementSprite.scale.y = 20;
       this.hoverDisplacementSprite.anchor.set(0.5);
@@ -231,7 +231,6 @@ export default {
             y: (event.y - this.maskContainer.y) * 2.2,
             ease: Cubic.ease
           });
-          // this.hoverDisplacementSprite.position.set((event.x - this.maskContainer.x) * 2.2, (event.y - this.maskContainer.y) * 2.2);
         }
       })
 
