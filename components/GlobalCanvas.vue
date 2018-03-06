@@ -34,6 +34,7 @@ export default {
       maskBgHome: '',
       maskBgProject: '',
       padding: 25,
+      mask: '',
       maskX: 0,
       maskY: 0,
       cursorContainer: '',
@@ -43,6 +44,8 @@ export default {
       imagesAllProjects: [],
       containersAllProjects: [],
       lastAllProjectsIndex: 0,
+      hoverDisplacementSprite: '',
+      hoverDisplacementFilter: '',
     }
   },
 
@@ -104,6 +107,7 @@ export default {
       PIXI.loader
         .add(this.imagesUrl)
         .add("/images/sprite.png")
+        .add("/images/displace.png")
         .load(this.setup);
     },
 
@@ -151,17 +155,32 @@ export default {
       this.displacementFilter.scale.x = 10;
       this.displacementFilter.scale.y = 10;
 
+
+      this.hoverDisplacementSprite = PIXI.Sprite.fromImage('/images/displace.png');
+      this.hoverDisplacementFilter = new PIXI.filters.DisplacementFilter(this.hoverDisplacementSprite);
+
+      this.maskContainer.addChild(this.hoverDisplacementSprite);
+      this.maskContainer.filters = [this.hoverDisplacementFilter];
+
+      this.hoverDisplacementFilter.scale.x = -40;
+      this.hoverDisplacementFilter.scale.y = -40;
+      this.hoverDisplacementSprite.scale.x = 20;
+      this.hoverDisplacementSprite.scale.y = 20;
+      this.hoverDisplacementSprite.anchor.set(0.5);
+      this.hoverDisplacementSprite.position.set(0, 0);
+
+
       this.maskX = (this.images[0].position.x - (this.images[0].width / 2));
       this.maskY = (this.images[0].position.y - (this.images[0].height / 2));
 
-      let mask = new PIXI.Graphics();
-      mask.beginFill(0x8bc5ff, 0.4);
-      mask.moveTo(this.maskX + this.padding, this.maskY + this.padding);
-      mask.lineTo(this.maskX + this.padding, this.maskY + this.padding);
-      mask.lineTo((this.maskX + this.images[0].width) - this.padding, this.maskY + this.padding);
-      mask.lineTo((this.maskX + this.images[0].width) - this.padding, (this.maskY + this.images[0].height) - this.padding);
-      mask.lineTo(this.maskX + this.padding, (this.maskY + this.images[0].height) - this.padding);
-      mask.endFill();
+      this.mask = new PIXI.Graphics();
+      this.mask.beginFill(0x8bc5ff, 0.4);
+      this.mask.moveTo(this.maskX + this.padding, this.maskY + this.padding);
+      this.mask.lineTo(this.maskX + this.padding, this.maskY + this.padding);
+      this.mask.lineTo((this.maskX + this.images[0].width) - this.padding, this.maskY + this.padding);
+      this.mask.lineTo((this.maskX + this.images[0].width) - this.padding, (this.maskY + this.images[0].height) - this.padding);
+      this.mask.lineTo(this.maskX + this.padding, (this.maskY + this.images[0].height) - this.padding);
+      this.mask.endFill();
 
       if (this.$route.name === 'index' && !isResize) {
         this.maskContainer.x = this.appW + (this.rectContainer.width / 2);
@@ -207,15 +226,12 @@ export default {
       this.maskContainer.on('mousemove', (e) => {
         if (isOnImage === true) {
           const event = e.data.global;
-          // Top left and bottom right
-          // Top right and bottom left
-          if ((event.x < this.maskContainer.x && event.y < this.maskContainer.y) ||
-            (event.x > this.maskContainer.x && event.y > this.maskContainer.y)) {
-                TweenMax.to(this.maskContainer.skew, 1, {x: -0.0075, y: -0.0075, z: -0.0075 });
-          } else if ((event.x > this.maskContainer.x && event.y < this.maskContainer.y) ||
-            (event.x < this.maskContainer.x && event.y > this.maskContainer.y)) {
-            TweenMax.to(this.maskContainer.skew, 1, {x: 0.0075, y: 0.0075, z: 0.0075});
-          }
+          TweenMax.to(this.hoverDisplacementSprite, 0.5, {
+            x: (event.x - this.maskContainer.x) * 2.2,
+            y: (event.y - this.maskContainer.y) * 2.2,
+            ease: Cubic.ease
+          });
+          // this.hoverDisplacementSprite.position.set((event.x - this.maskContainer.x) * 2.2, (event.y - this.maskContainer.y) * 2.2);
         }
       })
 
@@ -223,6 +239,11 @@ export default {
         isOnImage = false;
         TweenMax.to(this, 1.5, {displacementSpeed: 1});
         TweenMax.to(this.maskContainer.skew, 0.5, {x: 0, y: 0, ease: Cubic.ease});
+        TweenMax.to(this.hoverDisplacementSprite, 0.5, {
+          x: 0,
+          y: 0,
+          ease: Cubic.ease
+        });
         EventBus.$emit('triggerLinkHover', {'state': 'out'});
       })
 
@@ -230,8 +251,8 @@ export default {
         EventBus.$emit('clickedOnImage');
       })
 
-      this.maskContainer.mask = mask;
-      this.maskContainer.addChild(mask);
+      this.maskContainer.mask = this.mask;
+      this.maskContainer.addChild(this.mask);
 
       this.maskContainer.addChild(this.projectsContainer);
       this.app.stage.addChild(this.maskContainer)
