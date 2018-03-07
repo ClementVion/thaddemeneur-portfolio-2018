@@ -46,10 +46,12 @@ export default {
       cursorElm: {},
       cursorPos: {},
       nextProjectClicked: false,
+      nextProjectCanvas: '',
     }
   },
 
   mounted() {
+    this.nextProjectCanvas = document.querySelector('.NextProject__Canvas');
     this.convertProjectsToArray();
     this.getNextProject();
     this.imageUrl = this.nextProject.images.main;
@@ -82,7 +84,7 @@ export default {
       this.app.renderer.view.style.display = "block";
       this.app.renderer.autoResize = true;
       this.app.renderer.resize(this.appW, this.appH);
-      this.$refs.nextProjectCanvas.appendChild(this.app.view);
+      this.nextProjectCanvas.appendChild(this.app.view);
 
       this.setup();
     },
@@ -160,13 +162,13 @@ export default {
     },
 
     listenMouseEvents() {
-      this.$refs.nextProjectCanvas.addEventListener('mouseenter', () => {
+      this.nextProjectCanvas.addEventListener('mouseenter', () => {
         TweenMax.to(this.imageContainer.scale, 0.5, {x: 0.47, y: 0.47, ease: Cubic.ease});
         TweenMax.to(this.$refs.cursorText, 0.5, {opacity: 1, ease: Cubic.ease});
         TweenMax.to(this.cursorElm, 0.5, {alpha: 0.3, ease: Cubic.ease});
       })
 
-      this.$refs.nextProjectCanvas.addEventListener('mouseout', () => {
+      this.nextProjectCanvas.addEventListener('mouseout', () => {
         TweenMax.to(this.imageContainer.scale, 0.5, {x: 0.45, y: 0.45, ease: Cubic.ease});
         TweenMax.to(this.$refs.cursorText, 0.5, {opacity: 0, ease: Cubic.ease});
         TweenMax.to(this.cursorElm, 0.5, {alpha: 0, ease: Cubic.ease});
@@ -240,7 +242,7 @@ export default {
 
       this.cursorPos = {x: this.appW / 2, y: this.appH / 2};
 
-      const canvas = this.$refs.nextProjectCanvas.querySelector('canvas');
+      const canvas = this.nextProjectCanvas.querySelector('canvas');
 
       canvas.addEventListener('mousemove', (e) => {
         if (this.cursorElm.alpha !== 1) {

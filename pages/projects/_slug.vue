@@ -31,7 +31,7 @@
 
         <div class="Project__layout" v-for="layout in project.content.layouts" :key="layout.id">
 
-          <Infos v-if="layout.type === 'text'" :layout="layout" ref="infos" />
+          <Infos v-if="layout.type === 'text'" :layout="layout" ref="appear" />
           <TripleScreens v-if="layout.type === 'tripleScreens'" :layout="layout" />
           <FourScreens v-if="layout.type === 'fourScreens'" :layout="layout" />
           <Cover v-if="layout.type === 'cover'" :layout="layout" />
@@ -39,6 +39,7 @@
           <SliderParallax v-if="layout.type === 'sliderParallax'" :layout="layout" />
           <Thanks v-if="layout.type === 'thanks'" :layout="layout" />
           <Picture v-if="layout.type === 'picture'" :layout="layout" />
+          <Video v-if="layout.type === 'video'" :layout="layout" ref="appear" class="videoParent"/>
           <Islands v-if="layout.type === 'custom' && layout.name === 'islands'" :layout="layout" />
 
         </div>
@@ -65,6 +66,7 @@ import Slider from '~/components/layouts/Slider.vue'
 import SliderParallax from '~/components/layouts/SliderParallax.vue'
 import Thanks from '~/components/layouts/Thanks.vue'
 import Picture from '~/components/layouts/Picture.vue'
+import Video from '~/components/layouts/Video.vue'
 import Islands from '~/components/layouts/customs/Islands.vue'
 import NextProject from '~/components/NextProject.vue'
 import HoverLinks from '~/mixins/HoverLinks'
@@ -94,6 +96,7 @@ export default {
     SliderParallax,
     Thanks,
     Picture,
+    Video,
     Islands,
     NextProject
   },
@@ -103,6 +106,7 @@ export default {
   data() {
     return {
       project: projects[this.$route.params.slug],
+      clickOnNextProjectCalled: false,
     }
   },
 
@@ -131,7 +135,8 @@ export default {
     clickOnNextProject() {
       // Firefox need a slight delay to get the new limit
       setTimeout(() => {
-        if (this.scrollbar.scrollTop > 300) {
+        if (this.scrollbar.scrollTop > 300 && this.clickOnNextProjectCalled === false) {
+          this.clickOnNextProjectCalled = true;
           TweenMax.to(this.scrollbar, 0.5, {scrollTop: this.scrollbar.limit.y, ease: Cubic.ease});
         }
       }, 1)
@@ -163,10 +168,18 @@ export default {
 
 .Project__HeaderAllProjects {
   color: #FFF;
+  display: block;
   font-size: 1.5rem;
   font-weight: 600;
   cursor: pointer;
   text-decoration: none;
+  transform: rotate(0);
+  transition: ease 0.3s;
+
+  &:hover {
+    transform: rotate(-2deg);
+    transition: ease 0.3s;
+  }
 }
 
 .Project__HeaderBack {
@@ -205,6 +218,7 @@ export default {
   width: 100%;
   position: relative;
   margin-bottom: 84px;
+  pointer-events: none;
 }
 
 .Project__Title {

@@ -155,7 +155,6 @@ export default {
       this.displacementFilter.scale.x = 10;
       this.displacementFilter.scale.y = 10;
 
-
       this.hoverDisplacementSprite = PIXI.Sprite.fromImage('/images/displace.png');
       this.hoverDisplacementFilter = new PIXI.filters.DisplacementFilter(this.hoverDisplacementSprite);
 
@@ -168,7 +167,7 @@ export default {
       this.hoverDisplacementSprite.scale.y = 20;
       this.hoverDisplacementSprite.anchor.set(0.5);
       this.hoverDisplacementSprite.position.set(0, 0);
-      this.hoverDisplacementFilter.enabled = false;
+      // this.hoverDisplacementFilter.enabled = false;
 
       this.maskX = (this.images[0].position.x - (this.images[0].width / 2));
       this.maskY = (this.images[0].position.y - (this.images[0].height / 2));
@@ -184,10 +183,10 @@ export default {
 
       if (this.$route.name === 'index' && !isResize) {
         this.maskContainer.x = this.appW + (this.rectContainer.width / 2);
-        this.hoverDisplacementFilter.enabled = true;
+        // this.hoverDisplacementFilter.enabled = true;
       } else if (this.$route.name === 'index' && isResize) {
         this.maskContainer.x = this.appW - (this.rectContainer.width / 2);
-        this.hoverDisplacementFilter.enabled = true;
+        // this.hoverDisplacementFilter.enabled = true;
       } else if (this.$route.name === 'projects-slug') {
         this.maskContainer.x = window.innerWidth / 2;
         this.projectsContainer.removeChild(this.images[this.currentProjectIndex]);
@@ -198,8 +197,8 @@ export default {
       }
 
       this.maskContainer.y = this.appH / 2;
-      this.maskContainer.scale.x = 0.47;
-      this.maskContainer.scale.y = 0.47;
+      this.maskContainer.scale.x = 0.465;
+      this.maskContainer.scale.y = 0.465;
       this.maskContainer.interactive = true;
       this.maskContainer.buttonMode = true;
       this.maskContainer.defaultCursor = 'pointer';
@@ -345,7 +344,9 @@ export default {
     },
 
     switchToHome() {
-      this.hoverDisplacementFilter.enabled = true;
+      setTimeout(() => {
+        // this.hoverDisplacementFilter.enabled = true;
+      }, 300)
 
       if (this.maskContainer.visible === false) {
         this.maskContainer.visible = true;
@@ -389,6 +390,7 @@ export default {
       TweenMax.to(this.maskContainer.skew, 0.7, {x: 0, delay:0.3 , ease: Power3.easeInOut});
 
       setTimeout(() => {
+        console.log(this.maskContainer.x);
         this.projectsContainer.filterArea = new PIXI.Rectangle(this.appW / 2, 0, this.appW / 2, this.appH);
       }, 1000);
     },
@@ -415,7 +417,7 @@ export default {
 
       setTimeout(() => {
         this.app.stage.removeChild(this.bgContainer);
-        this.hoverDisplacementFilter.enabled = false;
+        // this.hoverDisplacementFilter.enabled = false;
       }, 500);
     },
 
@@ -436,6 +438,7 @@ export default {
       this.allProjectsContainer.x += 100;
       setTimeout(() => {
         TweenMax.to(this.allProjectsContainer, 0.4, {alpha: 1, x: this.allProjectsContainer.x - 100, ease: Cubic.ease});
+        // this.hoverDisplacementFilter.enabled = false;
       }, 1000);
 
       TweenMax.to(this.maskContainer, 0.4, {alpha: 0, ease: Cubic.ease});
@@ -498,6 +501,12 @@ export default {
 
       this.maskContainer.removeChild(this.projectsContainer);
       this.maskContainer.addChild(this.projectsContainer);
+
+      // In case of image mysterious disappearing
+      // setTimeout(() => {
+      //   this.projectsContainer.removeChild(this.images[currentImageIndex]);
+      //   this.projectsContainer.addChild(this.images[nextImageIndex]);
+      // }, 500)
     },
 
     updateProjectBgColor() {

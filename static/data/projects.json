@@ -198,6 +198,20 @@
           ]
         },
         {
+          "id": 7,
+          "type": "video",
+          "sources": [
+            {
+              "type": "mp4",
+              "url": "/images/projects/tesla/video.mp4"
+            },
+            {
+              "type": "webm",
+              "url": "/images/projects/tesla/video.webm"
+            }
+          ]
+        },
+        {
           "id": 8,
           "type": "thanks",
           "title": "Special thanks ✌️",

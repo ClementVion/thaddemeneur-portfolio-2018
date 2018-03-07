@@ -102,7 +102,7 @@ export default {
 
   .Header__GoBack {
     opacity: 1;
-    transition: ease 0.3s 0.5s;
+    transition: opacity ease 0.3s 0.5s, transform ease 0.3s;
   }
 
   .Header__Right {
@@ -148,7 +148,6 @@ export default {
   display: flex;
   justify-content: space-between;
   opacity: 0;
-  transition: ease 0.3s;
 
   &:hover {
     transform: rotate(-2deg);
