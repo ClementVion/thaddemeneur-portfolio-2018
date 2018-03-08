@@ -200,8 +200,14 @@ export default {
       this.maskContainer.scale.x = 0.465;
       this.maskContainer.scale.y = 0.465;
       this.maskContainer.interactive = true;
-      this.maskContainer.buttonMode = true;
-      this.maskContainer.defaultCursor = 'pointer';
+
+      if (this.$route.name === 'index') {
+        this.maskContainer.buttonMode = true;
+        this.maskContainer.defaultCursor = 'pointer';
+      } else {
+        this.maskContainer.buttonMode = false;
+        this.maskContainer.defaultCursor = undefined;
+      }
 
       // Background
       this.maskBgHome = new PIXI.Graphics();
@@ -328,8 +334,8 @@ export default {
         this.containersAllProjects[i].addChild(bg);
         this.containersAllProjects[i].addChild(this.imagesAllProjects[i]);
 
-        this.containersAllProjects[i].scale.x = 0.45;
-        this.containersAllProjects[i].scale.y = 0.45;
+        this.containersAllProjects[i].scale.x = 0.43;
+        this.containersAllProjects[i].scale.y = 0.43;
         this.containersAllProjects[i].x = i * 500;
         this.containersAllProjects[i].y = this.appH / 2;
 
@@ -344,10 +350,6 @@ export default {
     },
 
     switchToHome() {
-      setTimeout(() => {
-        // this.hoverDisplacementFilter.enabled = true;
-      }, 300)
-
       if (this.maskContainer.visible === false) {
         this.maskContainer.visible = true;
         setTimeout(() => {
@@ -389,8 +391,10 @@ export default {
       TweenMax.to(this.maskContainer, 0.9, {x: (this.appW - (this.rect.width / 2)), ease: Power3.easeInOut});
       TweenMax.to(this.maskContainer.skew, 0.7, {x: 0, delay:0.3 , ease: Power3.easeInOut});
 
+      this.maskContainer.buttonMode = true;
+      this.maskContainer.defaultCursor = 'pointer';
+
       setTimeout(() => {
-        console.log(this.maskContainer.x);
         this.projectsContainer.filterArea = new PIXI.Rectangle(this.appW / 2, 0, this.appW / 2, this.appH);
       }, 1000);
     },
@@ -414,6 +418,9 @@ export default {
       TweenMax.to(this.maskContainer.skew, 0.8, {x: 0.2, ease: Power3.easeInOut});
       TweenMax.to(this.maskContainer, 1.1, {x: this.appW / 2, ease: Power3.easeInOut});
       TweenMax.to(this.maskContainer.skew, 0.6, {x: 0, delay:0.3 , ease: Power3.easeInOut});
+
+      this.maskContainer.buttonMode = false;
+      this.maskContainer.defaultCursor = undefined;
 
       setTimeout(() => {
         this.app.stage.removeChild(this.bgContainer);
