@@ -217,12 +217,12 @@ export default {
     clickOnNextProject() {
       if (this.nextProjectClicked === false) {
         this.nextProjectClicked = true;
-        this.setCanvasToNextProject();
-        EventBus.$emit('clickOnNextProject');
         EventBus.$emit('changeProjectWithoutAnimation', {
           'currentProjectIndex': this.currentProject.id,
           'nextProjectIndex': this.nextProject.id,
         });
+        this.setCanvasToNextProject();
+        EventBus.$emit('clickOnNextProject');
       }
     },
 
