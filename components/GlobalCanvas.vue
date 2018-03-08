@@ -616,6 +616,8 @@ export default {
       this.maskContainer.visible = true;
       this.app.stage.addChild(this.maskContainer);
       TweenMax.to(this.maskContainer, 0.2, {alpha: 1, ease: Cubic.ease});
+      this.maskContainer.buttonMode = false;
+      this.maskContainer.defaultCursor = undefined;
     },
 
     updateCanvas(isResize) {
