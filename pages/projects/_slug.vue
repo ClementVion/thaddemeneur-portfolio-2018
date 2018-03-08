@@ -84,7 +84,7 @@ export default {
 
   transition: {
     name: 'page',
-    duration: 500,
+    duration: 750,
   },
 
   components: {
@@ -136,6 +136,7 @@ export default {
       // Firefox need a slight delay to get the new limit
       setTimeout(() => {
         if (this.scrollbar.scrollTop > 300 && this.clickOnNextProjectCalled === false) {
+          console.log('scroll to bottom');
           this.clickOnNextProjectCalled = true;
           TweenMax.to(this.scrollbar, 0.5, {scrollTop: this.scrollbar.limit.y, ease: Cubic.ease});
         }

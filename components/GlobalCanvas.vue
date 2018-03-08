@@ -496,7 +496,7 @@ export default {
       this.maskContainer.removeChild(this.maskBgProject);
       this.updateProjectBgColor();
 
-      this.projectsContainer.removeChild(this.images[currentImageIndex]);
+      this.projectsContainer.removeChild(this.images[currentImageIndex], this.images[nextImageIndex]);
       this.projectsContainer.addChild(this.images[nextImageIndex]);
 
       this.maskContainer.removeChild(this.projectsContainer);
@@ -504,8 +504,7 @@ export default {
 
       // In case of image mysterious disappearing
       // setTimeout(() => {
-      //   this.projectsContainer.removeChild(this.images[currentImageIndex]);
-      //   this.projectsContainer.addChild(this.images[nextImageIndex]);
+      //  this.projectsContainer.addChild(this.images[currentImageIndex]);
       // }, 500)
     },
 
