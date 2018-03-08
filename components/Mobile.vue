@@ -181,6 +181,7 @@ export default {
 <style lang="scss">
 $containerWidth: 82%;
 $maxWidth: 950px;
+$phoneWidth: 450px;
 
 .Mobile {
   position: relative;
@@ -213,24 +214,36 @@ $maxWidth: 950px;
 
 .Mobile__AlertText {
   width: 90%;
-  font-size: 1.4rem;
-  line-height: 2rem;
+  font-size: 1.8rem;
+  line-height: 2.7rem;
   // margin-left: 5%;
 
   .Mobile__SubTitle {
     margin-bottom: 10px;
   }
+
+  @media screen and (max-width: $phoneWidth) {
+    font-size: 1.4rem;
+    line-height: 2rem;
+  }
 }
 
 .Mobile__Title, .Mobile__Beer {
-  font-size: 2.2rem;
+  font-size: 3.8rem;
   font-weight: bold;
   width: $containerWidth;
-  text-align: left;
+  text-align: center;
   padding: 240px 0 75px 0;
   margin: 0 auto;
-  line-height: 3rem;
+  line-height: 5.2rem;
   color: #000;
+
+  @media screen and (max-width: $phoneWidth) {
+    text-align: left;
+    font-size: 2.2rem;
+    line-height: 3rem;
+    padding: 240px 0 75px 0;
+  }
 }
 
 .Mobile__Title {
@@ -253,15 +266,15 @@ $maxWidth: 950px;
   font-size: 1.8rem;
   margin-bottom: 20px;
 
-  @media screen and (max-width: $maxWidth) {
+  @media screen and (max-width: $phoneWidth) {
     font-size: 1.4rem;
     line-height: 2.4rem;
   }
 }
 
 .Mobile__Paragraph {
-  font-size: 1.2rem;
-  line-height: 2.1rem;
+  font-size: 1.8rem;
+  line-height: 2.7rem;
 
   a {
     text-decoration: none;
@@ -279,10 +292,19 @@ $maxWidth: 950px;
       }
     }
   }
+
+  @media screen and (max-width: $phoneWidth) {
+    font-size: 1.2rem;
+    line-height: 2.1rem;
+  }
 }
 
 .Mobile__Experience .Mobile__Paragraph {
   margin-bottom: 40px;
+
+  @media screen and (max-width: $phoneWidth) {
+    margin-bottom: 20px;
+  }
 }
 
 .Mobile__Numbers {
@@ -302,21 +324,26 @@ $maxWidth: 950px;
 
 .Mobile__NumbersCols {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   margin-top: 30px;
 
-  @media screen and (max-width: $maxWidth) {
+  @media screen and (max-width: $phoneWidth) {
     flex-direction: column;
+    align-items: center;
   }
 }
 
 .Mobile__NumbersCol {
-  margin-bottom: 60px;
+  margin-bottom: 20px;
   width: 80%;
 
   &:last-child {
     margin-bottom: 0;
+  }
+
+  @media screen and (max-width: $phoneWidth) {
+    margin-bottom: 60px;
   }
 }
 
@@ -324,7 +351,7 @@ $maxWidth: 950px;
   font-size: 3.8rem;
   font-weight: bold;
 
-  @media screen and (max-width: $maxWidth) {
+  @media screen and (max-width: $phoneWidth) {
     text-align: center;
   }
 }
@@ -335,7 +362,7 @@ $maxWidth: 950px;
   font-size: 1.7rem;
   color: #818181;
 
-  @media screen and (max-width: $maxWidth) {
+  @media screen and (max-width: $phoneWidth) {
     text-align: center;
   }
 }
@@ -379,13 +406,18 @@ $maxWidth: 950px;
   width: 90%;
 
   p {
-    font-size: 1.4rem;
-    line-height: 2.1rem;
+    font-size: 1.8rem;
+    line-height: 2.7rem;
     white-space: normal;
     margin-top: 32px;
 
     &:first-child {
       margin-top: 0;
+    }
+
+    @media screen and (max-width: $phoneWidth) {
+      font-size: 1.4rem;
+      line-height: 2.1rem;
     }
   }
 }
@@ -405,9 +437,13 @@ $maxWidth: 950px;
   li {
     margin-top: 10px;
     margin-right: 30px;
+  }
 
-    &:nth-child(3), &:nth-child(5) {
-      margin-right: 0;
+  @media screen and (max-width: $phoneWidth) {
+    li {
+      &:nth-child(3), &:nth-child(5) {
+        margin-right: 0;
+      }
     }
   }
 }
@@ -466,9 +502,15 @@ $maxWidth: 950px;
 
 .Mobile__InternshipText {
   width: 70%;
-  font-size: 1.4rem;
-  line-height: 2rem;
+  font-size: 1.8rem;
+  line-height: 2.8rem;
   text-align: center;
+
+  @media screen and (max-width: $phoneWidth) {
+    width: 90%;
+    font-size: 1.4rem;
+    line-height: 2rem;
+  }
 }
 
 .Mobile__Footer {
